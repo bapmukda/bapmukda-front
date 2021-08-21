@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
+import MonthPicker from 'react-native-month-year-picker';
+
 import {
   View,
   Button,
@@ -11,18 +13,36 @@ import {
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
-import egg from '../imoji/egg.png';
+import union from '../imoji/Union.png';
+import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
 export default function Calender() {
   const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
   const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
   const workout = {key: 'workout', color: 'green'};
   const today = moment().format('YYYY-MM-DD');
+  const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
   const [isModalVisible, setModalVisible] = useState(false);
   const [monthModal, setMonthModal] = useState(false);
   const [isDate, setIsDate] = useState('');
   const [isDay, setisDay] = useState('');
   const [isMonth, setIsMonth] = useState('');
+
+  const [Pickdate, setpickDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+
+  const showPicker = useCallback(value => setShow(value), []);
+
+  const onValueChange = useCallback(
+    (event, newDate) => {
+      const selectedDate = newDate || Pickdate;
+      showPicker(false);
+      setpickDate(selectedDate);
+      uperDate === moment(Pickdate, 'YYYY-MM');
+    },
+    [Pickdate, showPicker],
+  );
+
   var week = new Array(
     '일요일',
     '월요일',
@@ -32,12 +52,14 @@ export default function Calender() {
     '금요일',
     '토요일',
   );
+
   const handleMonthModal = () => {
     setMonthModal(!isModalVisible);
   };
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+
   const sendDate = (day, month, dateString) => {
     setModalVisible(!isModalVisible);
     setisDay(day);
@@ -46,43 +68,46 @@ export default function Calender() {
     var todate = week[date];
     setIsDate(todate);
   };
-
+  const images = {
+    union: {
+      union: require('../imoji/Union.png'),
+    },
+  };
   return (
     <View style={{}}>
-      <View
+      <TouchableOpacity
         style={{
           backgroundColor: 'white',
           alignItems: 'flex-start',
-        }}>
-        <Button title="2021년 7월" onPress={() => setMonthModal(true)} />
-      </View>
-      <Modal
-        isVisible={monthModal}
-        style={{
-          justifyContent: 'flex-end',
-          margin: 0,
         }}
-        transparent={true}
-        coverScreen={false}
-        backdropColor={'white'}
-        backdropOpacity={1}>
-        <View
+        onPress={() => showPicker(true)}>
+        <Text
           style={{
-            flex: 0.3,
-            backgroundColor: 'white',
-            top: '70%',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            height: '50%',
+            fontSize: 20,
+            color: 'rgba(51, 56, 66, 1)',
+            marginLeft: 20,
+            marginTop: 20,
           }}>
-          <Button title="Hide modal" onPress={() => setMonthModal(true)} />
-        </View>
-      </Modal>
+          {moment(Pickdate).format('YYYY년MM월')}
+        </Text>
+      </TouchableOpacity>
+      {show && (
+        <MonthPicker
+          onChange={onValueChange}
+          value={Pickdate}
+          minimumDate={new Date(2020, 8)}
+          maximumDate={new Date(2025, 5)}
+          locale="ko"
+        />
+      )}
+
       <View style={{height: 400}}>
         <CalendarList
+          current={Pickdate}
           onVisibleMonthsChange={months => {
             console.log('now these months are visibl', months);
           }}
+          horizontal={true}
           calendarHeight={350}
           // Max amount of months allowed to scroll to the past. Default = 50
 
@@ -105,6 +130,8 @@ export default function Calender() {
                 container: {
                   backgroundColor: '#333842',
                   borderRadius: 10,
+                  height: 50,
+                  position: 'absolute',
                 },
                 text: {
                   color: 'white',
@@ -120,6 +147,7 @@ export default function Calender() {
       <View style={{alignItems: 'center', top: 90}}>
         <TouchableOpacity activeOpacity={0.8} style={styles.button}>
           <Text style={styles.text}>오늘</Text>
+          <Image source={right} />
         </TouchableOpacity>
       </View>
       <Modal
@@ -202,6 +230,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
+    flexDirection: 'row',
   },
   text: {
     color: '#999BA0',
