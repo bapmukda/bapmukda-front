@@ -16,10 +16,54 @@ import moment from 'moment';
 import union from '../imoji/Union.png';
 import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
+import {LocaleConfig} from 'react-native-calendars';
+
+LocaleConfig.locales['fr'] = {
+  monthNames: [
+    'Janvier',
+    'Février',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Août',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Décembre',
+  ],
+  monthNamesShort: [
+    'Janv.',
+    'Févr.',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juil.',
+    'Août',
+    'Sept.',
+    'Oct.',
+    'Nov.',
+    'Déc.',
+  ],
+  dayNames: [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+  ],
+  dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+  today: "Aujourd'hui",
+};
+LocaleConfig.defaultLocale = 'fr';
 export default function Calender() {
-  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
-  const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
-  const workout = {key: 'workout', color: 'green'};
+  // const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
+  // const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
+  // const workout = {key: 'workout', color: 'green'};
   const today = moment().format('YYYY-MM-DD');
   const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
   const [isModalVisible, setModalVisible] = useState(false);
@@ -107,30 +151,32 @@ export default function Calender() {
           onVisibleMonthsChange={months => {
             console.log('now these months are visibl', months);
           }}
+          monthFormat={''}
           horizontal={true}
           calendarHeight={350}
           // Max amount of months allowed to scroll to the past. Default = 50
 
           scrollEnabled={true}
           // Enable or disable vertical scroll indicator. Default = false
+          theme={{
+            todayTextColor: 'white',
+          }}
           showScrollIndicator={true}
           markingType={'multi-dot'}
           maxDate={new Date()}
-          markingType={'custom'}
           markedDates={{
-            '2021-07-16': {
-              dots: [vacation, massage, workout],
-              startingDay: true,
-              color: 'green',
-              endingDay: true,
+            '2021-08-15': {
+              dots: [
+                {key: 'vacation', color: 'blue', selectedDotColor: 'red'},
+                {key: 'massage', color: 'red', selectedDotColor: 'white'},
+              ],
             },
-            '2021-07-17': {dots: [massage, workout]},
+
             [today]: {
-              customStyles: {
+              dots: {
                 container: {
                   backgroundColor: '#333842',
                   borderRadius: 10,
-                  height: 50,
                   position: 'absolute',
                 },
                 text: {
