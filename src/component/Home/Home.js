@@ -23,6 +23,12 @@ export default function Home(props) {
           props.navigation.navigate('Calender');
         }}
       />
+      <Button
+        title="Sidebar Screen"
+        onPress={() => {
+          props.navigation.navigate('Add_diary');
+        }}
+      />
     </View>
   );
 }
