@@ -14,9 +14,19 @@ import {
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
 import union from '../imoji/Union.png';
+import back from '../imoji/back.png';
 import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
 import {LocaleConfig} from 'react-native-calendars';
+
+function getFormatDate(date) {
+  var year = date.getFullYear(); //yyyy
+  var month = 1 + date.getMonth(); //M
+  month = month >= 10 ? month : '0' + month; //month 두자리로 저장
+  var day = date.getDate(); //d
+  day = day >= 10 ? day : '0' + day; //day 두자리로 저장
+  return year + '-' + month + '-' + day; //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+}
 
 LocaleConfig.locales['fr'] = {
   monthNames: [
@@ -86,7 +96,6 @@ export default function Calender() {
     },
     [Pickdate, showPicker],
   );
-
   var week = new Array(
     '일요일',
     '월요일',
@@ -117,6 +126,45 @@ export default function Calender() {
       union: require('../imoji/Union.png'),
     },
   };
+  // const [datearray, setdatearray] = useState([today]);
+  // for (let i = 0; i < 1; i++) {
+  //   setdatearray(datearray.getDay - i);
+  // }
+  let date = new Date();
+  const nextDays = [getFormatDate(date)];
+  const wowoo = [];
+  const allday = [];
+  for (var i = 1; i < 365; i++) {
+    wowoo[i] = new Date(date.setDate(date.getDate() - i));
+    wowoo[i] = getFormatDate(date);
+    date = new Date();
+  }
+
+  let newDaysObject = {};
+
+  nextDays.forEach(day => {
+    newDaysObject[day] = {
+      dots: [
+        {key: '1', color: 'rgba(214, 215, 217, 1)'},
+        {key: '2', color: 'rgba(214, 215, 217, 1)'},
+        {key: '3', color: 'rgba(214, 215, 217, 1)'},
+        {key: '4', color: 'rgba(214, 215, 217, 1)'},
+      ],
+      selected: true,
+      selectedColor: '#111',
+    };
+  });
+  wowoo.forEach(day => {
+    newDaysObject[day] = {
+      dots: [
+        {key: '1', color: 'rgba(214, 215, 217, 1)'},
+        {key: '2', color: 'rgba(214, 215, 217, 1)'},
+        {key: '3', color: 'rgba(214, 215, 217, 1)'},
+        {key: '4', color: 'rgba(214, 215, 217, 1)'},
+      ],
+    };
+  });
+
   return (
     <View style={{}}>
       <TouchableOpacity
@@ -133,6 +181,7 @@ export default function Calender() {
             marginTop: 20,
           }}>
           {moment(Pickdate).format('YYYY년MM월')}
+          <Image source={back} />
         </Text>
       </TouchableOpacity>
       {show && (
@@ -164,27 +213,7 @@ export default function Calender() {
           showScrollIndicator={true}
           markingType={'multi-dot'}
           maxDate={new Date()}
-          markedDates={{
-            '2021-08-15': {
-              dots: [
-                {key: 'vacation', color: 'blue', selectedDotColor: 'red'},
-                {key: 'massage', color: 'red', selectedDotColor: 'white'},
-              ],
-            },
-
-            [today]: {
-              dots: {
-                container: {
-                  backgroundColor: '#333842',
-                  borderRadius: 10,
-                  position: 'absolute',
-                },
-                text: {
-                  color: 'white',
-                },
-              },
-            },
-          }}
+          markedDates={newDaysObject}
           onDayPress={({day, month, dateString}) =>
             sendDate(day, month, dateString)
           }
