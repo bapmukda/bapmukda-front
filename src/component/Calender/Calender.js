@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
 import MonthPicker from 'react-native-month-year-picker';
-
 import {
   View,
   Button,
@@ -171,6 +170,7 @@ export default function Calender() {
         style={{
           backgroundColor: 'white',
           alignItems: 'flex-start',
+          flexDirection: 'row',
         }}
         onPress={() => showPicker(true)}>
         <Text
@@ -181,8 +181,11 @@ export default function Calender() {
             marginTop: 20,
           }}>
           {moment(Pickdate).format('YYYY년MM월')}
-          <Image source={back} />
         </Text>
+        <Image
+          source={back}
+          style={{marginTop: 30, marginLeft: 8, width: 10}}
+        />
       </TouchableOpacity>
       {show && (
         <MonthPicker
