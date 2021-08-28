@@ -16,7 +16,10 @@ import union from '../imoji/Union.png';
 import back from '../imoji/back.png';
 import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
+import close from '../imgs/close.png';
+import signin from '../imgs/signin.png';
 import {LocaleConfig} from 'react-native-calendars';
+import RegisterModal from './modal/RegisterModal';
 
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
@@ -77,12 +80,19 @@ export default function Calender() {
   const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
   const [isModalVisible, setModalVisible] = useState(false);
   const [monthModal, setMonthModal] = useState(false);
+
   const [isDate, setIsDate] = useState('');
   const [isDay, setisDay] = useState('');
   const [isMonth, setIsMonth] = useState('');
-
+  const [registerModal, setregisterModal] = useState(false);
   const [Pickdate, setpickDate] = useState(new Date());
   const [show, setShow] = useState(false);
+
+  const [enterModal, setenterModal] = useState(true);
+
+  const onEntermodal = () => {
+    setenterModal(!enterModal);
+  };
 
   const showPicker = useCallback(value => setShow(value), []);
 
@@ -95,6 +105,7 @@ export default function Calender() {
     },
     [Pickdate, showPicker],
   );
+
   var week = new Array(
     '일요일',
     '월요일',
@@ -111,7 +122,9 @@ export default function Calender() {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-
+  const handleregisterModal = () => {
+    setregisterModal(!registerModal);
+  };
   const sendDate = (day, month, dateString) => {
     setModalVisible(!isModalVisible);
     setisDay(day);
@@ -166,11 +179,58 @@ export default function Calender() {
 
   return (
     <View style={{}}>
+      <Modal isVisible={enterModal}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            height: 400,
+            borderRadius: 10,
+            alignItems: 'center',
+          }}>
+          <Image
+            source={signin}
+            style={{width: 250, height: 144, marginTop: 30}}
+          />
+          <Text style={{fontSize: 16}}> 밥먹다에 가입하고</Text>
+          <Text style={{fontSize: 16, marginTop: 8}}> 기록을 시작해보세요</Text>
+          <TouchableOpacity onPress={onEntermodal}>
+            <View
+              style={{
+                backgroundColor: '#E17551',
+                width: 300,
+                borderRadius: 10,
+                height: 60,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: 30,
+              }}>
+              <Text style={{color: 'white', fontSize: 15}}>
+                {' '}
+                10초만에 가입하기
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onEntermodal}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                width: 300,
+                borderRadius: 10,
+                height: 60,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{color: '#E17551'}}> 닫기</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </Modal>
       <TouchableOpacity
         style={{
           backgroundColor: 'white',
           alignItems: 'flex-start',
           flexDirection: 'row',
+          paddingLeft: 15,
         }}
         onPress={() => showPicker(true)}>
         <Text
@@ -179,6 +239,7 @@ export default function Calender() {
             color: 'rgba(51, 56, 66, 1)',
             marginLeft: 20,
             marginTop: 20,
+            fontWeight: 'bold',
           }}>
           {moment(Pickdate).format('YYYY년MM월')}
         </Text>
@@ -223,17 +284,22 @@ export default function Calender() {
         />
       </View>
       <View style={{alignItems: 'center', top: 90}}>
-        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.button}
+          onPress={handleregisterModal}>
           <Text style={styles.text}>오늘</Text>
           <Image source={right} />
         </TouchableOpacity>
       </View>
+
       <Modal
         isVisible={isModalVisible}
         style={{
           justifyContent: 'flex-end',
           margin: 0,
         }}
+        swipeDirection={['down']}
         transparent={true}
         coverScreen={false}
         backdropColor="rgba(r,g,b,a)"
@@ -286,8 +352,52 @@ export default function Calender() {
             </View>
             <Text style={{textAlign: 'center'}}>계란후라이</Text>
           </View>
-
           <Button title="Hide modal" onPress={toggleModal} />
+        </View>
+      </Modal>
+
+      {/* registerModal */}
+      <Modal
+        isVisible={registerModal}
+        style={{
+          justifyContent: 'flex-end',
+          margin: 0,
+        }}
+        animationType="none"
+        transparent={true}
+        coverScreen={false}
+        backdropColor="rgba(r,g,b,a)"
+        backdropOpacity={1}
+        onBackdropPress={handleregisterModal}
+        borderRadius={10}>
+        <View
+          style={{
+            flex: 0.4,
+            backgroundColor: 'white',
+            top: '50%',
+            justifyContent: 'space-around',
+            height: '40%',
+            borderRadius: 10,
+            shadowColor: 'rgb(196, 196, 196)',
+            shadowOffset: {width: 0, height: 1},
+            shadowOpacity: 1,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{marginLeft: 20, fontSize: 16, fontWeight: 'bold'}}>
+              등록하기
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{position: 'absolute', right: '5%', top: '10%'}}
+            onPress={handleregisterModal}>
+            <Image source={close} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{marginLeft: 20}}>식단등록</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{marginLeft: 20, marginBottom: 20}}>기분등록</Text>
+          </TouchableOpacity>
         </View>
       </Modal>
       <Agenda />

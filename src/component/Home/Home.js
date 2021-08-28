@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {View, Text, Button, TextInput} from 'react-native';
-
+import Modal from 'react-native-modal';
 export default function Home(props) {
   return (
     <View
