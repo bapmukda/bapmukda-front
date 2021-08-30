@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useRef} from 'react';
 import MonthPicker from 'react-native-month-year-picker';
 import {
   View,
@@ -20,6 +20,7 @@ import close from '../imgs/close.png';
 import signin from '../imgs/signin.png';
 import {LocaleConfig} from 'react-native-calendars';
 import RegisterModal from './modal/RegisterModal';
+import {Modalize} from 'react-native-modalize';
 
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
@@ -92,6 +93,17 @@ export default function Calender() {
 
   const onEntermodal = () => {
     setenterModal(!enterModal);
+  };
+
+  const modalizeRef = useRef();
+
+  const onOpen = (day, month, dateString) => {
+    modalizeRef.current?.open();
+    setisDay(day);
+    setIsMonth(month);
+    var date = new Date(dateString).getDay();
+    var todate = week[date];
+    setIsDate(todate);
   };
 
   const showPicker = useCallback(value => setShow(value), []);
@@ -258,15 +270,15 @@ export default function Calender() {
         />
       )}
 
-      <View style={{height: 400}}>
-        <CalendarList
+      <View style={{height: 450}}>
+        <Calendar
           current={Pickdate}
           onVisibleMonthsChange={months => {
             console.log('now these months are visibl', months);
           }}
+          style={{height: 400}}
           monthFormat={''}
-          horizontal={true}
-          calendarHeight={350}
+          // horizontal={true}
           // Max amount of months allowed to scroll to the past. Default = 50
 
           scrollEnabled={true}
@@ -279,7 +291,7 @@ export default function Calender() {
           maxDate={new Date()}
           markedDates={newDaysObject}
           onDayPress={({day, month, dateString}) =>
-            sendDate(day, month, dateString)
+            onOpen(day, month, dateString)
           }
         />
       </View>
@@ -293,33 +305,30 @@ export default function Calender() {
         </TouchableOpacity>
       </View>
 
-      <Modal
+      <Modalize
+        ref={modalizeRef}
         isVisible={isModalVisible}
-        style={{
-          justifyContent: 'flex-end',
-          margin: 0,
-        }}
-        swipeDirection={['down']}
-        transparent={true}
-        coverScreen={false}
+        style={{marginBottom: -100}}
         backdropColor="rgba(r,g,b,a)"
-        backdropOpacity={1}
-        onBackdropPress={toggleModal}
+        modalHeight={400}
         borderRadius={10}>
         <View
           style={{
-            flex: 0.5,
             backgroundColor: 'white',
-            top: '50%',
-            justifyContent: 'space-around',
             alignItems: 'center',
-            height: '50%',
+            justifyContent: 'center',
             borderRadius: 10,
             shadowColor: 'rgb(196, 196, 196)',
             shadowOffset: {width: 0, height: 1},
             shadowOpacity: 1,
           }}>
-          <Text style={{left: '-30%', fontSize: 20}}>
+          <Text
+            style={{
+              left: '-30%',
+              fontSize: 18,
+              marginTop: 20,
+              marginBottom: 30,
+            }}>
             {' '}
             {isMonth}월 {isDay}일 {isDate}
           </Text>
@@ -330,31 +339,222 @@ export default function Calender() {
               shadowOpacity: 1,
               shadowOffset: {width: 0, height: 1},
               width: '80%',
-              height: '40%',
+              height: 70,
               shadowColor: 'rgb(196, 196, 196)',
               alignItems: 'center',
               borderRadius: 10,
+              marginBottom: 30,
             }}>
             <View
               style={{
                 backgroundColor: '#FBFBFB',
                 shadowOpacity: 1,
                 shadowOffset: {width: 2, height: 2},
-                width: '15%',
-                height: '70%',
+                width: 35,
+                height: 35,
                 margin: 20,
                 shadowColor: 'rgb(196, 196, 196)',
                 borderRadius: 10,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Text style={{textAlign: 'center', fontSize: 20}}>🍳</Text>
+              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
+                🍳
+              </Text>
             </View>
             <Text style={{textAlign: 'center'}}>계란후라이</Text>
           </View>
+          <View style={{flexDirection: 'row', left: '-18%', marginBottom: 20}}>
+            <Text style={{fontWeight: 'bold'}}>식단기록</Text>
+          </View>
+          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                marginTop: 4,
+                borderRadius: 35,
+                backgroundColor: 'green',
+              }}></View>
+            <Text style={{marginLeft: 2, fontSize: 13}}> 아침</Text>
+            <Text style={{marginLeft: 2}}> 09:00</Text>
+            <Text style={{left: '1200%', color: 'red'}}>+ 30분</Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: '#ffffff',
+              shadowOpacity: 1,
+              shadowOffset: {width: 0, height: 1},
+              width: '80%',
+              height: 70,
+              shadowColor: 'rgb(196, 196, 196)',
+              alignItems: 'center',
+              borderRadius: 10,
+              marginBottom: 30,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#FBFBFB',
+                shadowOpacity: 1,
+                shadowOffset: {width: 2, height: 2},
+                width: 35,
+                height: 35,
+                margin: 20,
+                shadowColor: 'rgb(196, 196, 196)',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
+                🍳
+              </Text>
+            </View>
+            <Text style={{textAlign: 'center'}}>계란후라이</Text>
+          </View>
+
+          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                marginTop: 4,
+                borderRadius: 35,
+                backgroundColor: 'red',
+              }}></View>
+            <Text style={{marginLeft: 2, fontSize: 13}}> 점심</Text>
+            <Text style={{marginLeft: 2}}> 09:00</Text>
+            <Text style={{left: '1200%', color: 'blue'}}> - 30분</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: '#ffffff',
+              shadowOpacity: 1,
+              shadowOffset: {width: 0, height: 1},
+              width: '80%',
+              height: 70,
+              shadowColor: 'rgb(196, 196, 196)',
+              alignItems: 'center',
+              borderRadius: 10,
+              marginBottom: 30,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#FBFBFB',
+                shadowOpacity: 1,
+                shadowOffset: {width: 2, height: 2},
+                width: 35,
+                height: 35,
+                margin: 20,
+                shadowColor: 'rgb(196, 196, 196)',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
+                🍳
+              </Text>
+            </View>
+            <Text style={{textAlign: 'center'}}>계란후라이</Text>
+          </View>
+
+          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                marginTop: 4,
+                borderRadius: 35,
+                backgroundColor: 'orange',
+              }}></View>
+            <Text style={{marginLeft: 2, fontSize: 13}}> 저녁</Text>
+            <Text style={{marginLeft: 2}}> 19:00</Text>
+            <Text style={{left: '1200%', color: 'blue'}}> - 00분</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: '#ffffff',
+              shadowOpacity: 1,
+              shadowOffset: {width: 0, height: 1},
+              width: '80%',
+              height: 70,
+              shadowColor: 'rgb(196, 196, 196)',
+              alignItems: 'center',
+              borderRadius: 10,
+              marginBottom: 30,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#FBFBFB',
+                shadowOpacity: 1,
+                shadowOffset: {width: 2, height: 2},
+                width: 35,
+                height: 35,
+                margin: 20,
+                shadowColor: 'rgb(196, 196, 196)',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
+                🍳
+              </Text>
+            </View>
+            <Text style={{textAlign: 'center'}}>계란후라이</Text>
+          </View>
+
+          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                marginTop: 4,
+                borderRadius: 35,
+                backgroundColor: 'blue',
+              }}></View>
+            <Text style={{marginLeft: 2, fontSize: 13}}> 간식</Text>
+            <Text style={{marginLeft: 2}}> 19:00</Text>
+            <Text style={{left: '1200%', color: 'blue'}}> - 00분</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: '#ffffff',
+              shadowOpacity: 1,
+              shadowOffset: {width: 0, height: 1},
+              width: '80%',
+              height: 70,
+              shadowColor: 'rgb(196, 196, 196)',
+              alignItems: 'center',
+              borderRadius: 10,
+              marginBottom: 30,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#FBFBFB',
+                shadowOpacity: 1,
+                shadowOffset: {width: 2, height: 2},
+                width: 35,
+                height: 35,
+                margin: 20,
+                shadowColor: 'rgb(196, 196, 196)',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
+                🍳
+              </Text>
+            </View>
+            <Text style={{textAlign: 'center'}}>계란후라이</Text>
+          </View>
+
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
-      </Modal>
+      </Modalize>
 
       {/* registerModal */}
       <Modal
