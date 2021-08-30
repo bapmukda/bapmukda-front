@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
-import union from '../imoji/Union.png';
+
 import back from '../imoji/back.png';
 import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
@@ -265,13 +265,13 @@ export default function Calender() {
           onChange={onValueChange}
           value={Pickdate}
           minimumDate={new Date(2020, 8)}
-          maximumDate={new Date(2025, 5)}
+          maximumDate={new Date(2022, 5)}
           locale="ko"
         />
       )}
 
       <View style={{height: 450}}>
-        <Calendar
+        <CalendarList
           current={Pickdate}
           onVisibleMonthsChange={months => {
             console.log('now these months are visibl', months);
@@ -280,7 +280,6 @@ export default function Calender() {
           monthFormat={''}
           // horizontal={true}
           // Max amount of months allowed to scroll to the past. Default = 50
-
           scrollEnabled={true}
           // Enable or disable vertical scroll indicator. Default = false
           theme={{
