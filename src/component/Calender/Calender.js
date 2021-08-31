@@ -33,32 +33,32 @@ function getFormatDate(date) {
 
 LocaleConfig.locales['fr'] = {
   monthNames: [
-    'Janvier',
-    'Février',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Août',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Décembre',
+    '1월',
+    '2월',
+    '3월',
+    '4월',
+    '4월',
+    '6월',
+    '7월',
+    '8월',
+    '9월',
+    '10월',
+    '11월',
+    '12월',
   ],
   monthNamesShort: [
-    'Janv.',
-    'Févr.',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juil.',
-    'Août',
-    'Sept.',
-    'Oct.',
-    'Nov.',
-    'Déc.',
+    '1',
+    '2',
+    '3',
+    '4',
+    '4',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
   ],
   dayNames: [
     '일요일',
@@ -292,6 +292,7 @@ export default function Calender() {
           onDayPress={({day, month, dateString}) =>
             onOpen(day, month, dateString)
           }
+          locale="ko"
         />
       </View>
       <View style={{alignItems: 'center', top: 90}}>

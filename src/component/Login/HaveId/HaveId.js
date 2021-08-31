@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  TouchableOpacity,
   View,
   Text,
   StyleSheet,
@@ -28,26 +29,21 @@ export default function HaveId(props) {
         secureTextEntry={true}></TextInput>
 
       {PasswordInput === '' ? (
-        <View style={styles.ButtonDesign}>
-          <Button
-            title="완료"
-            color="#D6D7D9"
-            onPress={() => {
-              props.navigation.navigate('SignUp');
-            }}
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('SignUp');
+          }}
+          style={styles.ButtonDesign}>
+          <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
+        </TouchableOpacity>
       ) : (
-        <View style={styles.ButtonDesign2}>
-          <Button
-            title="완료"
-            backgroundColor="#E17551"
-            color="white"
-            onPress={() => {
-              props.navigation.navigate('SignUp');
-            }}
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('SignUp');
+          }}
+          style={styles.ButtonDesign2}>
+          <Text style={{color: 'white'}}>완료</Text>
+        </TouchableOpacity>
       )}
     </View>
   );
@@ -84,6 +80,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 160,
     height: 48,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   ButtonDesign2: {
@@ -93,5 +90,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     backgroundColor: '#E17551',
+    alignItems: 'center',
   },
 });
