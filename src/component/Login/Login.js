@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {
+  TouchableOpacity,
   View,
   Text,
   StyleSheet,
@@ -30,26 +31,21 @@ export default function Longin(props) {
         onChangeText={onChangeInput}></TextInput>
 
       {LonginName === '' ? (
-        <View style={styles.ButtonDesign}>
-          <Button
-            title="다음"
-            color="#D6D7D9"
-            onPress={() => {
-              props.navigation.navigate('HaveId');
-            }}
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('HaveId');
+          }}
+          style={styles.ButtonDesign}>
+          <Text style={{color: 'rgba(214, 215, 217,1)'}}>다음</Text>
+        </TouchableOpacity>
       ) : (
-        <View style={styles.ButtonDesign2}>
-          <Button
-            title="다음"
-            color="white"
-            backgroundColor="#E17551"
-            onPress={() => {
-              props.navigation.navigate('HaveId');
-            }}
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('HaveId');
+          }}
+          style={styles.ButtonDesign2}>
+          <Text style={{color: 'white'}}>다음</Text>
+        </TouchableOpacity>
       )}
     </View>
   );
@@ -75,11 +71,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     backgroundColor: '#EBEBEC',
+    alignItems: 'center',
   },
   ButtonDesign2: {
     borderRadius: 10,
     width: 160,
     height: 48,
+    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 50,
     backgroundColor: '#E17551',

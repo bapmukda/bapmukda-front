@@ -407,7 +407,257 @@ export default function details(props) {
 
   return (
     <View style={styles.mainView}>
-      <Users></Users>     
+      
+<View style={styles.top}>
+            <TouchableOpacity
+                onPress={() => {
+                props.navigation.navigate('MtoE');
+                }}
+                style ={styles.goBack}>
+                <View style={styles.aligntop}>
+                    <Image source = {require('../imgs/close.png')}/>
+                </View>  
+            </TouchableOpacity>
+          
+            <View style={{width:"12%", height:"40.91%",alignSelf:"center"}}>
+                <Text style={styles.toptext}>아침</Text>
+            </View>
+          
+            <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('MtoE');
+            }}
+            style ={styles.enter}>
+                <View style={styles.aligntop}>
+                    <Text style={styles.editText}>수정</Text>
+                </View> 
+            </TouchableOpacity>
+        </View>
+
+        <View style={[styles.date_time]}>
+          <TouchableOpacity onPress={() => setShowDate(true)}>
+          
+            <Text>
+              {month != '' ? moment(year.slice(0,-1)+'-'+month.slice(0,-1)+'-'+date_.slice(0,-1), 'YYYY-MM-DD').format("YYYY.MM.DD (dd)") : year}
+              {/* {getCurrentDate()} */}
+            </Text>
+            <Modal
+              transparent={true}
+              animationType='slide'
+              visible={showDate}
+              supportedOrientations={['portrait']}
+              onRequestClose={() => setShowDate(false)}>
+              
+              <View style={[styles.wrapperVertical,{}]} onLayout={onLayout}>
+                <View style={{width:"69.9%", height:"36%",flexDirection:"row",backgroundColor:"white",justifyContent:"center"}}>
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute",left:0}} // 
+                      lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                      lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                      lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                      selectedValue={selectedYear}
+                      itemSpace={35}
+                      visibleItemCount={1}
+                      
+                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                      // selectedItemTextColor="black"
+                      onValueChange={(index) => changeYear(index)}>
+                      {yearList.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      ))}
+                  </Picker>
+
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute"}} // 
+                    lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                    lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                    lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                    selectedValue={selectedMonth}
+                    itemSpace={35}
+                    visibleItemCount={1}
+                    
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    // selectedItemTextColor="black"
+                    // onValueChange={(index) => setSelectedMonth(index)}>
+                    onValueChange={(index) => changeMonth(index)}>
+                    {monthList.map((value, i) => (
+                      <PickerItem label={value} value={i} key={i}/>
+                    ))}
+                  </Picker>
+
+                  
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute",right:0}} // 
+                    lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                    lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                    lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                    selectedValue={selectedDate}
+                    itemSpace={35}
+                    visibleItemCount={1}
+                    enabled={false}
+                    // isCurved={false}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    // selectedItemTextColor="black"
+                    // onValueChange={(index) => setSelectedDate(index)}>
+                    onValueChange={(index) => changeDate(index)}>
+
+                    {
+                      dateList31.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      ))
+                    }
+                  </Picker>
+                </View>
+                  
+                  <View style={{width:"87.5%", height:"18.67%", top:"16%",flexDirection:"row"}}>
+                    <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                    onPressOut={() => setShowDate(false)}>
+                      <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                    onPressOut={() => confirmDate()}
+                    disabled = {disable}>
+                      <View style={{backgroundColor: colorChoice, position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                        <Text style={{color:colorChoiceText, alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                  </View>
+              </View>
+            </Modal>
+          </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={[styles.date_time]}
+      // activeOpacity={0}
+      onPress={() => setShow(true)}>
+        <Text style={{textAlign:'center'}}>{a}     {item}{minute}</Text>
+        <Modal
+            transparent={true}
+            animationType='slide'
+            visible={show}
+            supportedOrientations={['portrait']}
+            onRequestClose={() => setShow(false)}>
+              <View style={[styles.wrapperVertical,{}]} onLayout={onLayout}>
+                <View style={{width:"69.9%", height:"36%",flexDirection:"row",backgroundColor:"white",justifyContent:"center"}}>
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute",left:0}} // 
+                      lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                      lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                      lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                      selectedValue={selectedA}
+                      itemSpace={35}
+                      visibleItemCount={1}
+                      
+                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                      // selectedItemTextColor="black"
+                      onValueChange={(index) => setSelectedA(index) }>
+                      {aList.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      ))}
+                  </Picker>
+
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute"}} // 
+                    lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                    lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                    lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                    selectedValue={selectedItem}
+                    itemSpace={35}
+                    visibleItemCount={1}
+                    
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    // selectedItemTextColor="black"
+                    onValueChange={(index) => setSelectedItem(index) }>
+                    {itemList.map((value, i) => (
+                      <PickerItem label={value} value={i} key={i}/>
+                    ))}
+                  </Picker>
+
+                  <Text style={{color:"#333842", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24, position:"absolute",right:"29%",top:"39%"}}>:</Text>
+                  
+                  <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute",right:0}} // 
+                    lineColor="#E17551" //to set top and bottom line color (Without gradients)
+                    lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
+                    lineGradientColorTo="#E17551" //to set top and bottom ending gradient
+                    selectedValue={selectedMinute}
+                    itemSpace={35}
+                    visibleItemCount={1}
+                    // isCurved={false}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    // selectedItemTextColor="black"
+                    onValueChange={(index) => setSelectedMinute(index) }>
+                    
+                    {minuteList.map((value, i) => (
+                      <PickerItem label={value} value={i} key={i}/>
+                    ))}
+
+                  </Picker>
+                </View>
+                  
+                  <View style={{width:"87.5%", height:"18.67%", top:"16%",flexDirection:"row"}}>
+                    <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                    onPressOut={() => setShow(false)}>
+                      <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                    onPressOut={() => confirm()}>
+                      <View style={{backgroundColor: "#E17551",position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                        <Text style={{color:"white",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                  </View>
+              </View>
+            </Modal>
+      </TouchableOpacity>
+
+      <View style={{width:"100%", height:"21.38%", marginTop:"1%", justifyContent:"center", alignItems:"center",backgroundColor:"blue"}}>
+            <View style={styles.Foodicon}>
+                <Image source = {require('../imgs/🍚.png')}/>
+            </View>
+            
+            <Text style={{position:"absolute", bottom:"15%"}}>
+                계란후라이
+            </Text>
+      </View>
+
+      <TouchableOpacity style={styles.trashcan}
+      onPressOut={() => setShowDelete(true)}>
+          <Image source = {require('../imgs/trash_can.png')}/>
+          <Modal
+              transparent={true}
+              animationType='slide'
+              visible={showDelete}
+              supportedOrientations={['portrait']}
+              onRequestClose={() => setShowDelete(false)}>
+                  <View style={styles.wrapperDelete}>
+                      <Text style={{alignSelf:"center",bottom:"15%",fontSize:16,fontWeight:"bold"}}>
+                          식단을 삭제할까요?
+                      </Text>
+
+                      <View style={{width:"82.8%",height:"26.1%",flexDirection:"row",position:"absolute",bottom:"10%"}}>
+                          
+                        <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                        onPressOut={() => setShowDelete(false)}>
+                            <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                                <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={{width:"48.17%", height:"100%"}}
+                        onPressOut={() => setShowDelete(false)}
+                        disabled = {disable}>
+                            <View style={{backgroundColor: "#E17551", position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
+                                <Text style={{color:"white", alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>삭제</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                      </View>
+                  </View>
+          </Modal>
+      </TouchableOpacity>     
     </View>
     
 

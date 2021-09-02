@@ -1,6 +1,13 @@
 import React from 'react';
 import {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Button,
+} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 export default function Nickname() {
   const [myTextInput, setmyTextInput] = useState('');
@@ -54,26 +61,21 @@ export default function Nickname() {
       </View>
       <View style={{marginTop: 50}}>
         {myTextInput === '' ? (
-          <View style={styles.ButtonDesign}>
-            <Button
-              title="다음"
-              color="#D6D7D9"
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Home');
+            }}
+            style={styles.ButtonDesign}>
+            <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
+          </TouchableOpacity>
         ) : (
-          <View style={styles.ButtonDesign2}>
-            <Button
-              title="다음"
-              color="white"
-              backgroundColor="#E17551"
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Home');
+            }}
+            style={styles.ButtonDesign2}>
+            <Text style={{color: 'white'}}>가입완료</Text>
+          </TouchableOpacity>
         )}
       </View>
     </View>
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     width: 160,
     height: 48,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   afterButtonDesign: {
     backgroundColor: '#E17551',
@@ -105,14 +108,15 @@ const styles = StyleSheet.create({
     width: 160,
     height: 48,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   ButtonDesign2: {
     borderRadius: 10,
     width: 160,
     height: 48,
     justifyContent: 'center',
-
     backgroundColor: '#E17551',
+    alignItems: 'center',
   },
   input: {
     width: '70%',
