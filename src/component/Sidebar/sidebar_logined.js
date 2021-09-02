@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     top:-20,
     fontSize:16,
     fontWeight:"700",
-    fontFamily: "SpoqaHanSans",
+    fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
     fontWeight: "bold",
     lineHeight: 21,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.02,
     fontSize: 16,
     fontStyle: "normal",
-    fontFamily: "SpoqaHanSans"
+    fontFamily: "SpoqaHanSansNeo-Regular"
   },
   listbound:{
     top:8,

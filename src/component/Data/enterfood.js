@@ -61,7 +61,7 @@ foodselect:{
     justifyContent:"center",
     alignItems:"center",
     
-    fontFamily: "SpoqaHanSans",
+    fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 18,
@@ -97,7 +97,7 @@ foodselect:{
   },
   enterfood:{
     display:"flex",
-    fontFamily: "SpoqaHanSans",
+    fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 14,
@@ -111,7 +111,7 @@ foodselect:{
 
 
 
-export default function MtoE(props) {
+export default function enterfood(props) {
     
   return (
     <View style={styles.mainView}>

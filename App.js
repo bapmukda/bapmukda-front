@@ -15,13 +15,14 @@ import LoginScreen from './src/component/Login/Login';
 import HaveId from './src/component/Login/HaveId/HaveId';
 import SignUp from './src/component/SignUp/SignUp';
 import Nickname from './src/component/SignUp/Nickname/Nickname';
-import Calendar from './src/component/Calender/Calender';
+// import Calendar from './src/component/Calender/Calender';
 import Sidebar_longin from './src/component/Sidebar/sidebar_login';
 import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
 import enterfood from './src/component/Data/enterfood'
-
+import details from './src/component/Calender/details'
+import Users from './src/component/test'
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -49,11 +50,11 @@ export default function App() {
           component={Nickname}
           options={{title: '회원가입'}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Calender"
           component={Calendar}
           options={{title: '캘린더'}}
-        />
+        /> */}
         <Stack.Screen
           name="Sidebar"
           component={Sidebar_longin}
@@ -78,6 +79,11 @@ export default function App() {
           name="EnterFood"
           component={enterfood}
           options={{title: '음식등록'}}
+        />
+        <Stack.Screen
+          name="details"
+          component={details}
+          options={{title: '상세페이지'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

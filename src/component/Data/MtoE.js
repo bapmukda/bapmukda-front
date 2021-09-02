@@ -11,7 +11,6 @@ import { anything } from 'expect';
 
 var PickerItem = Picker.Item;
 
-
 // state = {open: false};
 const styles = StyleSheet.create({
   mainView: {
@@ -67,9 +66,9 @@ const styles = StyleSheet.create({
 
     /* sub/12/0/reg */
 
-    fontFamily: "SpoqaHanSans",
+    fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
-    fontWeight: "normal",
+    // fontWeight: "normal",
     fontSize: 14,
     lineHeight: 18,
     /* identical to box height */
@@ -94,9 +93,9 @@ dining_box:{
   flex:1,
   width:"17.1%",
   height:"71.43%",
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "normal",
+  // fontWeight: "normal",
   fontSize: 14,
   lineHeight: 21,
   /* identical to box height */
@@ -114,9 +113,9 @@ date_time:{
   justifyContent:"center",
   alignItems:"center",
   
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "normal",
+  // fontWeight: "normal",
   fontSize: 18,
   lineHeight: 21,
   /* identical to box height */
@@ -135,9 +134,9 @@ foodselect:{
   justifyContent:"center",
   alignItems:"center",
   
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "normal",
+  // fontWeight: "normal",
   fontSize: 18,
   lineHeight: 21,
   display:"flex",
@@ -160,9 +159,9 @@ bottomtext:{
 
   /* sub/12/0/reg */
 
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "bold",
+  // fontWeight: "bold",
   fontSize: 18,
   lineHeight: 21,
   /* identical to box height */
@@ -240,9 +239,9 @@ Foodicon:{
 },
 enterfood:{
   display:"flex",
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "normal",
+  // fontWeight: "normal",
   fontSize: 14,
   lineHeight: 21,
   alignItems: "center",
@@ -268,9 +267,9 @@ registerText:{
   justifyContent: "center",
   alignContent: "center",
   textAlign: "center",
-  fontFamily: "SpoqaHanSans",
+  fontFamily: "SpoqaHanSansNeo-Regular",
   fontStyle: "normal",
-  fontWeight: "bold",
+  // fontWeight: "bold",
   fontSize: 16,
   lineHeight: 24,
   // backgroundColor:"green"
@@ -428,6 +427,8 @@ export default function MtoE(props) {
       setMinute(':'+selectedMinute);
     }  
   };
+  
+  
   const changeYear = (index) => {
     setSelectedYear(index);
     if ( Number(yearList[index].slice(0,-1)) > Number(moment().locale('ko').utcOffset(+9).format('YYYY')) || ( Number(yearList[index].slice(0,-1)) == Number(moment().locale('ko').utcOffset(+9).format('YYYY')) && Number(monthList[selectedMonth].slice(0,-1)) > Number(moment().locale('ko').utcOffset(+9).format('MM')) ) || ( Number(yearList[index].slice(0,-1)) == Number(moment().locale('ko').utcOffset(+9).format('YYYY')) && Number(monthList[selectedMonth].slice(0,-1)) == Number(moment().locale('ko').utcOffset(+9).format('MM') ) && Number(dateList31[selectedDate].slice(0,-1)) > Number(moment().locale('ko').utcOffset(+9).format('DD') )))
@@ -538,7 +539,7 @@ export default function MtoE(props) {
     setMonth(monthList[selectedMonth]);
     setDate_(dateList31[selectedDate]);
   };
-
+  
   const [show, setShow] = useState(false);
   const [showDate, setShowDate] = useState(false);
 
@@ -581,17 +582,6 @@ export default function MtoE(props) {
     }
   };
   
-  const overDate = () =>{
-    if (Number(year) > Number(moment().locale('ko').utcOffset(+9).format('YYYY'))){
-      console.log('띠리띠띠');
-      setDisable(true);
-      return "#E17551"
-    }
-    else{
-      setDisable(false);
-      return "#EBEBEC"
-    }
-  };
 
   const addtionalRegister = () =>{
     setShowRegister(false);
@@ -672,7 +662,6 @@ export default function MtoE(props) {
 
       <View style={[styles.date_time]}>
           <TouchableOpacity onPress={() => setShowDate(true)}>
-
           
             <Text>
               {month != '' ? moment(year.slice(0,-1)+'-'+month.slice(0,-1)+'-'+date_.slice(0,-1), 'YYYY-MM-DD').format("YYYY.MM.DD (dd)") : year}
@@ -695,7 +684,7 @@ export default function MtoE(props) {
                       itemSpace={35}
                       visibleItemCount={1}
                       
-                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                       // selectedItemTextColor="black"
                       onValueChange={(index) => changeYear(index)}>
                       {yearList.map((value, i) => (
@@ -711,7 +700,7 @@ export default function MtoE(props) {
                     itemSpace={35}
                     visibleItemCount={1}
                     
-                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                     // selectedItemTextColor="black"
                     // onValueChange={(index) => setSelectedMonth(index)}>
                     onValueChange={(index) => changeMonth(index)}>
@@ -730,7 +719,7 @@ export default function MtoE(props) {
                     visibleItemCount={1}
                     enabled={false}
                     // isCurved={false}
-                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                     // selectedItemTextColor="black"
                     // onValueChange={(index) => setSelectedDate(index)}>
                     onValueChange={(index) => changeDate(index)}>
@@ -763,7 +752,7 @@ export default function MtoE(props) {
                     <TouchableOpacity style={{width:"48.17%", height:"100%"}}
                     onPressOut={() => setShowDate(false)}>
                       <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
+                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -771,7 +760,7 @@ export default function MtoE(props) {
                     onPressOut={() => confirmDate()}
                     disabled = {disable}>
                       <View style={{backgroundColor: colorChoice, position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:colorChoiceText, alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
+                        <Text style={{color:colorChoiceText, alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -780,6 +769,7 @@ export default function MtoE(props) {
             </Modal>
           </TouchableOpacity>
       </View>
+      
       <TouchableOpacity style={[styles.date_time]}
       // activeOpacity={0}
       onPress={() => setShow(true)}>
@@ -800,7 +790,7 @@ export default function MtoE(props) {
                       itemSpace={35}
                       visibleItemCount={1}
                       
-                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                      itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                       // selectedItemTextColor="black"
                       onValueChange={(index) => setSelectedA(index) }>
                       {aList.map((value, i) => (
@@ -816,7 +806,7 @@ export default function MtoE(props) {
                     itemSpace={35}
                     visibleItemCount={1}
                     
-                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                     // selectedItemTextColor="black"
                     onValueChange={(index) => setSelectedItem(index) }>
                     {itemList.map((value, i) => (
@@ -824,7 +814,7 @@ export default function MtoE(props) {
                     ))}
                   </Picker>
 
-                  <Text style={{color:"#333842", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24, position:"absolute",right:"29%",top:"39%"}}>:</Text>
+                  <Text style={{color:"#333842", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24, position:"absolute",right:"29%",top:"39%"}}>:</Text>
                   
                   <Picker style={{flex:1/3 ,width: "20%", height: parentHeight * 0.36,position:"absolute",right:0}} // 
                     lineColor="#E17551" //to set top and bottom line color (Without gradients)
@@ -834,7 +824,7 @@ export default function MtoE(props) {
                     itemSpace={35}
                     visibleItemCount={1}
                     // isCurved={false}
-                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSans", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
+                    itemStyle={{color:"#D6D7D9", fontFamily: "SpoqaHanSansNeo-Regular", fontWeight: "bold", fontSize: 20, lineHeight: 24,}}
                     // selectedItemTextColor="black"
                     onValueChange={(index) => setSelectedMinute(index) }>
                     
@@ -849,14 +839,14 @@ export default function MtoE(props) {
                     <TouchableOpacity style={{width:"48.17%", height:"100%"}}
                     onPressOut={() => setShow(false)}>
                       <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
+                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>취소</Text>
                       </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={{width:"48.17%", height:"100%"}}
                     onPressOut={() => confirm()}>
                       <View style={{backgroundColor: "#E17551",position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:"white",alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
+                        <Text style={{color:"white",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>완료</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -903,7 +893,7 @@ export default function MtoE(props) {
               <View style={[styles.wrapperVertical,{backgroundColor:"green"}]}>
                 
                 <View style={styles.registerModalTop}>
-                  <Text style={styles.registerText}>추가 목록(1)</Text>
+                  <Text style={styles.registerText}>추가 목록({additionalCnt+1})</Text>
                   <TouchableOpacity
                 onPress={() => setShowRegister(false)}
                 style ={styles.registerModalClose}>
@@ -915,8 +905,8 @@ export default function MtoE(props) {
                 
                 <View style={styles.registerModalMiddleText}>
                   <Image source = {require('../imgs/Rectangle_135.png')} style = {[{width:"9.1%",height:"38.1%",justifyContent:"center",alignContent:"center",alignSelf:"center"}]}/>
-                  <Text style = {[{justifyContent:"center",alignContent:"center",alignSelf:"center"}]}> 아침 </Text>
-                  <Text style = {[{justifyContent:"center",alignContent:"center",alignSelf:"center"}]}> 11:01 </Text>
+                  <Text style = {[{justifyContent:"center",alignContent:"center",alignSelf:"center"}]}> {a=="오후" ? "저녁" : "아침"}</Text>
+                  <Text style = {[{justifyContent:"center",alignContent:"center",alignSelf:"center"}]}> {item}{minute} </Text>
                 </View>
 
                 <View style={[styles.registerModalFood]}>
@@ -936,7 +926,7 @@ export default function MtoE(props) {
                     <TouchableOpacity style={{width:"48.17%", height:"100%"}}
                     onPressOut={() => addtionalRegister()}>
                       <View style={{position:"absolute",left:0,justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>추가등록</Text>
+                        <Text style={{color:"#E17551",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>추가등록</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -944,7 +934,7 @@ export default function MtoE(props) {
                     onPress={getDailyMealHistory}
                     >
                       <View style={{backgroundColor:"#E17551",position:"absolute",left:"7.5%",justifyContent:"center",flex:1,width:"100%", height:"100%",borderWidth: 2,borderColor:"#E17551",borderStyle:"solid", borderRadius: 10}}>
-                        <Text style={{color:"white",alignSelf:"center",fontFamily: "SpoqaHanSans",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>등록완료</Text>
+                        <Text style={{color:"white",alignSelf:"center",fontFamily: "SpoqaHanSansNeo-Regular",fontStyle: "normal",fontWeight: "bold",fontSize: 17,lineHeight: 21}}>등록완료</Text>
                       </View>
                     </TouchableOpacity>
 

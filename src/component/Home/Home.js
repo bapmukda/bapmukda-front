@@ -29,6 +29,12 @@ export default function Home(props) {
           props.navigation.navigate('Add_diary');
         }}
       />
+      <Button
+        title="details Screen"
+        onPress={() => {
+          props.navigation.navigate('details');
+        }}
+      />
     </View>
   );
 }
