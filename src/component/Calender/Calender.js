@@ -308,7 +308,7 @@ export default function Calender() {
       <Modalize
         ref={modalizeRef}
         isVisible={isModalVisible}
-        style={{marginBottom: -100}}
+        style={{marginBottom: 100}}
         backdropColor="rgba(r,g,b,a)"
         modalHeight={400}
         borderRadius={10}>
