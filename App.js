@@ -20,7 +20,9 @@ import Sidebar_longin from './src/component/Sidebar/sidebar_login';
 import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
-import enterfood from './src/component/Data/enterfood'
+import enterfood from './src/component/Data/enterfood';
+import {Text} from 'react-native';
+import {setCustomText} from 'react-native-global-props';
 
 const Stack = createStackNavigator();
 
