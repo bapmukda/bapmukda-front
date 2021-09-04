@@ -17,19 +17,10 @@ export default function Longin(props) {
   };
   return (
     <View style={styles.mainView}>
-      <Text
-        style={{
-          fontWeight: 'bold',
-          paddingTop: 24,
-          fontSize: 18,
-        }}>
+      <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
         밥먹다와 함께 할
       </Text>
-      <Text
-        style={{
-          fontWeight: 'bold',
-          fontSize: 18,
-        }}>
+      <Text style={{fontWeight: 'bold', fontSize: 18}}>
         메일주소를 적어주세요
       </Text>
       <TextInput
