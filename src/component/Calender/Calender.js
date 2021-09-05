@@ -391,7 +391,12 @@ export default function Calender() {
               }}></View>
             <Text style={{marginLeft: 2, fontSize: 13}}> 아침</Text>
             <Text style={{marginLeft: 2}}> 09:00</Text>
-            <Text style={{left: '1200%', color: 'red'}}>+ 30분</Text>
+
+            <Text
+              onPress={handleCheckModal}
+              style={{left: '1200%', color: 'red'}}>
+              + 30분
+            </Text>
           </View>
 
           <View
@@ -569,9 +574,54 @@ export default function Calender() {
         </View>
       </Modalize>
       {/* 확인 피커 */}
-      <Modal isVisible={CheckModal}>
-        <View>
-          <Text>식사시간</Text>
+      <Modal isVisible={CheckModal} style={{alignItems: 'center'}}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            width: 300,
+            height: 300,
+            borderRadius: 16,
+          }}>
+          <TouchableOpacity onPress={handleCheckModal}>
+            <Text style={{textAlign: 'center', fontSize: 18, top: 40}}>
+              식사시간
+            </Text>
+          </TouchableOpacity>
+          <Text style={{top: 80, textAlign: 'center'}}>
+            어제 기준 오늘의 식사 시간입니다.
+          </Text>
+          <View style={{flexDirection: 'row', alignItems: 'center', left: 50}}>
+            <Text style={{top: 120, fontSize: 16, color: '#E17551'}}>
+              +30분
+            </Text>
+            <Text style={{top: 120, marginLeft: 10, color: '#999BA0'}}>
+              어제보다 30분 늦은 식사
+            </Text>
+          </View>
+          <View style={{flexDirection: 'row', alignItems: 'center', left: 50}}>
+            <Text style={{top: 130, fontSize: 16, color: '#738CC1'}}>
+              -30분
+            </Text>
+            <Text style={{top: 130, marginLeft: 10, color: '#999BA0'}}>
+              어제보다 30분 빨리 식사
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#E17551',
+              width: 200,
+              left: 50,
+              height: 50,
+              justifyContent: 'center',
+              borderRadius: 10,
+              top: 160,
+            }}
+            onPress={handleCheckModal}>
+            <Text
+              style={{color: 'white', textAlign: 'center', fontWeight: 'bold'}}>
+              닫기
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
       {/* registerModal */}
