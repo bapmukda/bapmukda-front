@@ -1,8 +1,16 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView, Button, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Button,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
-// constructor(props) 
+// constructor(props)
 // {
 //   super(props);
 
@@ -32,202 +40,190 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   sidetop: {
-    position: "absolute",
+    position: 'absolute',
     width: 479,
     height: 44,
     left: 0,
-    top: 0
+    top: 0,
   },
   sideX: {
-
     width: 30,
     height: 30,
-    marginLeft: "89%",
-    top:"80%"
+    marginLeft: '89%',
+    top: '80%',
   },
   header: {
-    width:'100%',
+    width: '100%',
     height: 132,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  img1:{
-    width:48,
-    height:48,
-    left:-190,
-    top:10
+  img1: {
+    width: 48,
+    height: 48,
+    left: -190,
+    top: 10,
   },
-  img2:
-  {
-    width:28,
-    height:28,
-    top:27,
-    left:33,
-    borderRadius:4,
-    backgroundColor: '#ffffff'
+  img2: {
+    width: 28,
+    height: 28,
+    top: 27,
+    left: 33,
+    borderRadius: 4,
+    backgroundColor: '#ffffff',
   },
-  nickname:{
-    width:63,
-    height:21,
-    left:-115,
-    top:-20,
-    fontSize:16,
-    fontWeight:"700",
-    fontFamily: "SpoqaHanSans",
-    fontStyle: "normal",
-    fontWeight: "bold",
+  nickname: {
+    width: 63,
+    height: 21,
+    left: -115,
+    top: -20,
+    fontSize: 16,
+    fontWeight: '700',
+
+    fontStyle: 'normal',
+    fontWeight: 'bold',
     lineHeight: 21,
-/* identical to box height */
-    color: "#333842",
-    display: "flex",
-    alignItems: "center"
+    /* identical to box height */
+    color: '#333842',
+    display: 'flex',
+    alignItems: 'center',
   },
-  listtext:{
-    color: "#999BA0",
+  listtext: {
+    color: '#999BA0',
     width: 120,
     height: 21,
     left: 70,
-    top:3,
+    top: 3,
     letterSpacing: 0.02,
     fontSize: 16,
-    fontStyle: "normal",
-    fontFamily: "SpoqaHanSans"
+    fontStyle: 'normal',
   },
-  listbound:{
-    top:8,
-    width:"100%",
+  listbound: {
+    top: 8,
+    width: '100%',
     height: 77,
     // backgroundColor:"gray",
     // alignItems:"flex-start"
   },
-  sidebottom:{
-    top:350,
-    width:"100%",
+  sidebottom: {
+    top: 350,
+    width: '100%',
     height: 117,
     left: 5,
-  }
+  },
 });
 
 export default function Sidebar_longin(props) {
-
-  const [Colr, setColor] = useState("#999BA0");
-  const [Colr1, setColor1] = useState("#999BA0");
-  const [Colr2, setColor2] = useState("#999BA0");
+  const [Colr, setColor] = useState('#999BA0');
+  const [Colr1, setColor1] = useState('#999BA0');
+  const [Colr2, setColor2] = useState('#999BA0');
 
   const _onCal = () => {
-    if ( Colr === "#999BA0" ){
-      setColor("#E17551");
-      setColor1("#999BA0");
-      setColor2("#999BA0");
+    if (Colr === '#999BA0') {
+      setColor('#E17551');
+      setColor1('#999BA0');
+      setColor2('#999BA0');
+    } else {
+      setColor('#999BA0');
     }
-    else{
-      setColor("#999BA0");
-    }
-  }
+  };
 
   const _onData = () => {
-    if ( Colr1 === "#999BA0" ){
-      setColor("#999BA0");
-      setColor1("#E17551");
-      setColor2("#999BA0");
+    if (Colr1 === '#999BA0') {
+      setColor('#999BA0');
+      setColor1('#E17551');
+      setColor2('#999BA0');
+    } else {
+      setColor1('#999BA0');
     }
-    else{
-      setColor1("#999BA0");
-    }
-  }
+  };
 
   const _onGoal = () => {
-    if ( Colr2 === "#999BA0" ){
-      setColor("#999BA0");
-      setColor1("#999BA0");
-      setColor2("#E17551");
+    if (Colr2 === '#999BA0') {
+      setColor('#999BA0');
+      setColor1('#999BA0');
+      setColor2('#E17551');
+    } else {
+      setColor2('#999BA0');
     }
-    else{
-      setColor2("#999BA0");
-    }
-  }
+  };
 
-  
   return (
     <View style={styles.mainView}>
-      
       <View style={styles.sidetop}>
         <View style={styles.sideX}>
-          
-          <TouchableOpacity style={{backgroundColor:'white'}}
-          onPress={() => {
-            props.navigation.navigate('Home');
-          }}>
-            <Image source = {require('../imgs/close.png')}/>
+          <TouchableOpacity
+            style={{backgroundColor: 'white'}}
+            onPress={() => {
+              props.navigation.navigate('Home');
+            }}>
+            <Image source={require('../imgs/close.png')} />
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.header}>
-        <Image source = {require('../imgs/회원.png')}
-        style={styles.img1}/>
-        <Text style={styles.nickname}>
-          밥먹다 님
-        </Text>
+        <Image source={require('../imgs/회원.png')} style={styles.img1} />
+        <Text style={styles.nickname}>밥먹다 님</Text>
       </View>
-      
-      
-      <View style={{
-          marginTop:8,
-          borderBottomColor: "#EBEBEC",
+
+      <View
+        style={{
+          marginTop: 8,
+          borderBottomColor: '#EBEBEC',
           borderBottomWidth: 2,
-          width: "100%"
-        }}/>
+          width: '100%',
+        }}
+      />
 
       <View style={styles.listbound}>
-        <TouchableOpacity style={{backgroundColor:"white"}}
-            onPressOut={() =>_onCal()} >
-          <Image source = {require('../imgs/식단캘린더.png')}
-          style={[styles.img2, {tintColor:Colr}]}/>
-          <Text style={[styles.listtext, {color:Colr}]}>
-            식단 캘린더
-          </Text>
-        </TouchableOpacity>
-      </View>
-      
-      <View style={styles.listbound}>
-        <TouchableOpacity style={{backgroundColor:"white"}}
-            onPressOut={() =>_onData()}
-            onPress={() => {
-              props.navigation.navigate('MtoE');
-              }}>
-          <Image source = {require('../imgs/식단데이터.png')}
-          style={[styles.img2, {tintColor:Colr1}]}/>
-          <Text style={[styles.listtext, {color:Colr1}]}>
-            식단 데이터
-          </Text>
-        </TouchableOpacity>
-      </View>
-      
-      <View style={styles.listbound}>
-        <TouchableOpacity style={{backgroundColor:"white"}}
-            onPressOut={() =>_onGoal()}>
-          <Image source = {require('../imgs/식단목표.png')}
-          style={[styles.img2, {tintColor:Colr2}]}/>
-          <Text style={[styles.listtext, {color:Colr2}]}>
-            식단 목표
-          </Text>
-        </TouchableOpacity>
-      </View>
-      
-      <View style={styles.sidebottom}>
-        <Image source = {require('../imgs/logout.png')}
-            style={styles.img2}/>
         <TouchableOpacity
-        onPress={() => {
-          props.navigation.navigate('Sidebar');
-          }}>
-            <Text style={styles.listtext}>로그아웃</Text>
+          style={{backgroundColor: 'white'}}
+          onPressOut={() => _onCal()}>
+          <Image
+            source={require('../imgs/식단캘린더.png')}
+            style={[styles.img2, {tintColor: Colr}]}
+          />
+          <Text style={[styles.listtext, {color: Colr}]}>식단 캘린더</Text>
         </TouchableOpacity>
-            
       </View>
 
+      <View style={styles.listbound}>
+        <TouchableOpacity
+          style={{backgroundColor: 'white'}}
+          onPressOut={() => _onData()}
+          onPress={() => {
+            props.navigation.navigate('MtoE');
+          }}>
+          <Image
+            source={require('../imgs/식단데이터.png')}
+            style={[styles.img2, {tintColor: Colr1}]}
+          />
+          <Text style={[styles.listtext, {color: Colr1}]}>식단 데이터</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.listbound}>
+        <TouchableOpacity
+          style={{backgroundColor: 'white'}}
+          onPressOut={() => _onGoal()}>
+          <Image
+            source={require('../imgs/식단목표.png')}
+            style={[styles.img2, {tintColor: Colr2}]}
+          />
+          <Text style={[styles.listtext, {color: Colr2}]}>식단 목표</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.sidebottom}>
+        <Image source={require('../imgs/logout.png')} style={styles.img2} />
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Sidebar');
+          }}>
+          <Text style={styles.listtext}>로그아웃</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  
   );
 }

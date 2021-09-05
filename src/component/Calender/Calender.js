@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
-
+import {Fonts} from '../../font';
 import back from '../imoji/back.png';
 import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
@@ -86,6 +86,7 @@ export default function Calender() {
   const [isDay, setisDay] = useState('');
   const [isMonth, setIsMonth] = useState('');
   const [registerModal, setregisterModal] = useState(false);
+  const [CheckModal, setCheckModal] = useState(false);
   const [Pickdate, setpickDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
@@ -136,6 +137,9 @@ export default function Calender() {
   };
   const handleregisterModal = () => {
     setregisterModal(!registerModal);
+  };
+  const handleCheckModal = () => {
+    setCheckModal(!CheckModal);
   };
   const sendDate = (day, month, dateString) => {
     setModalVisible(!isModalVisible);
@@ -283,6 +287,15 @@ export default function Calender() {
           scrollEnabled={true}
           // Enable or disable vertical scroll indicator. Default = false
           theme={{
+            'stylesheet.day.basic': {
+              dayTextAtIndex0: {
+                color: 'red',
+              },
+              dayTextAtIndex6: {
+                color: 'blue',
+              },
+            },
+
             todayTextColor: 'white',
           }}
           showScrollIndicator={true}
@@ -555,7 +568,12 @@ export default function Calender() {
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
       </Modalize>
-
+      {/* 확인 피커 */}
+      <Modal isVisible={CheckModal}>
+        <View>
+          <Text>식사시간</Text>
+        </View>
+      </Modal>
       {/* registerModal */}
       <Modal
         isVisible={registerModal}
@@ -574,9 +592,9 @@ export default function Calender() {
           style={{
             flex: 0.4,
             backgroundColor: 'white',
-            top: '50%',
+            top: '40%',
             justifyContent: 'space-around',
-            height: '40%',
+            height: '50%',
             borderRadius: 10,
             shadowColor: 'rgb(196, 196, 196)',
             shadowOffset: {width: 0, height: 1},

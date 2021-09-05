@@ -535,7 +535,7 @@ export default function MonthPicker() {
                   visibleItemCount={1}
                   itemStyle={{
                     color: '#D6D7D9',
-                    fontFamily: 'SpoqaHanSans',
+
                     fontWeight: 'bold',
                     fontSize: 20,
                     lineHeight: 24,
@@ -562,7 +562,7 @@ export default function MonthPicker() {
                   visibleItemCount={1}
                   itemStyle={{
                     color: '#D6D7D9',
-                    fontFamily: 'SpoqaHanSans',
+
                     fontWeight: 'bold',
                     fontSize: 20,
                     lineHeight: 24,
@@ -593,7 +593,7 @@ export default function MonthPicker() {
                   // isCurved={false}
                   itemStyle={{
                     color: '#D6D7D9',
-                    fontFamily: 'SpoqaHanSans',
+
                     fontWeight: 'bold',
                     fontSize: 20,
                     lineHeight: 24,
@@ -634,7 +634,7 @@ export default function MonthPicker() {
                       style={{
                         color: '#E17551',
                         alignSelf: 'center',
-                        fontFamily: 'SpoqaHanSans',
+
                         fontStyle: 'normal',
                         fontWeight: 'bold',
                         fontSize: 17,
@@ -666,7 +666,7 @@ export default function MonthPicker() {
                       style={{
                         color: colorChoiceText,
                         alignSelf: 'center',
-                        fontFamily: 'SpoqaHanSans',
+
                         fontStyle: 'normal',
                         fontWeight: 'bold',
                         fontSize: 17,
