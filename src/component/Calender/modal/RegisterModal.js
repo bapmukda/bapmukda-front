@@ -5,24 +5,25 @@ import Modal from 'react-native-modal';
 export default function RegisterModal(props) {
   return (
     <Modal
-      isVisible={registerModal}
+      isVisible={props.registerModal}
       style={{
         justifyContent: 'flex-end',
         margin: 0,
       }}
+      animationType="none"
       transparent={true}
       coverScreen={false}
       backdropColor="rgba(r,g,b,a)"
       backdropOpacity={1}
-      onBackdropPress={handleregisterModal}
+      onBackdropPress={props.handleregisterModal}
       borderRadius={10}>
       <View
         style={{
           flex: 0.4,
           backgroundColor: 'white',
-          top: '50%',
+          top: '40%',
           justifyContent: 'space-around',
-          height: '40%',
+          height: '50%',
           borderRadius: 10,
           shadowColor: 'rgb(196, 196, 196)',
           shadowOffset: {width: 0, height: 1},
@@ -35,7 +36,7 @@ export default function RegisterModal(props) {
         </View>
         <TouchableOpacity
           style={{position: 'absolute', right: '5%', top: '10%'}}
-          onPress={handleregisterModal}>
+          onPress={props.handleregisterModal}>
           <Image source={close} />
         </TouchableOpacity>
         <TouchableOpacity>

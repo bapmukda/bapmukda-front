@@ -24,6 +24,7 @@ import {LocaleConfig} from 'react-native-calendars';
 import RegisterModal from './modal/RegisterModal';
 import {Modalize} from 'react-native-modalize';
 import Swipeable from 'react-native-swipeable-row';
+
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
   var month = 1 + date.getMonth(); //M
@@ -286,7 +287,7 @@ export default function Calender() {
           monthFormat={''}
           // horizontal={true}
           // Max amount of months allowed to scroll to the past. Default = 50
-          scrollEnabled={true}
+          scrollEnabled={false}
           // Enable or disable vertical scroll indicator. Default = false
           theme={{
             'stylesheet.day.basic': {
@@ -660,49 +661,10 @@ export default function Calender() {
         </View>
       </Modal>
       {/* registerModal */}
-      <Modal
-        isVisible={registerModal}
-        style={{
-          justifyContent: 'flex-end',
-          margin: 0,
-        }}
-        animationType="none"
-        transparent={true}
-        coverScreen={false}
-        backdropColor="rgba(r,g,b,a)"
-        backdropOpacity={1}
-        onBackdropPress={handleregisterModal}
-        borderRadius={10}>
-        <View
-          style={{
-            flex: 0.4,
-            backgroundColor: 'white',
-            top: '40%',
-            justifyContent: 'space-around',
-            height: '50%',
-            borderRadius: 10,
-            shadowColor: 'rgb(196, 196, 196)',
-            shadowOffset: {width: 0, height: 1},
-            shadowOpacity: 1,
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={{marginLeft: 20, fontSize: 16, fontWeight: 'bold'}}>
-              등록하기
-            </Text>
-          </View>
-          <TouchableOpacity
-            style={{position: 'absolute', right: '5%', top: '10%'}}
-            onPress={handleregisterModal}>
-            <Image source={close} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{marginLeft: 20}}>식단등록</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{marginLeft: 20, marginBottom: 20}}>기분등록</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      <RegisterModal
+        registerModal={registerModal}
+        handleregisterModal={handleregisterModal}
+      />
       <Agenda />
     </View>
   );
