@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
@@ -18,10 +19,11 @@ import right from '../imoji/right.png';
 import Modal from 'react-native-modal';
 import close from '../imgs/close.png';
 import signin from '../imgs/signin.png';
+import Union from '../imoji/Union.png';
 import {LocaleConfig} from 'react-native-calendars';
 import RegisterModal from './modal/RegisterModal';
 import {Modalize} from 'react-native-modalize';
-
+import Swipeable from 'react-native-swipeable-row';
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
   var month = 1 + date.getMonth(); //M
@@ -361,7 +363,7 @@ export default function Calender() {
             <View
               style={{
                 backgroundColor: '#FBFBFB',
-                shadowOpacity: 1,
+
                 shadowOffset: {width: 2, height: 2},
                 width: 35,
                 height: 35,
@@ -370,6 +372,8 @@ export default function Calender() {
                 borderRadius: 10,
                 alignItems: 'center',
                 justifyContent: 'center',
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
               }}>
               <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
                 🍳
@@ -377,10 +381,36 @@ export default function Calender() {
             </View>
             <Text style={{textAlign: 'center'}}>계란후라이</Text>
           </View>
-          <View style={{flexDirection: 'row', left: '-18%', marginBottom: 20}}>
-            <Text style={{fontWeight: 'bold'}}>식단기록</Text>
+          <View style={{flexDirection: 'row'}}>
+            <View
+              style={{flexDirection: 'row', left: '-33%', marginBottom: 20}}>
+              <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: '#FBFBFB',
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
+                shadowOffset: {width: 2, height: 2},
+                width: 35,
+                height: 35,
+                marginTop: -10,
+                shadowColor: 'rgb(196, 196, 196)',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+                left: 100,
+              }}>
+              <Text onPress={handleCheckModal}>+</Text>
+            </View>
           </View>
-          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              left: '-13%',
+              marginBottom: 30,
+              marginTop: 30,
+            }}>
             <View
               style={{
                 width: 8,
@@ -415,7 +445,8 @@ export default function Calender() {
             <View
               style={{
                 backgroundColor: '#FBFBFB',
-                shadowOpacity: 1,
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
                 shadowOffset: {width: 2, height: 2},
                 width: 35,
                 height: 35,
@@ -461,7 +492,8 @@ export default function Calender() {
             <View
               style={{
                 backgroundColor: '#FBFBFB',
-                shadowOpacity: 1,
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
                 shadowOffset: {width: 2, height: 2},
                 width: 35,
                 height: 35,
@@ -507,7 +539,8 @@ export default function Calender() {
             <View
               style={{
                 backgroundColor: '#FBFBFB',
-                shadowOpacity: 1,
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
                 shadowOffset: {width: 2, height: 2},
                 width: 35,
                 height: 35,
@@ -521,6 +554,7 @@ export default function Calender() {
                 🍳
               </Text>
             </View>
+
             <Text style={{textAlign: 'center'}}>계란후라이</Text>
           </View>
 
@@ -553,7 +587,8 @@ export default function Calender() {
             <View
               style={{
                 backgroundColor: '#FBFBFB',
-                shadowOpacity: 1,
+                borderWidth: 1,
+                borderColor: '#EBEBEC',
                 shadowOffset: {width: 2, height: 2},
                 width: 35,
                 height: 35,
@@ -600,7 +635,7 @@ export default function Calender() {
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center', left: 50}}>
             <Text style={{top: 130, fontSize: 16, color: '#738CC1'}}>
-              -30분
+              - 30분
             </Text>
             <Text style={{top: 130, marginLeft: 10, color: '#999BA0'}}>
               어제보다 30분 빨리 식사
