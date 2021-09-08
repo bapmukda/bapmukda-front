@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useRef} from 'react';
-import MonthPicker from 'react-native-month-year-picker';
+
 import {
   View,
   Button,
@@ -13,18 +13,14 @@ import {
 } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
-import {Fonts} from '../../font';
 import back from '../imoji/back.png';
 import right from '../imoji/right.png';
-import Modal from 'react-native-modal';
-import close from '../imgs/close.png';
-import signin from '../imgs/signin.png';
-import Union from '../imoji/Union.png';
 import {LocaleConfig} from 'react-native-calendars';
 import RegisterModal from './modal/RegisterModal';
-import {Modalize} from 'react-native-modalize';
-import Swipeable from 'react-native-swipeable-row';
-
+import CheckModal from './modal/CheckModal';
+import DayModal from './modal/DayModal';
+import LoginModal from './modal/LoginModal';
+import MonthPicker from './modal/MonthPicker';
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
   var month = 1 + date.getMonth(); //M
@@ -34,7 +30,7 @@ function getFormatDate(date) {
   return year + '-' + month + '-' + day; //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
-LocaleConfig.locales['fr'] = {
+LocaleConfig.locales['ko'] = {
   monthNames: [
     '1월',
     '2월',
@@ -75,26 +71,24 @@ LocaleConfig.locales['fr'] = {
   dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
   today: "Aujourd'hui",
 };
-LocaleConfig.defaultLocale = 'fr';
+LocaleConfig.defaultLocale = 'ko';
 export default function Calender() {
-  // const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
-  // const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
-  // const workout = {key: 'workout', color: 'green'};
   const today = moment().format('YYYY-MM-DD');
   const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
   const [isModalVisible, setModalVisible] = useState(false);
-  const [monthModal, setMonthModal] = useState(false);
-
   const [isDate, setIsDate] = useState('');
   const [isDay, setisDay] = useState('');
   const [isMonth, setIsMonth] = useState('');
   const [registerModal, setregisterModal] = useState(false);
-  const [CheckModal, setCheckModal] = useState(false);
+  const [isCheckModal, setisCheckModal] = useState(false);
   const [Pickdate, setpickDate] = useState(new Date());
   const [show, setShow] = useState(false);
-
+  const [isMonthPicker, setisMonthPicker] = useState(false);
   const [enterModal, setenterModal] = useState(true);
 
+  const handleMothpicker = () => {
+    setisMonthPicker(!isMonthPicker);
+  };
   const onEntermodal = () => {
     setenterModal(!enterModal);
   };
@@ -132,42 +126,20 @@ export default function Calender() {
     '토요일',
   );
 
-  const handleMonthModal = () => {
-    setMonthModal(!isModalVisible);
-  };
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
   const handleregisterModal = () => {
     setregisterModal(!registerModal);
   };
   const handleCheckModal = () => {
-    setCheckModal(!CheckModal);
+    setisCheckModal(!isCheckModal);
   };
-  const sendDate = (day, month, dateString) => {
-    setModalVisible(!isModalVisible);
-    setisDay(day);
-    setIsMonth(month);
-    var date = new Date(dateString).getDay();
-    var todate = week[date];
-    setIsDate(todate);
-  };
-  const images = {
-    union: {
-      union: require('../imoji/Union.png'),
-    },
-  };
-  // const [datearray, setdatearray] = useState([today]);
-  // for (let i = 0; i < 1; i++) {
-  //   setdatearray(datearray.getDay - i);
-  // }
+
   let date = new Date();
   const nextDays = [getFormatDate(date)];
-  const wowoo = [];
+
   const allday = [];
   for (var i = 1; i < 365; i++) {
-    wowoo[i] = new Date(date.setDate(date.getDate() - i));
-    wowoo[i] = getFormatDate(date);
+    allday[i] = new Date(date.setDate(date.getDate() - i));
+    allday[i] = getFormatDate(date);
     date = new Date();
   }
 
@@ -185,7 +157,7 @@ export default function Calender() {
       selectedColor: '#111',
     };
   });
-  wowoo.forEach(day => {
+  allday.forEach(day => {
     newDaysObject[day] = {
       dots: [
         {key: '1', color: 'rgba(214, 215, 217, 1)'},
@@ -198,52 +170,9 @@ export default function Calender() {
 
   return (
     <View style={{}}>
-      <Modal isVisible={enterModal}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            height: 400,
-            borderRadius: 10,
-            alignItems: 'center',
-          }}>
-          <Image
-            source={signin}
-            style={{width: 250, height: 144, marginTop: 30}}
-          />
-          <Text style={{fontSize: 16}}> 밥먹다에 가입하고</Text>
-          <Text style={{fontSize: 16, marginTop: 8}}> 기록을 시작해보세요</Text>
-          <TouchableOpacity onPress={onEntermodal}>
-            <View
-              style={{
-                backgroundColor: '#E17551',
-                width: 300,
-                borderRadius: 10,
-                height: 60,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 30,
-              }}>
-              <Text style={{color: 'white', fontSize: 15}}>
-                {' '}
-                10초만에 가입하기
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={onEntermodal}>
-            <View
-              style={{
-                backgroundColor: 'white',
-                width: 300,
-                borderRadius: 10,
-                height: 60,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{color: '#E17551'}}> 닫기</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      {/* 첫 입장 모달 */}
+      <LoginModal enterModal={enterModal} onEntermodal={onEntermodal} />
+
       <TouchableOpacity
         style={{
           backgroundColor: 'white',
@@ -251,7 +180,8 @@ export default function Calender() {
           flexDirection: 'row',
           paddingLeft: 15,
         }}
-        onPress={() => showPicker(true)}>
+        // onPress={() => showPicker(true)}>
+        onPress={handleMothpicker}>
         <Text
           style={{
             fontSize: 20,
@@ -267,7 +197,12 @@ export default function Calender() {
           style={{marginTop: 30, marginLeft: 8, width: 10}}
         />
       </TouchableOpacity>
-      {show && (
+
+      <MonthPicker
+        handleMothpicker={handleMothpicker}
+        isMonthPicker={isMonthPicker}
+      />
+      {/* {show && (
         <MonthPicker
           onChange={onValueChange}
           value={Pickdate}
@@ -275,7 +210,7 @@ export default function Calender() {
           maximumDate={new Date(2022, 5)}
           locale="ko"
         />
-      )}
+      )} */}
 
       <View style={{height: 450}}>
         <CalendarList
@@ -311,6 +246,8 @@ export default function Calender() {
           locale="ko"
         />
       </View>
+
+      {/* 오늘 버튼 */}
       <View style={{alignItems: 'center', top: 90}}>
         <TouchableOpacity
           activeOpacity={0.8}
@@ -320,346 +257,20 @@ export default function Calender() {
           <Image source={right} />
         </TouchableOpacity>
       </View>
+      <DayModal
+        modalizeRef={modalizeRef}
+        isModalVisible={isModalVisible}
+        isMonth={isMonth}
+        isDate={isDate}
+        isDay={isDay}
+        handleCheckModal={handleCheckModal}
+      />
 
-      <Modalize
-        ref={modalizeRef}
-        isVisible={isModalVisible}
-        style={{marginBottom: 100}}
-        backdropColor="rgba(r,g,b,a)"
-        modalHeight={400}
-        borderRadius={10}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-            shadowColor: 'rgb(196, 196, 196)',
-            shadowOffset: {width: 0, height: 1},
-            shadowOpacity: 1,
-          }}>
-          <Text
-            style={{
-              left: '-30%',
-              fontSize: 18,
-              marginTop: 20,
-              marginBottom: 30,
-            }}>
-            {' '}
-            {isMonth}월 {isDay}일 {isDate}
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: '#ffffff',
-              shadowOpacity: 1,
-              shadowOffset: {width: 0, height: 1},
-              width: '80%',
-              height: 70,
-              shadowColor: 'rgb(196, 196, 196)',
-              alignItems: 'center',
-              borderRadius: 10,
-              marginBottom: 30,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                margin: 20,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
-                🍳
-              </Text>
-            </View>
-            <Text style={{textAlign: 'center'}}>계란후라이</Text>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View
-              style={{flexDirection: 'row', left: '-33%', marginBottom: 20}}>
-              <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                marginTop: -10,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-                left: 100,
-              }}>
-              <Text onPress={handleCheckModal}>+</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              left: '-13%',
-              marginBottom: 30,
-              marginTop: 30,
-            }}>
-            <View
-              style={{
-                width: 8,
-                height: 8,
-                marginTop: 4,
-                borderRadius: 35,
-                backgroundColor: 'green',
-              }}></View>
-            <Text style={{marginLeft: 2, fontSize: 13}}> 아침</Text>
-            <Text style={{marginLeft: 2}}> 09:00</Text>
-
-            <Text
-              onPress={handleCheckModal}
-              style={{left: '1200%', color: 'red'}}>
-              + 30분
-            </Text>
-          </View>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: '#ffffff',
-              shadowOpacity: 1,
-              shadowOffset: {width: 0, height: 1},
-              width: '80%',
-              height: 70,
-              shadowColor: 'rgb(196, 196, 196)',
-              alignItems: 'center',
-              borderRadius: 10,
-              marginBottom: 30,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                margin: 20,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
-                🍳
-              </Text>
-            </View>
-            <Text style={{textAlign: 'center'}}>계란후라이</Text>
-          </View>
-
-          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
-            <View
-              style={{
-                width: 8,
-                height: 8,
-                marginTop: 4,
-                borderRadius: 35,
-                backgroundColor: 'red',
-              }}></View>
-            <Text style={{marginLeft: 2, fontSize: 13}}> 점심</Text>
-            <Text style={{marginLeft: 2}}> 09:00</Text>
-            <Text style={{left: '1200%', color: 'blue'}}> - 30분</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: '#ffffff',
-              shadowOpacity: 1,
-              shadowOffset: {width: 0, height: 1},
-              width: '80%',
-              height: 70,
-              shadowColor: 'rgb(196, 196, 196)',
-              alignItems: 'center',
-              borderRadius: 10,
-              marginBottom: 30,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                margin: 20,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
-                🍳
-              </Text>
-            </View>
-            <Text style={{textAlign: 'center'}}>계란후라이</Text>
-          </View>
-
-          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
-            <View
-              style={{
-                width: 8,
-                height: 8,
-                marginTop: 4,
-                borderRadius: 35,
-                backgroundColor: 'orange',
-              }}></View>
-            <Text style={{marginLeft: 2, fontSize: 13}}> 저녁</Text>
-            <Text style={{marginLeft: 2}}> 19:00</Text>
-            <Text style={{left: '1200%', color: 'blue'}}> - 00분</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: '#ffffff',
-              shadowOpacity: 1,
-              shadowOffset: {width: 0, height: 1},
-              width: '80%',
-              height: 70,
-              shadowColor: 'rgb(196, 196, 196)',
-              alignItems: 'center',
-              borderRadius: 10,
-              marginBottom: 30,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                margin: 20,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
-                🍳
-              </Text>
-            </View>
-
-            <Text style={{textAlign: 'center'}}>계란후라이</Text>
-          </View>
-
-          <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
-            <View
-              style={{
-                width: 8,
-                height: 8,
-                marginTop: 4,
-                borderRadius: 35,
-                backgroundColor: 'blue',
-              }}></View>
-            <Text style={{marginLeft: 2, fontSize: 13}}> 간식</Text>
-            <Text style={{marginLeft: 2}}> 19:00</Text>
-            <Text style={{left: '1200%', color: 'blue'}}> - 00분</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: '#ffffff',
-              shadowOpacity: 1,
-              shadowOffset: {width: 0, height: 1},
-              width: '80%',
-              height: 70,
-              shadowColor: 'rgb(196, 196, 196)',
-              alignItems: 'center',
-              borderRadius: 10,
-              marginBottom: 30,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FBFBFB',
-                borderWidth: 1,
-                borderColor: '#EBEBEC',
-                shadowOffset: {width: 2, height: 2},
-                width: 35,
-                height: 35,
-                margin: 20,
-                shadowColor: 'rgb(196, 196, 196)',
-                borderRadius: 10,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{textAlign: 'center', fontSize: 20, width: 20}}>
-                🍳
-              </Text>
-            </View>
-            <Text style={{textAlign: 'center'}}>계란후라이</Text>
-          </View>
-
-          <Button title="Hide modal" onPress={toggleModal} />
-        </View>
-      </Modalize>
       {/* 확인 피커 */}
-      <Modal isVisible={CheckModal} style={{alignItems: 'center'}}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 300,
-            borderRadius: 16,
-          }}>
-          <TouchableOpacity onPress={handleCheckModal}>
-            <Text style={{textAlign: 'center', fontSize: 18, top: 40}}>
-              식사시간
-            </Text>
-          </TouchableOpacity>
-          <Text style={{top: 80, textAlign: 'center'}}>
-            어제 기준 오늘의 식사 시간입니다.
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center', left: 50}}>
-            <Text style={{top: 120, fontSize: 16, color: '#E17551'}}>
-              +30분
-            </Text>
-            <Text style={{top: 120, marginLeft: 10, color: '#999BA0'}}>
-              어제보다 30분 늦은 식사
-            </Text>
-          </View>
-          <View style={{flexDirection: 'row', alignItems: 'center', left: 50}}>
-            <Text style={{top: 130, fontSize: 16, color: '#738CC1'}}>
-              - 30분
-            </Text>
-            <Text style={{top: 130, marginLeft: 10, color: '#999BA0'}}>
-              어제보다 30분 빨리 식사
-            </Text>
-          </View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#E17551',
-              width: 200,
-              left: 50,
-              height: 50,
-              justifyContent: 'center',
-              borderRadius: 10,
-              top: 160,
-            }}
-            onPress={handleCheckModal}>
-            <Text
-              style={{color: 'white', textAlign: 'center', fontWeight: 'bold'}}>
-              닫기
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      <CheckModal
+        isCheckModal={isCheckModal}
+        handleCheckModal={handleCheckModal}
+      />
       {/* registerModal */}
       <RegisterModal
         registerModal={registerModal}
