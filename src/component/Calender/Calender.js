@@ -85,7 +85,8 @@ export default function Calender() {
   const [show, setShow] = useState(false);
   const [isMonthPicker, setisMonthPicker] = useState(false);
   const [enterModal, setenterModal] = useState(true);
-
+  const [selectedMonth, setSelectedMonth] = useState(8);
+  const [selectedYear, setSelectedYear] = useState(2);
   const handleMothpicker = () => {
     setisMonthPicker(!isMonthPicker);
   };
@@ -173,7 +174,7 @@ export default function Calender() {
       {/* 첫 입장 모달 */}
       <LoginModal enterModal={enterModal} onEntermodal={onEntermodal} />
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{
           backgroundColor: 'white',
           alignItems: 'flex-start',
@@ -196,11 +197,15 @@ export default function Calender() {
           source={back}
           style={{marginTop: 30, marginLeft: 8, width: 10}}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <MonthPicker
         handleMothpicker={handleMothpicker}
         isMonthPicker={isMonthPicker}
+        selectedMonth={selectedMonth}
+        setSelectedMonth={setSelectedMonth}
+        selectedYear={selectedYear}
+        setSelectedYear={setSelectedYear}
       />
       {/* {show && (
         <MonthPicker

@@ -16,28 +16,31 @@ import {
 import moment, {locale} from 'moment';
 import 'moment/locale/ko';
 import Picker from '@gregfrench/react-native-wheel-picker';
+import back from '../../imoji/back.png';
 var PickerItem = Picker.Item;
-export default function MonthPicker() {
+
+export default function MonthPicker(props) {
   const [year, setYear] = useState(
     moment()
       .locale('ko')
       .utcOffset(+9)
-      .format('YYYY.MM.DD (dd)'),
+      .format('YYYY년 MM월'),
   );
   const [month, setMonth] = useState('');
   const [date_, setDate_] = useState('');
   const [disable, setDisable] = useState(false);
   const [colorChoice, setColorChoice] = useState('#E17551');
   const [colorChoiceText, setColorChoiceText] = useState('white');
-  const [selectedYear, setSelectedYear] = useState(0);
+
   const [showDate, setShowDate] = useState(false);
+  const [isleaf, setIsLeaf] = useState(false);
   const [yearList, setYearList] = useState([
     '2019년',
     '2020년',
     '2021년',
     '2022년',
   ]);
-  const [selectedMonth, setSelectedMonth] = useState(0);
+
   const [monthList, setMonthList] = useState([
     '1월',
     '2월',
@@ -92,7 +95,7 @@ export default function MonthPicker() {
     setParentHeight(height);
   };
   const changeYear = index => {
-    setSelectedYear(index);
+    props.setSelectedYear(index);
     if (
       Number(yearList[index].slice(0, -1)) >
         Number(
@@ -108,7 +111,7 @@ export default function MonthPicker() {
             .utcOffset(+9)
             .format('YYYY'),
         ) &&
-        Number(monthList[selectedMonth].slice(0, -1)) >
+        Number(monthList[props.selectedMonth].slice(0, -1)) >
           Number(
             moment()
               .locale('ko')
@@ -122,7 +125,7 @@ export default function MonthPicker() {
             .utcOffset(+9)
             .format('YYYY'),
         ) &&
-        Number(monthList[selectedMonth].slice(0, -1)) ==
+        Number(monthList[props.selectedMonth].slice(0, -1)) ==
           Number(
             moment()
               .locale('ko')
@@ -146,17 +149,28 @@ export default function MonthPicker() {
       setDisable(false);
     }
   };
+  const leaf = () => {
+    if (
+      Number(yearList[props.selectedYear].slice(0, -1)) % 4 == 0 &&
+      Number(yearList[props.selectedYear].slice(0, -1)) % 100 != 0 &&
+      Number(yearList[props.selectedYear].slice(0, -1)) % 400 == 0
+    ) {
+      setIsLeaf(true);
+    } else {
+      setIsLeaf(false);
+    }
+  };
   const changeMonth = index => {
     // console.log("index"+index);
-    // console.log("selectedMonth"+selectedMonth);
-    // console.log("Before"+monthList[selectedMonth]);
-    setSelectedMonth(index);
-    // console.log("index"+selectedMonth);
-    // console.log("After"+monthList[selectedMonth]);
+    // console.log("props.selectedMonth"+props.selectedMonth);
+    // console.log("Before"+monthList[props.selectedMonth]);
+    props.setSelectedMonth(index);
+    // console.log("index"+props.selectedMonth);
+    // console.log("After"+monthList[props.selectedMonth]);
     leaf();
 
     if (isleaf) {
-      //(Number(yearList[selectedYear]) % 4 == 0 && Number(yearList[selectedYear]) % 100 != 0 && Number(yearList[selectedYear]) % 400 == 0) // 윤년
+      //(Number(yearList[props.selectedYear]) % 4 == 0 && Number(yearList[props.selectedYear]) % 100 != 0 && Number(yearList[props.selectedYear]) % 400 == 0) // 윤년
       if (
         (Number(monthList[index].slice(0, -1)) % 2 == 1 &&
           Number(monthList[index].slice(0, -1)) < 8) ||
@@ -376,14 +390,14 @@ export default function MonthPicker() {
     }
 
     if (
-      Number(yearList[selectedYear].slice(0, -1)) >
+      Number(yearList[props.selectedYear].slice(0, -1)) >
         Number(
           moment()
             .locale('ko')
             .utcOffset(+9)
             .format('YYYY'),
         ) ||
-      (Number(yearList[selectedYear].slice(0, -1)) ==
+      (Number(yearList[props.selectedYear].slice(0, -1)) ==
         Number(
           moment()
             .locale('ko')
@@ -397,7 +411,7 @@ export default function MonthPicker() {
               .utcOffset(+9)
               .format('MM'),
           )) ||
-      (Number(yearList[selectedYear].slice(0, -1)) ==
+      (Number(yearList[props.selectedYear].slice(0, -1)) ==
         Number(
           moment()
             .locale('ko')
@@ -431,35 +445,35 @@ export default function MonthPicker() {
   const changeDate = index => {
     setSelectedDate(index);
     if (
-      Number(yearList[selectedYear].slice(0, -1)) >
+      Number(yearList[props.selectedYear].slice(0, -1)) >
         Number(
           moment()
             .locale('ko')
             .utcOffset(+9)
             .format('YYYY'),
         ) ||
-      (Number(yearList[selectedYear].slice(0, -1)) ==
+      (Number(yearList[props.selectedYear].slice(0, -1)) ==
         Number(
           moment()
             .locale('ko')
             .utcOffset(+9)
             .format('YYYY'),
         ) &&
-        Number(monthList[selectedMonth].slice(0, -1)) >
+        Number(monthList[props.selectedMonth].slice(0, -1)) >
           Number(
             moment()
               .locale('ko')
               .utcOffset(+9)
               .format('MM'),
           )) ||
-      (Number(yearList[selectedYear].slice(0, -1)) ==
+      (Number(yearList[props.selectedYear].slice(0, -1)) ==
         Number(
           moment()
             .locale('ko')
             .utcOffset(+9)
             .format('YYYY'),
         ) &&
-        Number(monthList[selectedMonth].slice(0, -1)) ==
+        Number(monthList[props.selectedMonth].slice(0, -1)) ==
           Number(
             moment()
               .locale('ko')
@@ -485,8 +499,8 @@ export default function MonthPicker() {
   };
   const confirmDate = () => {
     setShowDate(false);
-    setYear(yearList[selectedYear]);
-    setMonth(monthList[selectedMonth]);
+    setYear(yearList[props.selectedYear]);
+    setMonth(monthList[props.selectedMonth]);
     setDate_(dateList31[selectedDate]);
   };
 
@@ -495,19 +509,29 @@ export default function MonthPicker() {
   return (
     <View style={[styles.date_time]}>
       <TouchableOpacity onPress={() => setShowDate(true)}>
-        <Text>
-          {month != ''
-            ? moment(
-                year.slice(0, -1) +
-                  '-' +
-                  month.slice(0, -1) +
-                  '-' +
-                  date_.slice(0, -1),
-                'YYYY-MM-DD',
-              ).format('YYYY.MM.DD (dd)')
-            : year}
-          {/* {getCurrentDate()} */}
-        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+          }}>
+          <Text style={{fontSize: 20, marginLeft: 30, fontWeight: 'bold'}}>
+            {month != ''
+              ? moment(
+                  year.slice(0, -1) +
+                    '-' +
+                    month.slice(0, -1) +
+                    '-' +
+                    date_.slice(0, -1),
+                  'YYYY-MM-DD',
+                ).format('YYYY년 MM월')
+              : year}
+            {/* {getCurrentDate()} */}
+          </Text>
+          <Image
+            source={back}
+            style={{marginTop: 10, marginLeft: 8, width: 10}}
+          />
+        </View>
         <Modal
           transparent={true}
           animationType="slide"
@@ -534,7 +558,7 @@ export default function MonthPicker() {
                 lineColor="#E17551" //to set top and bottom line color (Without gradients)
                 lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
                 lineGradientColorTo="#E17551" //to set top and bottom ending gradient
-                selectedValue={selectedYear}
+                selectedValue={props.selectedYear}
                 itemSpace={35}
                 visibleItemCount={1}
                 itemStyle={{
@@ -561,7 +585,7 @@ export default function MonthPicker() {
                 lineColor="#E17551" //to set top and bottom line color (Without gradients)
                 lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
                 lineGradientColorTo="#E17551" //to set top and bottom ending gradient
-                selectedValue={selectedMonth}
+                selectedValue={props.selectedMonth}
                 itemSpace={35}
                 visibleItemCount={1}
                 itemStyle={{
@@ -572,7 +596,7 @@ export default function MonthPicker() {
                   lineHeight: 24,
                 }}
                 // selectedItemTextColor="black"
-                // onValueChange={(index) => setSelectedMonth(index)}>
+                // onValueChange={(index) => props.setSelectedMonth(index)}>
                 onValueChange={index => changeMonth(index)}>
                 {monthList.map((value, i) => (
                   <PickerItem label={value} value={i} key={i} />
@@ -752,19 +776,18 @@ const styles = StyleSheet.create({
   date_time: {
     backgroundColor: 'white',
     width: '100%',
-    height: '8.9%',
-    marginTop: '1%',
+    height: '9.1%',
+    paddingTop: 30,
     justifyContent: 'center',
-    // alignItems: 'center',
 
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 18,
     lineHeight: 21,
     /* identical to box height */
-
+    ////////////////////////
     letterSpacing: 0.02,
-    // 위 텍스트  //////////
+
     /* grey04 */
 
     color: '#333842',
