@@ -87,6 +87,12 @@ export default function Calender() {
   const [enterModal, setenterModal] = useState(true);
   const [selectedMonth, setSelectedMonth] = useState(8);
   const [selectedYear, setSelectedYear] = useState(2);
+  const [year, setYear] = useState(
+    moment()
+      .locale('ko')
+      .utcOffset(+9)
+      .format('YYYY년 MM월'),
+  );
   const handleMothpicker = () => {
     setisMonthPicker(!isMonthPicker);
   };
@@ -206,6 +212,7 @@ export default function Calender() {
         setSelectedMonth={setSelectedMonth}
         selectedYear={selectedYear}
         setSelectedYear={setSelectedYear}
+        year={year}
       />
       {/* {show && (
         <MonthPicker
