@@ -81,7 +81,7 @@ export default function Calender() {
   const [isMonth, setIsMonth] = useState('');
   const [registerModal, setregisterModal] = useState(false);
   const [isCheckModal, setisCheckModal] = useState(false);
-  const [Pickdate, setpickDate] = useState(new Date());
+  const [curDate, setCurDate] = useState(moment().format('YYYY-MM'));
   const [show, setShow] = useState(false);
   const [isMonthPicker, setisMonthPicker] = useState(false);
   const [enterModal, setenterModal] = useState(true);
@@ -93,6 +93,8 @@ export default function Calender() {
       .utcOffset(+9)
       .format('YYYY년 MM월'),
   );
+  const [month, setMonth] = useState('');
+
   const handleMothpicker = () => {
     setisMonthPicker(!isMonthPicker);
   };
@@ -113,15 +115,15 @@ export default function Calender() {
 
   const showPicker = useCallback(value => setShow(value), []);
 
-  const onValueChange = useCallback(
-    (event, newDate) => {
-      const selectedDate = newDate || Pickdate;
-      showPicker(false);
-      setpickDate(selectedDate);
-      uperDate === moment(Pickdate, 'YYYY-MM');
-    },
-    [Pickdate, showPicker],
-  );
+  // const onValueChange = useCallback(
+  //   (event, newDate) => {
+  //     const selectedDate = newDate || Pickdate;
+  //     showPicker(false);
+  //     setpickDate(selectedDate);
+  //     uperDate === moment(Pickdate, 'YYYY-MM');
+  //   },
+  //   [Pickdate, showPicker],
+  // );
 
   var week = new Array(
     '일요일',
@@ -180,31 +182,6 @@ export default function Calender() {
       {/* 첫 입장 모달 */}
       <LoginModal enterModal={enterModal} onEntermodal={onEntermodal} />
 
-      {/* <TouchableOpacity
-        style={{
-          backgroundColor: 'white',
-          alignItems: 'flex-start',
-          flexDirection: 'row',
-          paddingLeft: 15,
-        }}
-        // onPress={() => showPicker(true)}>
-        onPress={handleMothpicker}>
-        <Text
-          style={{
-            fontSize: 20,
-            color: 'rgba(51, 56, 66, 1)',
-            marginLeft: 20,
-            marginTop: 20,
-            fontWeight: 'bold',
-          }}>
-          {moment(Pickdate).format('YYYY년MM월')}
-        </Text>
-        <Image
-          source={back}
-          style={{marginTop: 30, marginLeft: 8, width: 10}}
-        />
-      </TouchableOpacity> */}
-
       <MonthPicker
         handleMothpicker={handleMothpicker}
         isMonthPicker={isMonthPicker}
@@ -213,20 +190,16 @@ export default function Calender() {
         selectedYear={selectedYear}
         setSelectedYear={setSelectedYear}
         year={year}
+        setYear={setYear}
+        month={month}
+        setMonth={setMonth}
+        curDate={curDate}
+        setCurDate={setCurDate}
       />
-      {/* {show && (
-        <MonthPicker
-          onChange={onValueChange}
-          value={Pickdate}
-          minimumDate={new Date(2020, 8)}
-          maximumDate={new Date(2022, 5)}
-          locale="ko"
-        />
-      )} */}
 
       <View style={{height: 450}}>
         <CalendarList
-          current={Pickdate}
+          current={curDate}
           onVisibleMonthsChange={months => {
             console.log('now these months are visibl', months);
           }}

@@ -20,13 +20,6 @@ import back from '../../imoji/back.png';
 var PickerItem = Picker.Item;
 
 export default function MonthPicker(props) {
-  const [year, setYear] = useState(
-    moment()
-      .locale('ko')
-      .utcOffset(+9)
-      .format('YYYY년 MM월'),
-  );
-  const [month, setMonth] = useState('');
   const [date_, setDate_] = useState('');
   const [disable, setDisable] = useState(false);
   const [colorChoice, setColorChoice] = useState('#E17551');
@@ -499,13 +492,22 @@ export default function MonthPicker(props) {
   };
   const confirmDate = () => {
     setShowDate(false);
-    setYear(yearList[props.selectedYear]);
-    setMonth(monthList[props.selectedMonth]);
+    props.setYear(yearList[props.selectedYear]);
+    props.setMonth(monthList[props.selectedMonth]);
     setDate_(dateList31[selectedDate]);
   };
 
   const [show, setShow] = useState(false);
-
+  const changeCurDate = () => {
+    props.setCurDate(
+      props.month != ''
+        ? moment(
+            props.year.slice(0, -1) + '-' + props.month.slice(0, -1),
+            'YYYY-MM',
+          ).format('YYYY-MM')
+        : props.year,
+    );
+  };
   return (
     <View style={[styles.date_time]}>
       <TouchableOpacity onPress={() => setShowDate(true)}>
@@ -515,16 +517,16 @@ export default function MonthPicker(props) {
             alignItems: 'flex-start',
           }}>
           <Text style={{fontSize: 20, marginLeft: 30, fontWeight: 'bold'}}>
-            {month != ''
+            {props.month != ''
               ? moment(
-                  year.slice(0, -1) +
+                  props.year.slice(0, -1) +
                     '-' +
-                    month.slice(0, -1) +
+                    props.month.slice(0, -1) +
                     '-' +
                     date_.slice(0, -1),
                   'YYYY-MM-DD',
                 ).format('YYYY년 MM월')
-              : year}
+              : props.year}
             {/* {getCurrentDate()} */}
           </Text>
           <Image
@@ -645,6 +647,7 @@ export default function MonthPicker(props) {
               <TouchableOpacity
                 style={{width: '48.17%', height: '100%'}}
                 onPressOut={() => confirmDate()}
+                onPress={changeCurDate}
                 disabled={disable}>
                 <View
                   style={{
