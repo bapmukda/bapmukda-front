@@ -538,6 +538,15 @@ export default function MonthPicker(props) {
           transparent={true}
           animationType="slide"
           visible={showDate}
+          {...(showDate === false &&
+            props.setCurDate(
+              props.month != ''
+                ? moment(
+                    props.year.slice(0, -1) + '-' + props.month.slice(0, -1),
+                    'YYYY-MM',
+                  ).format('YYYY-MM')
+                : props.year,
+            ))}
           supportedOrientations={['portrait']}
           onRequestClose={() => setShowDate(false)}>
           <View style={[styles.wrapperVertical, {}]} onLayout={onLayout}>
@@ -647,7 +656,6 @@ export default function MonthPicker(props) {
               <TouchableOpacity
                 style={{width: '48.17%', height: '100%'}}
                 onPressOut={() => confirmDate()}
-                onPress={changeCurDate}
                 disabled={disable}>
                 <View
                   style={{
