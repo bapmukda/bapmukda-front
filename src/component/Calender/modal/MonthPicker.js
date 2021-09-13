@@ -549,7 +549,9 @@ export default function MonthPicker(props) {
             ))}
           supportedOrientations={['portrait']}
           onRequestClose={() => setShowDate(false)}>
-          <View style={[styles.wrapperVertical, {}]} onLayout={onLayout}>
+          <View
+            style={[styles.wrapperVertical, {top: '35%'}]}
+            onLayout={onLayout}>
             <View
               style={{
                 width: '69.9%',
@@ -561,7 +563,7 @@ export default function MonthPicker(props) {
               <Picker
                 style={{
                   flex: 1 / 2,
-                  width: '20%',
+                  width: '40%',
                   height: parentHeight * 0.36,
                   position: 'absolute',
                   left: 0,
@@ -589,9 +591,11 @@ export default function MonthPicker(props) {
               <Picker
                 style={{
                   flex: 1 / 2,
-                  width: '20%',
+                  width: '30%',
+
                   height: parentHeight * 0.36,
                   position: 'absolute',
+                  left: '65%',
                 }} //
                 lineColor="#E17551" //to set top and bottom line color (Without gradients)
                 lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
