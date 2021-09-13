@@ -495,6 +495,7 @@ export default function MonthPicker(props) {
     props.setYear(yearList[props.selectedYear]);
     props.setMonth(monthList[props.selectedMonth]);
     setDate_(dateList31[selectedDate]);
+    props.setind(1);
   };
 
   const [show, setShow] = useState(false);
@@ -508,6 +509,7 @@ export default function MonthPicker(props) {
         : props.year,
     );
   };
+
   return (
     <View style={[styles.date_time]}>
       <TouchableOpacity onPress={() => setShowDate(true)}>
@@ -547,6 +549,7 @@ export default function MonthPicker(props) {
                   ).format('YYYY-MM')
                 : props.year,
             ))}
+          // {...(showDate === true && props.setind(1))}
           supportedOrientations={['portrait']}
           onRequestClose={() => setShowDate(false)}>
           <View

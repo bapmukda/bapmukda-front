@@ -81,12 +81,13 @@ export default function Calender() {
   const [isMonth, setIsMonth] = useState('');
   const [registerModal, setregisterModal] = useState(false);
   const [isCheckModal, setisCheckModal] = useState(false);
-  const [curDate, setCurDate] = useState(moment().format('YYYY-MM'));
+  const [curDate, setCurDate] = useState('');
   const [show, setShow] = useState(false);
   const [isMonthPicker, setisMonthPicker] = useState(false);
   const [enterModal, setenterModal] = useState(true);
   const [selectedMonth, setSelectedMonth] = useState(8);
   const [selectedYear, setSelectedYear] = useState(2);
+  const [ind, setind] = useState(0);
   const [year, setYear] = useState(
     moment()
       .locale('ko')
@@ -195,41 +196,77 @@ export default function Calender() {
         setMonth={setMonth}
         curDate={curDate}
         setCurDate={setCurDate}
+        setind={setind}
       />
 
       <View style={{height: 450}}>
-        <CalendarList
-          current={curDate}
-          onVisibleMonthsChange={months => {
-            console.log('now these months are visibl', months);
-          }}
-          style={{height: 400}}
-          monthFormat={''}
-          // horizontal={true}
-          // Max amount of months allowed to scroll to the past. Default = 50
-          scrollEnabled={false}
-          // Enable or disable vertical scroll indicator. Default = false
-          theme={{
-            'stylesheet.day.basic': {
-              dayTextAtIndex0: {
-                color: 'red',
+        {ind === 0 ? (
+          <CalendarList
+            current={new Date()}
+            onVisibleMonthsChange={months => {
+              console.log('now these months are visibl', months);
+            }}
+            style={{height: 400}}
+            monthFormat={''}
+            // horizontal={true}
+            // Max amount of months allowed to scroll to the past. Default = 50
+            scrollEnabled={false}
+            // Enable or disable vertical scroll indicator. Default = false
+            theme={{
+              'stylesheet.day.basic': {
+                dayTextAtIndex0: {
+                  color: 'red',
+                },
+                dayTextAtIndex6: {
+                  color: 'blue',
+                },
               },
-              dayTextAtIndex6: {
-                color: 'blue',
-              },
-            },
 
-            todayTextColor: 'white',
-          }}
-          showScrollIndicator={true}
-          markingType={'multi-dot'}
-          maxDate={new Date()}
-          markedDates={newDaysObject}
-          onDayPress={({day, month, dateString}) =>
-            onOpen(day, month, dateString)
-          }
-          locale="ko"
-        />
+              todayTextColor: 'white',
+            }}
+            showScrollIndicator={true}
+            markingType={'multi-dot'}
+            maxDate={new Date()}
+            markedDates={newDaysObject}
+            onDayPress={({day, month, dateString}) =>
+              onOpen(day, month, dateString)
+            }
+            locale="ko"
+          />
+        ) : (
+          <CalendarList
+            current={curDate}
+            onVisibleMonthsChange={months => {
+              console.log('now these months are visibl', months);
+            }}
+            style={{height: 400}}
+            monthFormat={''}
+            // horizontal={true}
+            // Max amount of months allowed to scroll to the past. Default = 50
+            scrollEnabled={false}
+            // Enable or disable vertical scroll indicator. Default = false
+            theme={{
+              'stylesheet.day.basic': {
+                dayTextAtIndex0: {
+                  color: 'red',
+                },
+                dayTextAtIndex6: {
+                  color: 'blue',
+                },
+              },
+
+              todayTextColor: 'white',
+            }}
+            showScrollIndicator={true}
+            markingType={'multi-dot'}
+            maxDate={new Date()}
+            markedDates={newDaysObject}
+            onDayPress={({day, month, dateString}) =>
+              onOpen(day, month, dateString)
+            }
+            locale="ko"
+          />
+        )}
       </View>
 
       {/* 오늘 버튼 */}
