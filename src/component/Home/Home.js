@@ -10,7 +10,7 @@ export default function Home(props) {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text>HomeScreen</Text>
+      <Text>Home</Text>
       <Button
         title="To Login Screen"
         onPress={() => {
