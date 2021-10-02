@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
+import close from '../imgs/close.png';
 import {
   TouchableOpacity,
   View,
@@ -8,6 +9,7 @@ import {
   ScrollView,
   Button,
   TextInput,
+  Image,
 } from 'react-native';
 
 export default function Longin(props) {
@@ -16,38 +18,53 @@ export default function Longin(props) {
     setLonginName(event);
   };
   return (
-    <View style={styles.mainView}>
-      <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
-        밥먹다와 함께 할
-      </Text>
-      <Text style={{fontWeight: 'bold', fontSize: 18}}>
-        메일주소를 적어주세요
-      </Text>
-      <TextInput
-        style={styles.input}
-        type="email"
-        placeholder="메일주소 입력"
-        value={LonginName}
-        onChangeText={onChangeInput}></TextInput>
+    <>
+      <View
+        style={{
+          height: 40,
+          width: '100%',
+          backgroundColor: 'white',
+        }}>
+        <TouchableOpacity>
+          <Image
+            source={close}
+            style={{position: 'absolute', right: 50, top: 5}}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.mainView}>
+        <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
+          밥먹다와 함께 할
+        </Text>
+        <Text style={{fontWeight: 'bold', fontSize: 18}}>
+          메일주소를 적어주세요
+        </Text>
+        <TextInput
+          style={styles.input}
+          type="email"
+          placeholder="메일주소 입력"
+          value={LonginName}
+          onChangeText={onChangeInput}></TextInput>
 
-      {LonginName === '' ? (
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('HaveId');
-          }}
-          style={styles.ButtonDesign}>
-          <Text style={{color: 'rgba(214, 215, 217,1)'}}>다음</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('HaveId');
-          }}
-          style={styles.ButtonDesign2}>
-          <Text style={{color: 'white'}}>다음</Text>
-        </TouchableOpacity>
-      )}
-    </View>
+        {LonginName === '' ? (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('HaveId');
+            }}
+            style={styles.ButtonDesign}>
+            <Text style={{color: 'rgba(214, 215, 217,1)'}}>다음</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('HaveId');
+            }}
+            style={styles.ButtonDesign2}>
+            <Text style={{color: 'white'}}>다음</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </>
   );
 }
 

@@ -21,7 +21,7 @@ export default function RegisterModal(props) {
         style={{
           flex: 0.4,
           backgroundColor: 'white',
-          top: '40%',
+          top: '20%',
           justifyContent: 'space-around',
           height: '50%',
           borderRadius: 10,

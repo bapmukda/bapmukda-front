@@ -18,7 +18,7 @@ export default function Home(props) {
         }}
       />
       <Button
-        title="To Calender Screen"
+        title=" Calender Screen"
         onPress={() => {
           props.navigation.navigate('Calender');
         }}

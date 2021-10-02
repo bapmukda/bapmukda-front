@@ -15,6 +15,7 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
 import back from '../imoji/back.png';
 import right from '../imoji/right.png';
+import tololgin from '../imgs/tologin.png';
 import {LocaleConfig} from 'react-native-calendars';
 import RegisterModal from './modal/RegisterModal';
 import CheckModal from './modal/CheckModal';
@@ -72,7 +73,7 @@ LocaleConfig.locales['ko'] = {
   today: "Aujourd'hui",
 };
 LocaleConfig.defaultLocale = 'ko';
-export default function Calender() {
+export default function Calender(props) {
   const today = moment().format('YYYY-MM-DD');
   const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
   const [isModalVisible, setModalVisible] = useState(false);
@@ -180,6 +181,24 @@ export default function Calender() {
 
   return (
     <View style={{}}>
+      <View style={{backgroundColor: 'white', height: 50, width: '100%'}}>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Login');
+          }}>
+          <Image
+            source={tololgin}
+            style={{position: 'absolute', top: 30, left: 30}}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleregisterModal}>
+          <Text
+            style={{position: 'absolute', top: 30, right: 30, fontSize: 20}}>
+            +
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       {/* 첫 입장 모달 */}
       <LoginModal enterModal={enterModal} onEntermodal={onEntermodal} />
 
@@ -271,10 +290,7 @@ export default function Calender() {
 
       {/* 오늘 버튼 */}
       <View style={{alignItems: 'center', top: 90}}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={styles.button}
-          onPress={handleregisterModal}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
           <Text style={styles.text}>오늘</Text>
           <Image source={right} />
         </TouchableOpacity>
