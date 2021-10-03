@@ -24,11 +24,13 @@ export default function Longin(props) {
           height: 40,
           width: '100%',
           backgroundColor: 'white',
+          justifyContent: 'center',
         }}>
+        <Text style={{textAlign: 'center'}}>로그인/회원가입</Text>
         <TouchableOpacity>
           <Image
             source={close}
-            style={{position: 'absolute', right: 50, top: 5}}
+            style={{position: 'absolute', right: 50, top: -20}}
           />
         </TouchableOpacity>
       </View>
