@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
   TextInput,
   Button,
+  Image,
 } from 'react-native';
+import close from '../..//imgs/close.png';
+import back from '../../imgs/Vector1.png';
 import CheckBox from '@react-native-community/checkbox';
-export default function Nickname() {
+export default function Nickname(props) {
   const [myTextInput, setmyTextInput] = useState('');
   const [passWordInput, setPassWordInput] = useState(true);
   const [isInput, setisInput] = useState(false);
@@ -21,64 +24,96 @@ export default function Nickname() {
     setmyTextInput(event);
   };
   return (
-    <View style={styles.mainView}>
-      <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
-        마지막으로
-      </Text>
-      <Text style={{fontWeight: 'bold', fontSize: 18}}>
-        닉네입을 입력해주세요
-      </Text>
-      <Text style={{paddingTop: 10, color: '#999BA0'}}>
-        최대 20자로 닉네임을 입력해주세요
-      </Text>
+    <>
       <View
         style={{
-          paddingTop: 50,
-          paddingBottom: 24,
+          marginTop: 50,
+          height: 60,
           width: '100%',
-          alignItems: 'center',
+          backgroundColor: 'white',
+          justifyContent: 'center',
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgb(212, 212, 212)',
         }}>
-        <TextInput
-          style={styles.input}
-          type="text"
-          value={myTextInput}
-          onChangeText={onChangeInput}
-          placeholder="닉네임 입력"></TextInput>
-      </View>
-      <View style={styles.container}>
-        <View style={styles.checkboxContainer}>
-          <CheckBox
-            value={isSelected}
-            onValueChange={setSelection}
-            style={styles.checkbox}
-            onCheckColor="white"
-            onFillColor="#E17551"
-            onTintColor="#E17551"
+        <Text style={{textAlign: 'center'}}>회원가입</Text>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Home');
+          }}>
+          <Image
+            source={close}
+            style={{position: 'absolute', right: 30, top: -20}}
           />
-          <Text style={styles.label}>개인정보방침 </Text>
-          <Text style={{marginTop: 8, marginLeft: -15}}> 에 동의합니다.</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('SignUp');
+          }}>
+          <Image
+            source={back}
+            style={{position: 'absolute', left: 30, top: -18}}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.mainView}>
+        <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
+          마지막으로
+        </Text>
+        <Text style={{fontWeight: 'bold', fontSize: 18}}>
+          닉네입을 입력해주세요
+        </Text>
+        <Text style={{paddingTop: 10, color: '#999BA0'}}>
+          최대 20자로 닉네임을 입력해주세요
+        </Text>
+        <View
+          style={{
+            paddingTop: 50,
+            paddingBottom: 24,
+            width: '100%',
+            alignItems: 'center',
+          }}>
+          <TextInput
+            style={styles.input}
+            type="text"
+            value={myTextInput}
+            onChangeText={onChangeInput}
+            placeholder="닉네임 입력"></TextInput>
+        </View>
+        <View style={styles.container}>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={isSelected}
+              onValueChange={setSelection}
+              style={styles.checkbox}
+              onCheckColor="white"
+              onFillColor="#E17551"
+              onTintColor="#E17551"
+            />
+            <Text style={styles.label}>개인정보방침 </Text>
+            <Text style={{marginTop: 8, marginLeft: -15}}> 에 동의합니다.</Text>
+          </View>
+        </View>
+        <View style={{marginTop: 50}}>
+          {myTextInput === '' ? (
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('Home');
+              }}
+              style={styles.ButtonDesign}>
+              <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('Home');
+              }}
+              style={styles.ButtonDesign2}>
+              <Text style={{color: 'white'}}>가입완료</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
-      <View style={{marginTop: 50}}>
-        {myTextInput === '' ? (
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('Home');
-            }}
-            style={styles.ButtonDesign}>
-            <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('Home');
-            }}
-            style={styles.ButtonDesign2}>
-            <Text style={{color: 'white'}}>가입완료</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-    </View>
+    </>
   );
 }
 const styles = StyleSheet.create({

@@ -21,13 +21,19 @@ export default function Longin(props) {
     <>
       <View
         style={{
+          marginTop: 50,
           height: 40,
           width: '100%',
           backgroundColor: 'white',
           justifyContent: 'center',
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgb(212, 212, 212)',
         }}>
         <Text style={{textAlign: 'center'}}>로그인/회원가입</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Home');
+          }}>
           <Image
             source={close}
             style={{position: 'absolute', right: 50, top: -20}}

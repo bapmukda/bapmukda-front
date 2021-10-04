@@ -30,31 +30,35 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{title: '로그인/회원가입'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="HaveId"
           component={HaveId}
-          options={{title: '로그인'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUp}
-          options={{title: '회원가입'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="nickname"
           component={Nickname}
-          options={{title: '회원가입'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Calender"
           component={Calendar}
-          options={{title: '캘린더'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Sidebar"

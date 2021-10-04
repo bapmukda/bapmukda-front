@@ -7,45 +7,79 @@ import {
   ScrollView,
   Button,
   TextInput,
+  Image,
 } from 'react-native';
-
+import close from '../..//imgs/close.png';
+import back from '../../imgs/Vector1.png';
 export default function HaveId(props) {
   const [PasswordInput, setPasswordInput] = useState('');
   const onChangeInput = event => {
     setPasswordInput(event);
   };
   return (
-    <View style={styles.mainView}>
-      <Text style={{fontWeight: 'bold', paddingTop: 24}}>
-        이미 회원이시네요!
-      </Text>
-      <Text style={{fontWeight: 'bold'}}>비밀번호 입력</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="비밀번호를 입력하세요"
-        type="password"
-        value={PasswordInput}
-        onChangeText={onChangeInput}
-        secureTextEntry={true}></TextInput>
+    <>
+      <View
+        style={{
+          marginTop: 50,
+          height: 40,
+          width: '100%',
+          backgroundColor: 'white',
+          justifyContent: 'center',
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgb(212, 212, 212)',
+        }}>
+        <Text style={{textAlign: 'center'}}>로그인</Text>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Home');
+          }}>
+          <Image
+            source={close}
+            style={{position: 'absolute', right: 30, top: -20}}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Login');
+          }}>
+          <Image
+            source={back}
+            style={{position: 'absolute', left: 30, top: -18}}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.mainView}>
+        <Text style={{fontWeight: 'bold', paddingTop: 24}}>
+          이미 회원이시네요!
+        </Text>
+        <Text style={{fontWeight: 'bold'}}>비밀번호 입력</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="비밀번호를 입력하세요"
+          type="password"
+          value={PasswordInput}
+          onChangeText={onChangeInput}
+          secureTextEntry={true}></TextInput>
 
-      {PasswordInput === '' ? (
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('SignUp');
-          }}
-          style={styles.ButtonDesign}>
-          <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('SignUp');
-          }}
-          style={styles.ButtonDesign2}>
-          <Text style={{color: 'white'}}>완료</Text>
-        </TouchableOpacity>
-      )}
-    </View>
+        {PasswordInput === '' ? (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('SignUp');
+            }}
+            style={styles.ButtonDesign}>
+            <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('SignUp');
+            }}
+            style={styles.ButtonDesign2}>
+            <Text style={{color: 'white'}}>완료</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </>
   );
 }
 

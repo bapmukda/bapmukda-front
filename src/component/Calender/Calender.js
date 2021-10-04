@@ -181,7 +181,13 @@ export default function Calender(props) {
 
   return (
     <View style={{}}>
-      <View style={{backgroundColor: 'white', height: 50, width: '100%'}}>
+      <View
+        style={{
+          backgroundColor: 'white',
+          height: 50,
+          width: '100%',
+          marginTop: 50,
+        }}>
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate('Login');
