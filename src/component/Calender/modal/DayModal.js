@@ -9,7 +9,7 @@ export default function DayModal(props) {
       isVisible={props.isModalVisible}
       style={{marginBottom: 100}}
       backdropColor="rgba(r,g,b,a)"
-      modalHeight={400}
+      modalHeight={500}
       borderRadius={10}>
       <View style={styles.FullModalView}>
         <Text style={styles.Dateword}>
@@ -28,9 +28,11 @@ export default function DayModal(props) {
           <View style={{flexDirection: 'row', left: '-33%', marginBottom: 20}}>
             <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
           </View>
-          <View style={styles.AddButton}>
-            <Text onPress={props.handleCheckModal}>+</Text>
-          </View>
+          <TouchableOpacity onPress={() => props.navigation.navigate('MtoE')}>
+            <View style={styles.AddButton}>
+              <Text onPress={props.handleCheckModal}>+</Text>
+            </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{

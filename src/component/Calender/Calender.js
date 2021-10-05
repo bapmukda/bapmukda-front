@@ -113,6 +113,17 @@ export default function Calender(props) {
     var date = new Date(dateString).getDay();
     var todate = week[date];
     setIsDate(todate);
+    alert(day);
+  };
+
+  const todayOpen = () => {
+    var D = new Date();
+    modalizeRef.current?.open();
+    setisDay(D.getDate());
+    setIsMonth(D.getMonth() + 1);
+    var date = D.getDay();
+    var todate = week[date];
+    setIsDate(todate);
   };
 
   const showPicker = useCallback(value => setShow(value), []);
@@ -296,7 +307,10 @@ export default function Calender(props) {
 
       {/* 오늘 버튼 */}
       <View style={{alignItems: 'center', top: 90}}>
-        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.button}
+          onPress={() => todayOpen()}>
           <Text style={styles.text}>오늘</Text>
           <Image source={right} />
         </TouchableOpacity>
@@ -308,6 +322,7 @@ export default function Calender(props) {
         isDate={isDate}
         isDay={isDay}
         handleCheckModal={handleCheckModal}
+        navigation={props.navigation}
       />
 
       {/* 확인 피커 */}
