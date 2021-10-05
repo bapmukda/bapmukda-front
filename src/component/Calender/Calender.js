@@ -217,7 +217,11 @@ export default function Calender(props) {
       </View>
 
       {/* 첫 입장 모달 */}
-      <LoginModal enterModal={enterModal} onEntermodal={onEntermodal} />
+      <LoginModal
+        enterModal={enterModal}
+        onEntermodal={onEntermodal}
+        navigation={props.navigation}
+      />
 
       <MonthPicker
         handleMothpicker={handleMothpicker}
@@ -334,6 +338,7 @@ export default function Calender(props) {
       <RegisterModal
         registerModal={registerModal}
         handleregisterModal={handleregisterModal}
+        navigation={props.navigation}
       />
       <Agenda />
     </View>

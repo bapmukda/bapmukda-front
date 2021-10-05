@@ -30,7 +30,7 @@ export default function DayModal(props) {
           </View>
           <TouchableOpacity onPress={() => props.navigation.navigate('MtoE')}>
             <View style={styles.AddButton}>
-              <Text onPress={props.handleCheckModal}>+</Text>
+              <Text>+</Text>
             </View>
           </TouchableOpacity>
         </View>

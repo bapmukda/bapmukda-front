@@ -3,6 +3,9 @@ import {TouchableOpacity, Image, View, Text} from 'react-native';
 import Modal from 'react-native-modal';
 import signin from '../../imgs/signin.png';
 export default function LoginModal(props) {
+  const toGoLoginPage = () => {
+    props.onEntermodal;
+  };
   return (
     <Modal isVisible={props.enterModal}>
       <View
@@ -18,7 +21,10 @@ export default function LoginModal(props) {
         />
         <Text style={{fontSize: 16}}> 밥먹다에 가입하고</Text>
         <Text style={{fontSize: 16, marginTop: 8}}> 기록을 시작해보세요</Text>
-        <TouchableOpacity onPress={props.onEntermodal}>
+        <TouchableOpacity
+          onPress={() =>
+            props.navigation.navigate('Login') & props.onEntermodal()
+          }>
           <View
             style={{
               backgroundColor: '#E17551',
