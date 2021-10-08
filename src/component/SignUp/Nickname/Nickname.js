@@ -12,6 +12,8 @@ import {
 import close from '../..//imgs/close.png';
 import back from '../../imgs/Vector1.png';
 import CheckBox from '@react-native-community/checkbox';
+import Users_login from '../../create_handle';
+
 export default function Nickname(props) {
   const [myTextInput, setmyTextInput] = useState('');
   const [passWordInput, setPassWordInput] = useState(true);
@@ -19,6 +21,8 @@ export default function Nickname(props) {
   const handlepwFocus = () => setPassWordInput(true);
   const handlepwBlur = () => setPassWordInput(false);
   const [isSelected, setSelection] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
 
   const onChangeInput = event => {
     setmyTextInput(event);
@@ -60,7 +64,7 @@ export default function Nickname(props) {
           마지막으로
         </Text>
         <Text style={{fontWeight: 'bold', fontSize: 18}}>
-          닉네입을 입력해주세요
+          닉네임을 입력해주세요
         </Text>
         <Text style={{paddingTop: 10, color: '#999BA0'}}>
           최대 20자로 닉네임을 입력해주세요
@@ -95,23 +99,33 @@ export default function Nickname(props) {
         </View>
         <View style={{marginTop: 50}}>
           {myTextInput === '' ? (
-            <TouchableOpacity
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-              style={styles.ButtonDesign}>
-              <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-              style={styles.ButtonDesign2}>
-              <Text style={{color: 'white'}}>가입완료</Text>
-            </TouchableOpacity>
-          )}
-        </View>
+          <TouchableOpacity
+            onPress={() => {
+              // props.navigation.navigate('Home');
+            }}
+            style={styles.ButtonDesign}>
+            <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Sidebar_logined',{name:myTextInput});
+            }}
+            style={styles.ButtonDesign2}>
+            <Text style={{color: 'white'}}>가입완료</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+      <Users_login
+      LoginName={props.route.params.LoginName}
+      PasswordInput={props.route.params.passWordInput}
+      myTextInput={myTextInput}
+      setMyTextInput={setMyTextInput}
+      accessToken={accessToken}
+      setAccessToken={setAccessToken}
+      refreshToken={refreshToken}
+      setrefreshToken={setRefreshToken}
+      ></Users_login>
       </View>
     </>
   );
