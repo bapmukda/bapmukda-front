@@ -91,7 +91,7 @@ export default function SignUp(props) {
         ) : (
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('nickname');
+              props.navigation.navigate('nickname',{LoginName:props.route.params.LoginName,passWordInput:passWordInput});
             }}
             style={styles.ButtonDesign2}>
             <Text style={{color: 'white'}}>다음</Text>
