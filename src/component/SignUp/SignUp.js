@@ -57,10 +57,8 @@ export default function SignUp(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainView}>
-        <Text style={{fontWeight: 'bold', paddingTop: 24}}>
-          밥먹다와 함께 할
-        </Text>
-        <Text style={{fontWeight: 'bold'}}>메일주소를 적어주세요</Text>
+        <Text style={{fontWeight: 'bold', paddingTop: 24}}>환영합니다!</Text>
+        <Text style={{fontWeight: 'bold'}}>비밀번호를 입력해주세요.</Text>
         <Text style={{paddingTop: 10, color: '#999BA0'}}>
           영문,숫자를 포함하여 10자 이상 입력해주세요
         </Text>
@@ -91,7 +89,10 @@ export default function SignUp(props) {
         ) : (
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('nickname');
+              props.navigation.navigate('nickname', {
+                LoginName: props.route.params.LoginName,
+                passWordInput: passWordInput,
+              });
             }}
             style={styles.ButtonDesign2}>
             <Text style={{color: 'white'}}>다음</Text>

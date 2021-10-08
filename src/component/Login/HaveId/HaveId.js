@@ -11,8 +11,11 @@ import {
 } from 'react-native';
 import close from '../..//imgs/close.png';
 import back from '../../imgs/Vector1.png';
+import Users_login from '../../password_check';
+
 export default function HaveId(props) {
   const [PasswordInput, setPasswordInput] = useState('');
+  const [R, setR] = useState(null);  
   const onChangeInput = event => {
     setPasswordInput(event);
   };
@@ -62,22 +65,32 @@ export default function HaveId(props) {
           secureTextEntry={true}></TextInput>
 
         {PasswordInput === '' ? (
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('SignUp');
-            }}
-            style={styles.ButtonDesign}>
-            <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('SignUp');
-            }}
-            style={styles.ButtonDesign2}>
-            <Text style={{color: 'white'}}>완료</Text>
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('SignUp');
+          }}
+          style={styles.ButtonDesign}>
+          <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={() => {
+            accessToken && refreshToken ?
+            (props.navigation.navigate('Sidebar_logined',{accessToken:accessToken,refreshToken:refreshToken}))
+            :<Text>올바르지 않은 비밀번호입니다.</Text>;
+          }}
+          style={styles.ButtonDesign2}>
+          <Text style={{color: 'white'}}>완료</Text>
+        </TouchableOpacity>
+      )}
+      <Users_login 
+      LoginName={props.route.params.LoginName} 
+      PasswordInput={PasswordInput} 
+      accessToken={accessToken}
+      setAccessToken={setAccessToken}
+      refreshToken={refreshToken}
+      setrefreshToken={setRefreshToken}
+      ></Users_login>
       </View>
     </>
   );
