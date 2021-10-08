@@ -164,7 +164,7 @@ export default function Sidebar_longin(props) {
 
       <View style={styles.header}>
         <Image source={require('../imgs/회원.png')} style={styles.img1} />
-        <Text style={styles.nickname}>밥먹다 님</Text>
+        <Text style={styles.nickname}>{props.route.params.name}님</Text>
       </View>
 
       <View

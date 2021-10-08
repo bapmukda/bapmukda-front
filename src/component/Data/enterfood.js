@@ -15,7 +15,8 @@ import {
 } from 'react-native';
 import moment, {locale} from 'moment';
 import 'moment/locale/ko';
-import Picker from '@gregfrench/react-native-wheel-picker';
+import Picker from '../../../node_modules/@gregfrench/react-native-wheel-picker';
+
 import Input_food from '../input/Input_food';
 
 var PickerItem = Picker.Item;

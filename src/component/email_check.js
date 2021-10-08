@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import axios from 'axios';
 import {set} from 'react-native-reanimated';
-// import qs from 'qs';
-import qs from 'qs';
 
 function Users(props) {
   const [users, setUsers] = useState(null);
@@ -22,28 +20,13 @@ function Users(props) {
         const response = await axios({
           method: 'post',
           data: {
-            email: qs.stringify(props.LoginName),
+            email: props.LoginName,
           },
           url:
             'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/validate/email',
           // url: "http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/meal?fromDate=2021-05-01&toDate=2021-09-11",
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
-        // const response = axios
-        //   .post(
-        //     'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/validate/email',
-        //     qs.stringify({name: props.LoginName}),
-        //     {
-        //       headers: {
-        //         Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac',
-        //       },
-        //     },
-        //   )
-        //   .then(console.log(response.data.isRegistered + '등록현황'))
-        //   .catch(setError(e));
-        // const response = await axios.get(
-        //   'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/meal?fromDate=2021-05-01&toDate=2021-09-05',"Authorization: Bearer 83e8a8c267f944f39583aa72674e5cac'
-        // );
 
         console.log('실행');
         // console.log(response);
@@ -52,8 +35,8 @@ function Users(props) {
         setUsers(response.data);
         console.log(response.data.isRegistered + '등록현황');
         props.setR(response.data.isRegistered);
-        console.log('R' + R);
-        if (users.isRegistered == true) {
+        console.log('R' + props.R);
+        if (users.isRegistered === true) {
           console.log('이미 존재하는 이메일입니다!');
         }
         // setUsers(response._response.histories); // 데이터는 response.data 안에 들어있습니다.

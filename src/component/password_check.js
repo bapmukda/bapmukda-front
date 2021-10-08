@@ -36,28 +36,15 @@ function Users_login(props) {
 
         console.log('실행');
         // console.log(response);
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response._response.historeis);
         setUsers(response.data);
-        console.log(response.data.accessToken + '엑세스토큰');
-        props.setR(true);
+        // console.log(response.data.accessToken + '엑세스토큰');
+        // props.setSuccess('gggg');
+        // console.log('success = '+props.success);
         props.setAccessToken(response.data.accessToken);
         props.setRefreshToken(response.data.refreshToken);
 
-        // dispatch({
-        //   type: ADD_FRUIT,
-        //   payload: {
-        //     access: response.data.accessToken,
-        //     refresh: response.data.refreshToken,
-        //   },
-        // });
-        // props.setR(response.data.isRegistered);
-        // console.log("R"+ R)
-        // if (users.isRegistered == true)
-        // {
-        //   console.log("이미 존재하는 이메일입니다!")
-        // }
-        // setUsers(response._response.histories); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         setError(e);
       }
@@ -66,7 +53,6 @@ function Users_login(props) {
 
     fetchUsers();
   }, [props.PasswordInput]);
-
   if (loading) return <Text>로딩중..</Text>;
   if (error) return <Text>에러가 발생했습니다</Text>;
   if (!users) return <Text>유저가 아닙니다</Text>;

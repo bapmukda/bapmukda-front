@@ -15,7 +15,11 @@ import Users_login from '../../password_check';
 
 export default function HaveId(props) {
   const [PasswordInput, setPasswordInput] = useState('');
-  const [R, setR] = useState(null);  
+  const [R, setR] = useState(null);
+  const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
+  const [success, setSuccess] = useState('false');
+
   const onChangeInput = event => {
     setPasswordInput(event);
   };
@@ -75,9 +79,10 @@ export default function HaveId(props) {
       ) : (
         <TouchableOpacity
           onPress={() => {
-            accessToken && refreshToken ?
+            console.log("-------"+accessToken+"-------");
+            (accessToken !== '' && refreshToken !== '') ?
             (props.navigation.navigate('Sidebar_logined',{accessToken:accessToken,refreshToken:refreshToken}))
-            :<Text>올바르지 않은 비밀번호입니다.</Text>;
+            :console.log("올바르지 않은 비밀번호입니다.");
           }}
           style={styles.ButtonDesign2}>
           <Text style={{color: 'white'}}>완료</Text>
