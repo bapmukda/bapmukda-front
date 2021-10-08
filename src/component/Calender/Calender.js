@@ -113,7 +113,6 @@ export default function Calender(props) {
     var date = new Date(dateString).getDay();
     var todate = week[date];
     setIsDate(todate);
-    alert(day);
   };
 
   const todayOpen = () => {
