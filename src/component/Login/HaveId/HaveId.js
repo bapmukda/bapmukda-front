@@ -13,6 +13,7 @@ import close from '../..//imgs/close.png';
 import back from '../../imgs/Vector1.png';
 export default function HaveId(props) {
   const [PasswordInput, setPasswordInput] = useState('');
+  const [R, setR] = useState(null);  
   const onChangeInput = event => {
     setPasswordInput(event);
   };
@@ -72,7 +73,13 @@ export default function HaveId(props) {
         ) : (
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('SignUp');
+              // dispatch({
+              //   type: ADD_FRUIT,
+              //   payload: { access: accessToken, refresh: refreshToken },
+              // });
+              // console.log(data);
+              props.navigation.navigate('Sidebar_logined',{});
+
             }}
             style={styles.ButtonDesign2}>
             <Text style={{color: 'white'}}>완료</Text>
