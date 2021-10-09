@@ -39,7 +39,7 @@ export default function RegisterModal(props) {
           onPress={props.handleregisterModal}>
           <Image source={close} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate('MtoE')}>
           <Text style={{marginLeft: 20}}>식단등록</Text>
         </TouchableOpacity>
         <TouchableOpacity>

@@ -19,8 +19,14 @@ export default function LoginModal(props) {
           source={signin}
           style={{width: 250, height: 144, marginTop: 30}}
         />
-        <Text style={{fontSize: 16}}> 밥먹다에 가입하고</Text>
-        <Text style={{fontSize: 16, marginTop: 8}}> 기록을 시작해보세요</Text>
+        <Text style={{fontSize: 16, fontWeight: '900'}}>
+          {' '}
+          밥먹다에 가입하고
+        </Text>
+        <Text style={{fontSize: 16, marginTop: 8, fontWeight: 'bold'}}>
+          {' '}
+          기록을 시작해보세요
+        </Text>
         <TouchableOpacity
           onPress={() =>
             props.navigation.navigate('Login') & props.onEntermodal()
@@ -35,7 +41,7 @@ export default function LoginModal(props) {
               justifyContent: 'center',
               marginTop: 30,
             }}>
-            <Text style={{color: 'white', fontSize: 15}}>
+            <Text style={{color: 'white', fontSize: 15, fontWeight: 'bold'}}>
               {' '}
               10초만에 가입하기
             </Text>
@@ -51,7 +57,7 @@ export default function LoginModal(props) {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{color: '#E17551'}}> 닫기</Text>
+            <Text style={{color: '#E17551', fontWeight: 'bold'}}> 닫기</Text>
           </View>
         </TouchableOpacity>
       </View>

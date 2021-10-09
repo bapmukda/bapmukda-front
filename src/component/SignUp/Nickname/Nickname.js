@@ -29,16 +29,7 @@ export default function Nickname(props) {
   };
   return (
     <>
-      <View
-        style={{
-          marginTop: 50,
-          height: 60,
-          width: '100%',
-          backgroundColor: 'white',
-          justifyContent: 'center',
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgb(212, 212, 212)',
-        }}>
+      <View style={styles.HeaderStyle}>
         <Text style={{textAlign: 'center'}}>회원가입</Text>
         <TouchableOpacity
           onPress={() => {
@@ -60,10 +51,8 @@ export default function Nickname(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainView}>
-        <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
-          마지막으로
-        </Text>
-        <Text style={{fontWeight: 'bold', fontSize: 18}}>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>마지막으로</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>
           닉네임을 입력해주세요
         </Text>
         <Text style={{paddingTop: 10, color: '#999BA0'}}>
@@ -71,7 +60,6 @@ export default function Nickname(props) {
         </Text>
         <View
           style={{
-            paddingTop: 50,
             paddingBottom: 24,
             width: '100%',
             alignItems: 'center',
@@ -92,40 +80,46 @@ export default function Nickname(props) {
               onCheckColor="white"
               onFillColor="#E17551"
               onTintColor="#E17551"
+              boxType="square"
             />
-            <Text style={styles.label}>개인정보방침 </Text>
-            <Text style={{marginTop: 8, marginLeft: -15}}> 에 동의합니다.</Text>
+
+            <Text style={styles.label}>개인정보 처리방침 </Text>
+            <Text style={{marginTop: 8, marginLeft: -15, fontWeight: 'bold'}}>
+              {' '}
+              에 동의합니다.
+            </Text>
           </View>
         </View>
         <View style={{marginTop: 50}}>
           {myTextInput === '' ? (
-          <TouchableOpacity
-            onPress={() => {
-              // props.navigation.navigate('Home');
-            }}
-            style={styles.ButtonDesign}>
-            <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('Sidebar_logined',{name:myTextInput});
-            }}
-            style={styles.ButtonDesign2}>
-            <Text style={{color: 'white'}}>가입완료</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-      <Users_login
-      LoginName={props.route.params.LoginName}
-      PasswordInput={props.route.params.passWordInput}
-      myTextInput={myTextInput}
-      setMyTextInput={setMyTextInput}
-      accessToken={accessToken}
-      setAccessToken={setAccessToken}
-      refreshToken={refreshToken}
-      setrefreshToken={setRefreshToken}
-      ></Users_login>
+            <TouchableOpacity
+              onPress={() => {
+                // props.navigation.navigate('Home');
+              }}
+              style={styles.ButtonDesign}>
+              <Text style={{color: 'rgba(214, 215, 217,1)'}}>가입완료</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('Sidebar_logined', {
+                  name: myTextInput,
+                });
+              }}
+              style={styles.ButtonDesign2}>
+              <Text style={{color: 'white'}}>가입완료</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+        <Users_login
+          LoginName={props.route.params.LoginName}
+          PasswordInput={props.route.params.passWordInput}
+          myTextInput={myTextInput}
+          setMyTextInput={setMyTextInput}
+          accessToken={accessToken}
+          setAccessToken={setAccessToken}
+          refreshToken={refreshToken}
+          setrefreshToken={setRefreshToken}></Users_login>
       </View>
     </>
   );
@@ -189,10 +183,23 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     alignSelf: 'center',
+    transform: [{scaleX: 0.8}, {scaleY: 0.8}],
+    marginTop: 5,
+    marginRight: -15,
   },
   label: {
     margin: 8,
     textDecorationLine: 'underline',
     color: '#E17551',
+    fontWeight: 'bold',
+  },
+  HeaderStyle: {
+    marginTop: 50,
+    height: 60,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgb(212, 212, 212)',
   },
 });

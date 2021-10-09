@@ -25,7 +25,7 @@ export default function DayModal(props) {
           <Text style={{textAlign: 'center'}}>계란후라이</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
-          <View style={{flexDirection: 'row', left: '-33%', marginBottom: 20}}>
+          <View style={{flexDirection: 'row', left: '-28%', marginBottom: 20}}>
             <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
           </View>
           <TouchableOpacity onPress={() => props.navigation.navigate('MtoE')}>
@@ -34,20 +34,14 @@ export default function DayModal(props) {
             </View>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            left: '-13%',
-            marginBottom: 30,
-            marginTop: 30,
-          }}>
+        <View style={styles.ContainTextAndDot}>
           <View style={[styles.dotdot, {backgroundColor: '#7D9E6B'}]}></View>
           <Text style={{marginLeft: 2, fontSize: 13}}> 아침</Text>
           <Text style={styles.TimeText}> 09:00</Text>
 
           <Text
             onPress={props.handleCheckModal}
-            style={{left: '1200%', color: '#E17551', fontWeight: 'bold'}}>
+            style={{left: 180, color: '#E17551', fontWeight: 'bold'}}>
             + 30분
           </Text>
         </View>
@@ -61,7 +55,7 @@ export default function DayModal(props) {
           <Text style={{textAlign: 'center'}}>계란후라이</Text>
         </View>
 
-        <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+        <View style={styles.ContainTextAndDot}>
           <View style={[styles.dotdot, {backgroundColor: '#E17551'}]}></View>
           <Text style={{marginLeft: 2, fontSize: 13}}> 점심</Text>
           <Text style={styles.TimeText}> 09:00</Text>
@@ -76,7 +70,7 @@ export default function DayModal(props) {
           <Text style={{textAlign: 'center'}}>계란후라이</Text>
         </View>
 
-        <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+        <View style={styles.ContainTextAndDot}>
           <View style={[styles.dotdot, {backgroundColor: '#F7BC6E'}]}></View>
           <Text style={{marginLeft: 2, fontSize: 13}}> 저녁</Text>
           <Text style={styles.TimeText}> 19:00</Text>
@@ -92,7 +86,7 @@ export default function DayModal(props) {
           <Text style={{textAlign: 'center'}}>계란후라이</Text>
         </View>
 
-        <View style={{flexDirection: 'row', left: '-13%', marginBottom: 30}}>
+        <View style={styles.ContainTextAndDot}>
           <View style={[styles.dotdot, {backgroundColor: '#738CC1'}]}></View>
           <Text style={{marginLeft: 2, fontSize: 13}}> 간식</Text>
           <Text style={styles.TimeText}> 19:00</Text>
@@ -122,7 +116,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
   },
   Dateword: {
-    left: '-30%',
+    left: '-25%',
     fontSize: 18,
     marginTop: 20,
     marginBottom: 30,
@@ -153,6 +147,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
   },
+  ContainTextAndDot: {
+    flexDirection: 'row',
+    marginBottom: 30,
+    marginTop: 30,
+    width: '100%',
+    left: 40,
+  },
   dotdot: {
     width: 8,
     height: 8,
@@ -160,13 +161,14 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   minusFont: {
-    left: '1200%',
+    left: 180,
     color: '#738CC1',
     fontWeight: 'bold',
   },
   TimeText: {
     marginLeft: 2,
     color: '#999BA0',
+    fontWeight: 'bold',
   },
   AddButton: {
     backgroundColor: '#FBFBFB',

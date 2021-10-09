@@ -25,16 +25,7 @@ export default function HaveId(props) {
   };
   return (
     <>
-      <View
-        style={{
-          marginTop: 50,
-          height: 40,
-          width: '100%',
-          backgroundColor: 'white',
-          justifyContent: 'center',
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgb(212, 212, 212)',
-        }}>
+      <View style={styles.HeaderStyle}>
         <Text style={{textAlign: 'center'}}>로그인</Text>
         <TouchableOpacity
           onPress={() => {
@@ -56,10 +47,12 @@ export default function HaveId(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainView}>
-        <Text style={{fontWeight: 'bold', paddingTop: 24}}>
+        <Text style={{fontWeight: 'bold', paddingTop: 24, fontsize: 16}}>
           이미 회원이시네요!
         </Text>
-        <Text style={{fontWeight: 'bold'}}>비밀번호 입력</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+          비밀번호를 입력해주세요.
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="비밀번호를 입력하세요"
@@ -69,33 +62,35 @@ export default function HaveId(props) {
           secureTextEntry={true}></TextInput>
 
         {PasswordInput === '' ? (
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('SignUp');
-          }}
-          style={styles.ButtonDesign}>
-          <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={() => {
-            console.log("-------"+accessToken+"-------");
-            (accessToken !== '' && refreshToken !== '') ?
-            (props.navigation.navigate('Sidebar_logined',{accessToken:accessToken,refreshToken:refreshToken}))
-            :console.log("올바르지 않은 비밀번호입니다.");
-          }}
-          style={styles.ButtonDesign2}>
-          <Text style={{color: 'white'}}>완료</Text>
-        </TouchableOpacity>
-      )}
-      <Users_login 
-      LoginName={props.route.params.LoginName} 
-      PasswordInput={PasswordInput} 
-      accessToken={accessToken}
-      setAccessToken={setAccessToken}
-      refreshToken={refreshToken}
-      setrefreshToken={setRefreshToken}
-      ></Users_login>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('SignUp');
+            }}
+            style={styles.ButtonDesign}>
+            <Text style={{color: 'rgba(214, 215, 217,1)'}}>완료</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              console.log('-------' + accessToken + '-------');
+              accessToken !== '' && refreshToken !== ''
+                ? props.navigation.navigate('Sidebar_logined', {
+                    accessToken: accessToken,
+                    refreshToken: refreshToken,
+                  })
+                : console.log('올바르지 않은 비밀번호입니다.');
+            }}
+            style={styles.ButtonDesign2}>
+            <Text style={{color: 'white'}}>완료</Text>
+          </TouchableOpacity>
+        )}
+        <Users_login
+          LoginName={props.route.params.LoginName}
+          PasswordInput={PasswordInput}
+          accessToken={accessToken}
+          setAccessToken={setAccessToken}
+          refreshToken={refreshToken}
+          setrefreshToken={setRefreshToken}></Users_login>
       </View>
     </>
   );
@@ -143,5 +138,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     backgroundColor: '#E17551',
     alignItems: 'center',
+  },
+  HeaderStyle: {
+    marginTop: 50,
+    height: 60,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgb(212, 212, 212)',
   },
 });

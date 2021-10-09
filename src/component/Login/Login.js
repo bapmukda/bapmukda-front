@@ -23,16 +23,7 @@ export default function Longin(props) {
 
   return (
     <>
-      <View
-        style={{
-          marginTop: 50,
-          height: 40,
-          width: '100%',
-          backgroundColor: 'white',
-          justifyContent: 'center',
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgb(212, 212, 212)',
-        }}>
+      <View style={styles.HeaderStyle}>
         <Text style={{textAlign: 'center'}}>로그인/회원가입</Text>
         <TouchableOpacity
           onPress={() => {
@@ -45,12 +36,8 @@ export default function Longin(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainView}>
-        <Text style={{fontWeight: 'bold', paddingTop: 24, fontSize: 18}}>
-          밥먹다와 함께 할
-        </Text>
-        <Text style={{fontWeight: 'bold', fontSize: 18}}>
-          메일주소를 적어주세요
-        </Text>
+        <Text style={{fontSize: 16}}>밥먹다와 함께 할</Text>
+        <Text style={{fontSize: 16}}>메일주소를 적어주세요</Text>
         <TextInput
           style={styles.input}
           type="email"
@@ -130,5 +117,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     lineHeight: 20,
     textAlign: 'center',
+  },
+  HeaderStyle: {
+    marginTop: 50,
+    height: 60,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgb(212, 212, 212)',
   },
 });

@@ -26,16 +26,7 @@ export default function SignUp(props) {
   };
   return (
     <>
-      <View
-        style={{
-          marginTop: 50,
-          height: 40,
-          width: '100%',
-          backgroundColor: 'white',
-          justifyContent: 'center',
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgb(212, 212, 212)',
-        }}>
+      <View style={styles.HeaderStyle}>
         <Text style={{textAlign: 'center'}}>회원가입</Text>
         <TouchableOpacity
           onPress={() => {
@@ -57,7 +48,7 @@ export default function SignUp(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainView}>
-        <Text style={{fontWeight: 'bold', paddingTop: 24}}>환영합니다!</Text>
+        <Text style={{fontWeight: 'bold'}}>환영합니다!</Text>
         <Text style={{fontWeight: 'bold'}}>비밀번호를 입력해주세요.</Text>
         <Text style={{paddingTop: 10, color: '#999BA0'}}>
           영문,숫자를 포함하여 10자 이상 입력해주세요
@@ -65,7 +56,7 @@ export default function SignUp(props) {
 
         <TextInput
           style={styles.input}
-          placeholder="비밀번호를 입력하세요"
+          placeholder="비밀번호를 입력"
           type="password"
           secureTextEntry={true}
           value={passWordInput}
@@ -73,7 +64,7 @@ export default function SignUp(props) {
 
         <TextInput
           style={styles.input}
-          placeholder="비밀번호를 입력하세요"
+          placeholder="비밀번호를 재입력"
           type="password"
           secureTextEntry={true}
           value={passwordConfirm}
@@ -145,5 +136,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     backgroundColor: '#E17551',
     alignItems: 'center',
+  },
+  HeaderStyle: {
+    marginTop: 50,
+    height: 60,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgb(212, 212, 212)',
   },
 });
