@@ -15,8 +15,8 @@ export default function RegisterModal(props) {
       coverScreen={false}
       backdropColor="rgba(r,g,b,a)"
       backdropOpacity={1}
-      onBackdropPress={props.handleregisterModal}
-      borderRadius={10}>
+      borderRadius={10}
+      onBackdropPress={props.handleregisterModal}>
       <View
         style={{
           flex: 0.4,

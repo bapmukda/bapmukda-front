@@ -518,7 +518,13 @@ export default function MonthPicker(props) {
             flexDirection: 'row',
             alignItems: 'flex-start',
           }}>
-          <Text style={{fontSize: 20, marginLeft: 30, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              fontSize: 20,
+              marginLeft: 30,
+              fontWeight: 'bold',
+              color: 'black',
+            }}>
             {props.month != ''
               ? moment(
                   props.year.slice(0, -1) +
@@ -540,6 +546,8 @@ export default function MonthPicker(props) {
           transparent={true}
           animationType="slide"
           visible={showDate}
+          backdropColor="rgba(r,g,b,a)"
+          coverScreen={false}
           {...(showDate === false &&
             props.setCurDate(
               props.month != ''
@@ -553,7 +561,16 @@ export default function MonthPicker(props) {
           supportedOrientations={['portrait']}
           onRequestClose={() => setShowDate(false)}>
           <View
-            style={[styles.wrapperVertical, {top: '35%'}]}
+            style={[
+              styles.wrapperVertical,
+              {
+                top: '35%',
+                borderRadius: 10,
+                shadowColor: 'rgb(196, 196, 196)',
+                shadowOffset: {width: 0, height: 1},
+                shadowOpacity: 1,
+              },
+            ]}
             onLayout={onLayout}>
             <View
               style={{
@@ -562,6 +579,7 @@ export default function MonthPicker(props) {
                 flexDirection: 'row',
                 backgroundColor: 'white',
                 justifyContent: 'center',
+                marginBottom: 50,
               }}>
               <Picker
                 style={{
@@ -578,7 +596,7 @@ export default function MonthPicker(props) {
                 itemSpace={35}
                 visibleItemCount={1}
                 itemStyle={{
-                  color: '#D6D7D9',
+                  color: 'black',
 
                   fontWeight: 'bold',
                   fontSize: 20,
@@ -607,7 +625,7 @@ export default function MonthPicker(props) {
                 itemSpace={35}
                 visibleItemCount={1}
                 itemStyle={{
-                  color: '#D6D7D9',
+                  color: 'black',
 
                   fontWeight: 'bold',
                   fontSize: 20,
@@ -626,7 +644,7 @@ export default function MonthPicker(props) {
               style={{
                 width: '87.5%',
                 height: '18.67%',
-                top: '16%',
+                top: '5%',
                 flexDirection: 'row',
               }}>
               <TouchableOpacity
