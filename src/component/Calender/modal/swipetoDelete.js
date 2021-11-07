@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import {Swipeable} from 'react-native-gesture-handler';
 
-const SCREEN_WIDTH = Dimensions.get(window).width;
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
-export default function swipetoDelete() {
+export default function SwipetoDelete(props) {
   const [lists, setLists] = [];
   const leftSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
@@ -20,7 +20,7 @@ export default function swipetoDelete() {
       extrapolate: 'clamp',
     });
     return (
-      <TouchableOpacity activeOpacity={0.6} onPress={}>
+      <TouchableOpacity activeOpacity={0.6} onPress={deleteItem}>
         <View style={styles.deleteBox}>
           <Animated.Text style={{transform: [{scale: scale}]}}>
             Delete
@@ -30,16 +30,10 @@ export default function swipetoDelete() {
     );
   };
 
-  const deleteItem = index => {
-    const arr = [...lists];
-    arr.splice(index, 1);
-    setLists(arr);
-  };
-
   return (
     <Swipeable renderLeftActions={leftSwipe}>
       <View>
-        <Text>start swipe to delete</Text>
+        <Text>my name is {props.data.name}</Text>
       </View>
     </Swipeable>
   );
@@ -50,5 +44,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     justifyContent: 'center',
     width: 100,
+  },
+  Container: {
+    height: '80',
+    width: SCREEN_WIDTH,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    padding: '16',
   },
 });

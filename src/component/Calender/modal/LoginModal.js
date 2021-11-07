@@ -14,6 +14,8 @@ export default function LoginModal(props) {
           height: 400,
           borderRadius: 10,
           alignItems: 'center',
+          width: '90%',
+          marginLeft: '5%',
         }}>
         <Image
           source={signin}
