@@ -53,22 +53,42 @@ export default function SignUp(props) {
         <Text style={{paddingTop: 10, color: '#999BA0'}}>
           영문,숫자를 포함하여 10자 이상 입력해주세요
         </Text>
+        {passWordInput === '' ? (
+          <TextInput
+            style={styles.input}
+            placeholder="비밀번호를 입력"
+            type="password"
+            secureTextEntry={true}
+            value={passWordInput}
+            onChangeText={onPassWordInput}></TextInput>
+        ) : (
+          <TextInput
+            style={styles.inputX}
+            placeholder="비밀번호를 입력"
+            type="password"
+            secureTextEntry={true}
+            value={passWordInput}
+            onChangeText={onPassWordInput}></TextInput>
+        )}
 
-        <TextInput
-          style={styles.input}
-          placeholder="비밀번호를 입력"
-          type="password"
-          secureTextEntry={true}
-          value={passWordInput}
-          onChangeText={onPassWordInput}></TextInput>
+        {passwordConfirm === '' ? (
+          <TextInput
+            style={styles.input}
+            placeholder="비밀번호를 재입력"
+            type="password"
+            secureTextEntry={true}
+            value={passwordConfirm}
+            onChangeText={onConfirmInput}></TextInput>
+        ) : (
+          <TextInput
+            style={styles.inputX}
+            placeholder="비밀번호를 재입력"
+            type="password"
+            secureTextEntry={true}
+            value={passwordConfirm}
+            onChangeText={onConfirmInput}></TextInput>
+        )}
 
-        <TextInput
-          style={styles.input}
-          placeholder="비밀번호를 재입력"
-          type="password"
-          secureTextEntry={true}
-          value={passwordConfirm}
-          onChangeText={onConfirmInput}></TextInput>
         {passWordInput === '' || passwordConfirm === '' ? (
           <TouchableOpacity
             onPress={() => {
@@ -123,6 +143,18 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 12,
     borderColor: '#D6D7D9',
+    borderWidth: 1,
+    justifyContent: 'center',
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  inputX: {
+    width: '70%',
+    height: 56,
+    backgroundColor: '#FBFBFB',
+    marginTop: 50,
+    borderRadius: 12,
+    borderColor: '#333842',
     borderWidth: 1,
     justifyContent: 'center',
     lineHeight: 20,
