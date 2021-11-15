@@ -26,8 +26,7 @@ function Users_login(props) {
             email: props.LoginName,
             password: props.PasswordInput,
           },
-          url:
-            'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/sign-in',
+          url: 'https://api.bapmukda.net/v1/auth/sign-in',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
         // const response = await axios.get(
@@ -44,7 +43,6 @@ function Users_login(props) {
         // console.log('success = '+props.success);
         props.setAccessToken(response.data.accessToken);
         props.setRefreshToken(response.data.refreshToken);
-
       } catch (e) {
         setError(e);
       }

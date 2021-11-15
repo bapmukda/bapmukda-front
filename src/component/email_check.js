@@ -22,19 +22,18 @@ function Users(props) {
           data: {
             email: props.LoginName,
           },
-          url:
-            'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/validate/email',
+          url: 'https://api.bapmukda.net/v1/auth/validate/email',
           // url: "http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/meal?fromDate=2021-05-01&toDate=2021-09-11",
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
 
         console.log('실행');
-        // console.log(response);
+        // console.log(resp
         console.log(response.data);
         // console.log(response._response.historeis);
         setUsers(response.data);
-        console.log(response.data.isRegistered + '등록현황');
-        props.setR(response.data.isRegistered);
+        console.log(users.isRegistered + '등록현황');
+        props.setR(users.isRegistered);
         console.log('R' + props.R);
         if (users.isRegistered === true) {
           console.log('이미 존재하는 이메일입니다!');

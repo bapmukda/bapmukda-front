@@ -26,8 +26,7 @@ function Users_login(props) {
             password: props.PasswordInput,
             name: props.myTextInput,
           },
-          url:
-            'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/sign-up',
+          url: 'https://api.bapmukda.net/v1/auth/sign-up',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
         // const response = await axios.get(
