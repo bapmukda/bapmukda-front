@@ -28,6 +28,7 @@ export default function Input_diary() {
         textAlign={'center'}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        autoCorrect={false}
         style={[styles.input, {borderColor: isFocused ? '#333842' : '#D6D7D9'}]}
       />
       <Text style={styles.cnt}>{myTextInput.length}/80</Text>

@@ -16,7 +16,11 @@ export default function AddMood(props) {
             createdDate: createDate,
           },
           url: 'https://api.bapmukda.net/v1/mood',
+          headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
+        setHappinessLev(response.data);
+        setMemo(response.data);
+        setcreateDate(response.data);
       } catch (e) {
         alert(e);
       }
