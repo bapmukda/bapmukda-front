@@ -12,8 +12,9 @@ import {
   Image,
 } from 'react-native';
 import Users from '../email_check';
+import {isEamil} from '../check_id_pw'
 
-export default function Longin(props) {
+export default function LoginScreen(props) {
   const [LoginName, setLoginName] = useState('');
   const onChangeInput = event => {
     setLoginName(event);

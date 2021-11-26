@@ -237,7 +237,7 @@ export default function Add_diary(props) {
         <View style={styles.diary_Check_box}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Sidebar_logined');
+              props.navigation.navigate('Details');
             }}>
             <Image
               source={require('../imgs/check.png')}

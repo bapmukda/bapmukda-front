@@ -27,7 +27,7 @@ function Users_login(props) {
             password: props.PasswordInput,
           },
           url:
-            'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/sign-in',
+            'https://api.bapmukda.net/v1/auth/sign-in',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
         // const response = await axios.get(
@@ -39,11 +39,15 @@ function Users_login(props) {
         // console.log(response.data);
         // console.log(response._response.historeis);
         setUsers(response.data);
-        // console.log(response.data.accessToken + '엑세스토큰');
+        // console.log(users)
+        console.log(users.accessToken + '엑세스토큰');
+        props.setAccessToken(users.accessToken);
+        console.log('access     ' + props.accessToken);
+        console.log(users.refreshToken + '리프레쉬토큰');
+        props.setrefreshToken(users.refreshToken);
+        console.log('refresh     ' + props.refreshToken);
         // props.setSuccess('gggg');
         // console.log('success = '+props.success);
-        props.setAccessToken(response.data.accessToken);
-        props.setRefreshToken(response.data.refreshToken);
 
       } catch (e) {
         setError(e);

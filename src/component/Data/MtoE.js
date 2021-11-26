@@ -1135,7 +1135,6 @@ export default function MtoE(props) {
           .format('YYYY'),
       )
     ) {
-      console.log('띠리띠띠');
       setDisable(true);
       return '#E17551';
     } else {

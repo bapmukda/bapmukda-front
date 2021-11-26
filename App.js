@@ -4,7 +4,7 @@
  *
  * @format
  * @flow strict-local
- */
+**/
 
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
@@ -21,10 +21,14 @@ import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
 import enterfood from './src/component/Data/enterfood';
+import Details from './src/component/Calender/details';
+
 import {Text} from 'react-native';
 import {setCustomText} from 'react-native-global-props';
 
+
 const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
@@ -84,6 +88,11 @@ export default function App() {
           name="EnterFood"
           component={enterfood}
           options={{title: '음식등록'}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{title: '세부사항'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

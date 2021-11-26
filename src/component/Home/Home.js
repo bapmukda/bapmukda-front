@@ -24,9 +24,9 @@ export default function Home(props) {
         }}
       />
       <Button
-        title="Sidebar Screen"
+        title="식단등록 Screen"
         onPress={() => {
-          props.navigation.navigate('Add_diary');
+          props.navigation.navigate('MtoE');
         }}
       />
     </View>

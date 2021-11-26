@@ -182,6 +182,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    left: 110,
+    // left: 110,
   },
 });

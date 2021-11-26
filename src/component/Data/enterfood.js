@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function MtoE(props) {
+export default function enterfood(props) {
   return (
     <View style={styles.mainView}>
       <View style={styles.top}>

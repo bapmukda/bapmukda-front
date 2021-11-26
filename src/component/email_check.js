@@ -3,12 +3,13 @@ import {View, Text} from 'react-native';
 import axios from 'axios';
 import {set} from 'react-native-reanimated';
 
+
 function Users(props) {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [LoginName, setLoginName] = useState(props.LoginName);
-  console.log(props.LoginName + '로그인이름');
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -23,20 +24,21 @@ function Users(props) {
             email: props.LoginName,
           },
           url:
-            'http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/auth/validate/email',
-          // url: "http://ec2-54-180-32-86.ap-northeast-2.compute.amazonaws.com:8080/v1/meal?fromDate=2021-05-01&toDate=2021-09-11",
+            'https://api.bapmukda.net/v1/auth/validate/email',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
 
-        console.log('실행');
-        // console.log(response);
-        console.log(response.data);
+
+        // console.log(response.data + 'response');
         // console.log(response._response.historeis);
-        setUsers(response.data);
-        console.log(response.data.isRegistered + '등록현황');
-        props.setR(response.data.isRegistered);
-        console.log('R' + props.R);
-        if (users.isRegistered === true) {
+        // setUsers(response.data);
+        // console(users);
+        // console.log(users.isRegistered + '등록현황');
+        // props.setR(users.isRegistered);
+        // console.log('R' + props.R);
+        if (response.data.isRegistered === true) {
+          props.setR(true);
+          console.log(props.R);
           console.log('이미 존재하는 이메일입니다!');
         }
         // setUsers(response._response.histories); // 데이터는 response.data 안에 들어있습니다.
