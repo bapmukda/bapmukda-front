@@ -64,12 +64,21 @@ export default function Nickname(props) {
             width: '100%',
             alignItems: 'center',
           }}>
-          <TextInput
-            style={styles.input}
-            type="text"
-            value={myTextInput}
-            onChangeText={onChangeInput}
-            placeholder="닉네임 입력"></TextInput>
+          {myTextInput === '' ? (
+            <TextInput
+              style={styles.input}
+              type="text"
+              value={myTextInput}
+              onChangeText={onChangeInput}
+              placeholder="닉네임 입력"></TextInput>
+          ) : (
+            <TextInput
+              style={styles.inputX}
+              type="text"
+              value={myTextInput}
+              onChangeText={onChangeInput}
+              placeholder="닉네임 입력"></TextInput>
+          )}
         </View>
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
@@ -124,6 +133,7 @@ export default function Nickname(props) {
     </>
   );
 }
+
 const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
@@ -168,6 +178,18 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 12,
     borderColor: '#D6D7D9',
+    borderWidth: 1,
+    justifyContent: 'center',
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  inputX: {
+    width: '70%',
+    height: 56,
+    backgroundColor: '#FBFBFB',
+    marginTop: 50,
+    borderRadius: 12,
+    borderColor: '#333842',
     borderWidth: 1,
     justifyContent: 'center',
     lineHeight: 20,

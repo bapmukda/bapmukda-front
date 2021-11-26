@@ -39,12 +39,25 @@ export default function LoginScreen(props) {
       <View style={styles.mainView}>
         <Text style={{fontSize: 16}}>밥먹다와 함께 할</Text>
         <Text style={{fontSize: 16}}>메일주소를 적어주세요</Text>
-        <TextInput
-          style={styles.input}
-          type="email"
-          placeholder="메일주소 입력"
-          value={LoginName}
-          onChangeText={onChangeInput}></TextInput>
+        {LoginName === '' ? (
+          <TextInput
+            autoCapitalize={'none'}
+            autoFocus={true}
+            style={styles.input}
+            type="email"
+            placeholder="메일주소 입력"
+            value={LoginName}
+            onChangeText={onChangeInput}></TextInput>
+        ) : (
+          <TextInput
+            autoCapitalize={'none'}
+            autoFocus={true}
+            style={styles.inputX}
+            type="email"
+            placeholder="메일주소 입력"
+            value={LoginName}
+            onChangeText={onChangeInput}></TextInput>
+        )}
 
         {LoginName === '' ? (
           <TouchableOpacity
@@ -114,6 +127,18 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 12,
     borderColor: '#D6D7D9',
+    borderWidth: 1,
+    justifyContent: 'center',
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  inputX: {
+    width: '70%',
+    height: 56,
+    backgroundColor: '#FBFBFB',
+    marginTop: 50,
+    borderRadius: 12,
+    borderColor: '#333842',
     borderWidth: 1,
     justifyContent: 'center',
     lineHeight: 20,

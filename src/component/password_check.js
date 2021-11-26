@@ -26,8 +26,7 @@ function Users_login(props) {
             email: props.LoginName,
             password: props.PasswordInput,
           },
-          url:
-            'https://api.bapmukda.net/v1/auth/sign-in',
+          url: 'https://api.bapmukda.net/v1/auth/sign-in',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
         // const response = await axios.get(
@@ -48,7 +47,6 @@ function Users_login(props) {
         console.log('refresh     ' + props.refreshToken);
         // props.setSuccess('gggg');
         // console.log('success = '+props.success);
-
       } catch (e) {
         setError(e);
       }

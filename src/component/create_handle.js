@@ -26,8 +26,7 @@ function Users_login(props) {
             password: props.PasswordInput,
             name: props.myTextInput,
           },
-          url:
-            'https://api.bapmukda.net/v1/auth/sign-up',
+          url: 'https://api.bapmukda.net/v1/auth/sign-up',
           headers: {Authorization: 'Bearer 83e8a8c267f944f39583aa72674e5cac'},
         });
         // const response = await axios.get(

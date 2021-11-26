@@ -14,16 +14,19 @@ export default function LoginModal(props) {
           height: 400,
           borderRadius: 10,
           alignItems: 'center',
+          width: '90%',
+          marginLeft: '5%',
         }}>
         <Image
           source={signin}
           style={{width: 250, height: 144, marginTop: 30}}
         />
-        <Text style={{fontSize: 16, fontWeight: '900'}}>
-          {' '}
-          밥먹다에 가입하고
-        </Text>
-        <Text style={{fontSize: 16, marginTop: 8, fontWeight: 'bold'}}>
+        <Text style={{fontSize: 16}}> 밥먹다에 가입하고</Text>
+        <Text
+          style={{
+            fontSize: 16,
+            marginTop: 8,
+          }}>
           {' '}
           기록을 시작해보세요
         </Text>

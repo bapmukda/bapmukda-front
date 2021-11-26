@@ -53,14 +53,23 @@ export default function HaveId(props) {
         <Text style={{fontWeight: 'bold', fontSize: 16}}>
           비밀번호를 입력해주세요.
         </Text>
-        <TextInput
-          style={styles.input}
-          placeholder="비밀번호를 입력하세요"
-          type="password"
-          value={PasswordInput}
-          onChangeText={onChangeInput}
-          secureTextEntry={true}></TextInput>
-
+        {PasswordInput === '' ? (
+          <TextInput
+            style={styles.input}
+            placeholder="비밀번호를 입력하세요"
+            type="password"
+            value={PasswordInput}
+            onChangeText={onChangeInput}
+            secureTextEntry={true}></TextInput>
+        ) : (
+          <TextInput
+            style={styles.inputX}
+            placeholder="비밀번호를 입력하세요"
+            type="password"
+            value={PasswordInput}
+            onChangeText={onChangeInput}
+            secureTextEntry={true}></TextInput>
+        )}
         {PasswordInput === '' ? (
           <TouchableOpacity
             onPress={() => {
@@ -110,6 +119,18 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 12,
     borderColor: '#D6D7D9',
+    borderWidth: 1,
+    justifyContent: 'center',
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  inputX: {
+    width: '70%',
+    height: 56,
+    backgroundColor: '#FBFBFB',
+    marginTop: 50,
+    borderRadius: 12,
+    borderColor: '#333842',
     borderWidth: 1,
     justifyContent: 'center',
     lineHeight: 20,

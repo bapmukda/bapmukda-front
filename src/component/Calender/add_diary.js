@@ -332,7 +332,7 @@ export default function Add_diary(props) {
           backgroundColor: 'white',
           marginTop: '3%',
         }}>
-        <Input_diary></Input_diary>
+        <Input_diary />
       </View>
 
       <TouchableOpacity
