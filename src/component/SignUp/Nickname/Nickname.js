@@ -222,6 +222,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgb(212, 212, 212)',
+    borderBottomColor: 'rgb(210, 210, 210)',
   },
 });
