@@ -22,6 +22,7 @@ import CheckModal from './modal/CheckModal';
 import DayModal from './modal/DayModal';
 import LoginModal from './modal/LoginModal';
 import MonthPicker from './modal/MonthPicker';
+import DaymodlaDumData from './modal/DayModaldumdata';
 function getFormatDate(date) {
   var year = date.getFullYear(); //yyyy
   var month = 1 + date.getMonth(); //M
@@ -178,6 +179,7 @@ export default function Calender(props) {
       selectedColor: '#111',
     };
   });
+
   allday.forEach(day => {
     newDaysObject[day] = {
       dots: [
@@ -187,6 +189,53 @@ export default function Calender(props) {
         {key: '4', color: 'rgba(214, 215, 217, 1)'},
       ],
     };
+  });
+  DaymodlaDumData.map(id => {
+    let dum = new Date();
+    const dumtoday = [getFormatDate(dum)];
+    if (id.date == dumtoday) {
+      newDaysObject[id.date] = {
+        dots: [
+          id.MoMeun === ''
+            ? {key: '1', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '1', color: '#7D9E6B'},
+          id.LuMeun === ''
+            ? {key: '2', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '2', color: '#E17551'},
+          ,
+          id.DiMeun === ''
+            ? {key: '3', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '3', color: '#F7BC6E'},
+          ,
+          id.SnMeun === ''
+            ? {key: '4', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '4', color: '#738CC1'},
+          ,
+        ],
+        selected: true,
+        selectedColor: '#111',
+      };
+    } else {
+      newDaysObject[id.date] = {
+        dots: [
+          id.MoMeun === ''
+            ? {key: '1', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '1', color: '#7D9E6B'},
+          id.LuMeun === ''
+            ? {key: '2', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '2', color: '#E17551'},
+          ,
+          id.DiMeun === ''
+            ? {key: '3', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '3', color: '#F7BC6E'},
+          ,
+          id.SnMeun === ''
+            ? {key: '4', color: 'rgba(214, 215, 217, 1)'}
+            : {key: '4', color: '#738CC1'},
+          ,
+        ],
+      };
+    }
   });
 
   return (
@@ -247,10 +296,7 @@ export default function Calender(props) {
             }}
             style={{height: 400}}
             monthFormat={''}
-            // horizontal={true}
-            // Max amount of months allowed to scroll to the past. Default = 50
             scrollEnabled={false}
-            // Enable or disable vertical scroll indicator. Default = false
             theme={{
               'stylesheet.day.basic': {
                 dayTextAtIndex0: {
@@ -280,10 +326,7 @@ export default function Calender(props) {
             }}
             style={{height: 400}}
             monthFormat={''}
-            // horizontal={true}
-            // Max amount of months allowed to scroll to the past. Default = 50
             scrollEnabled={false}
-            // Enable or disable vertical scroll indicator. Default = false
             theme={{
               'stylesheet.day.basic': {
                 dayTextAtIndex0: {

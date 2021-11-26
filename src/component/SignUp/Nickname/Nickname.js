@@ -15,11 +15,6 @@ import CheckBox from '@react-native-community/checkbox';
 import Users_login from '../../create_handle';
 
 export default function Nickname(props) {
-  const [myTextInput, setMyTextInput] = useState('');
-  const [passWordInput, setPassWordInput] = useState(true);
-  const [isInput, setisInput] = useState(false);
-  const handlepwFocus = () => setPassWordInput(true);
-  const handlepwBlur = () => setPassWordInput(false);
   const [isSelected, setSelection] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
   const [refreshToken, setRefreshToken] = useState(null);
