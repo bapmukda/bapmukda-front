@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-<<<<<<< HEAD
 import React, {useState} from 'react';
 import {
   View,
@@ -18,10 +17,6 @@ const data = [
   {id: '3', name: 'sbj'},
   {id: '4', name: 'sbj'},
 ];
-=======
-import React from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
 
 export default function Home(props) {
   const [Lists, setLists] = useState(data);
@@ -56,7 +51,6 @@ export default function Home(props) {
           props.navigation.navigate('MtoE');
         }}
       />
-<<<<<<< HEAD
       {/* <View>
         <FlatList
           data={Lists}
@@ -76,14 +70,6 @@ export default function Home(props) {
           }}
         />
       </View> */}
-=======
-      <Button
-        title="details Screen"
-        onPress={() => {
-          props.navigation.navigate('details');
-        }}
-      />
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
     </View>
   );
 }

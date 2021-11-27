@@ -459,99 +459,6 @@ export default function MtoE(props) {
     '12월',
   ]);
   const [selectedDate, setSelectedDate] = useState(1);
-  const [dateList28, setDateList28] = useState([
-    '1일',
-    '2일',
-    '3일',
-    '4일',
-    '5일',
-    '6일',
-    '7일',
-    '8일',
-    '9일',
-    '10일',
-    '11일',
-    '12일',
-    '13일',
-    '14일',
-    '15일',
-    '16일',
-    '17일',
-    '18일',
-    '19일',
-    '20일',
-    '21일',
-    '22일',
-    '23일',
-    '24일',
-    '25일',
-    '26일',
-    '27일',
-    '28일',
-  ]);
-  const [dateList29, setDateList29] = useState([
-    '1일',
-    '2일',
-    '3일',
-    '4일',
-    '5일',
-    '6일',
-    '7일',
-    '8일',
-    '9일',
-    '10일',
-    '11일',
-    '12일',
-    '13일',
-    '14일',
-    '15일',
-    '16일',
-    '17일',
-    '18일',
-    '19일',
-    '20일',
-    '21일',
-    '22일',
-    '23일',
-    '24일',
-    '25일',
-    '26일',
-    '27일',
-    '28일',
-    '29일',
-  ]);
-  const [dateList30, setDateList30] = useState([
-    '1일',
-    '2일',
-    '3일',
-    '4일',
-    '5일',
-    '6일',
-    '7일',
-    '8일',
-    '9일',
-    '10일',
-    '11일',
-    '12일',
-    '13일',
-    '14일',
-    '15일',
-    '16일',
-    '17일',
-    '18일',
-    '19일',
-    '20일',
-    '21일',
-    '22일',
-    '23일',
-    '24일',
-    '25일',
-    '26일',
-    '27일',
-    '28일',
-    '29일',
-    '30일',
-  ]);
   const [dateList31, setDateList31] = useState([
     '1일',
     '2일',
@@ -585,8 +492,8 @@ export default function MtoE(props) {
     '30일',
     '31일',
   ]);
+
   const [isleaf, setIsLeaf] = useState(false);
-  const [is31, setIs31] = useState(false);
 
   // For time picker
   const [a, setA] = useState(
@@ -595,6 +502,7 @@ export default function MtoE(props) {
       .utcOffset(+9)
       .format('   a     hh:mm'),
   );
+
   const [item, setItem] = useState(null);
   const [minute, setMinute] = useState(null);
 
@@ -615,17 +523,6 @@ export default function MtoE(props) {
 
   const [showRegister, setShowRegister] = useState(false);
 
-  const [date, setDate] = useState(
-    moment()
-      .locale('ko')
-      .utcOffset(+9),
-  );
-
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const datePickerPressed = () => {
-    setShowDate(true);
-    leaf();
-  };
   const leaf = () => {
     if (
       Number(yearList[selectedYear].slice(0, -1)) % 4 == 0 &&
@@ -659,6 +556,7 @@ export default function MtoE(props) {
       setMinute(':' + selectedMinute);
     }
   };
+  
   const changeYear = index => {
     setSelectedYear(index);
     if (
@@ -714,17 +612,12 @@ export default function MtoE(props) {
       setDisable(false);
     }
   };
+  
   const changeMonth = index => {
-    // console.log("index"+index);
-    // console.log("selectedMonth"+selectedMonth);
-    // console.log("Before"+monthList[selectedMonth]);
     setSelectedMonth(index);
-    // console.log("index"+selectedMonth);
-    // console.log("After"+monthList[selectedMonth]);
     leaf();
 
     if (isleaf) {
-      //(Number(yearList[selectedYear]) % 4 == 0 && Number(yearList[selectedYear]) % 100 != 0 && Number(yearList[selectedYear]) % 400 == 0) // 윤년
       if (
         (Number(monthList[index].slice(0, -1)) % 2 == 1 &&
           Number(monthList[index].slice(0, -1)) < 8) ||
@@ -1341,21 +1234,7 @@ export default function MtoE(props) {
                   {dateList31.map((value, i) => (
                     <PickerItem label={value} value={i} key={i} />
                   ))}
-                  {/* {
-                       isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2 ? dateList29.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : ( !isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2) ? dateList28.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : ( () => thirtyone() ), is31 ? dateList31.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : dateList30.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      ))
-                    } */}
 
-                  {/* {dateList.map((value, i) => (
-                      <PickerItem label={value} value={i} key={i}/>
-                    ))} */}
                 </Picker>
               </View>
 
@@ -1622,7 +1501,6 @@ export default function MtoE(props) {
       </TouchableOpacity>
 
       <TouchableHighlight
-        // activeOpacity={0}
         style={[styles.foodselect]}
         onPress={() => {
           props.navigation.navigate('EnterFood');
