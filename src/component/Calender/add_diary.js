@@ -231,11 +231,11 @@ export default function Add_diary(props) {
   const [Colr3, setColor3] = useState('#FFFFFF');
   const [Colr4, setColor4] = useState('#FFFFFF');
 
-  const [Colr, setColor] = useState('#FFFFFF');
-  const [Colr1, setColor1] = useState('#FFFFFF');
-  const [Colr2, setColor2] = useState('#FFFFFF');
-  const [Colr3, setColor3] = useState('#FFFFFF');
-  const [Colr4, setColor4] = useState('#FFFFFF');
+  // const [Colr, setColor] = useState('#FFFFFF');
+  // const [Colr1, setColor1] = useState('#FFFFFF');
+  // const [Colr2, setColor2] = useState('#FFFFFF');
+  // const [Colr3, setColor3] = useState('#FFFFFF');
+  // const [Colr4, setColor4] = useState('#FFFFFF');
 
   const [date, setDate] = useState(
     moment()
@@ -478,6 +478,9 @@ export default function Add_diary(props) {
         </View>
         
       </View> */}
+
+
+
       <TouchableOpacity
         style={[styles.date_time]}
         // activeOpacity={0}
@@ -571,8 +574,8 @@ export default function Add_diary(props) {
                 }}>
                 :
               </Text>
-
-              <Picker
+              
+              <Picker // 분 선택
                 style={{
                   flex: 1 / 3,
                   width: '20%',

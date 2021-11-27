@@ -72,18 +72,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#ffffff',
   },
-<<<<<<< HEAD
-  nickname: {
-    width: 63,
-    height: 21,
-    left: -115,
-    top: -20,
-    fontSize: 16,
-    fontWeight: '700',
-
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-=======
   nickname:{
     width:63,
     height:21,
@@ -94,7 +82,6 @@ const styles = StyleSheet.create({
     fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
     fontWeight: "bold",
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
     lineHeight: 21,
     /* identical to box height */
     color: '#333842',
@@ -109,12 +96,8 @@ const styles = StyleSheet.create({
     top: 3,
     letterSpacing: 0.02,
     fontSize: 16,
-<<<<<<< HEAD
-    fontStyle: 'normal',
-=======
     fontStyle: "normal",
     fontFamily: "SpoqaHanSansNeo-Regular"
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
   },
   listbound: {
     top: 8,
