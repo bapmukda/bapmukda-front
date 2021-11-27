@@ -20,19 +20,9 @@ import Sidebar_longin from './src/component/Sidebar/sidebar_login';
 import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
-<<<<<<< HEAD
-import enterfood from './src/component/Data/enterfood';
-import Details from './src/component/Calender/details';
-
-import {Text} from 'react-native';
-import {setCustomText} from 'react-native-global-props';
-
-
-=======
 import enterfood from './src/component/Data/enterfood'
 import details from './src/component/Calender/details'
 import Users from './src/component/test'
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
 const Stack = createStackNavigator();
 
 
@@ -68,13 +58,8 @@ export default function App() {
         {/* <Stack.Screen
           name="Calender"
           component={Calendar}
-<<<<<<< HEAD
-          options={{headerShown: false}}
-        />
-=======
           options={{title: '캘린더'}}
         /> */}
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
         <Stack.Screen
           name="Sidebar"
           component={Sidebar_longin}
@@ -101,15 +86,9 @@ export default function App() {
           options={{title: '음식등록'}}
         />
         <Stack.Screen
-<<<<<<< HEAD
-          name="Details"
-          component={Details}
-          options={{title: '세부사항'}}
-=======
           name="details"
           component={details}
           options={{title: '상세페이지'}}
->>>>>>> 92936ac61acee4dea25793779656277f4895f669
         />
       </Stack.Navigator>
     </NavigationContainer>

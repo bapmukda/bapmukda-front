@@ -1234,7 +1234,21 @@ export default function MtoE(props) {
                   {dateList31.map((value, i) => (
                     <PickerItem label={value} value={i} key={i} />
                   ))}
+                  {/* {
+                       isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2 ? dateList29.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      )) : ( !isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2) ? dateList28.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      )) : ( () => thirtyone() ), is31 ? dateList31.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      )) : dateList30.map((value, i) => (
+                        <PickerItem label={value} value={i} key={i}/>
+                      ))
+                    } */}
 
+                  {/* {dateList.map((value, i) => (
+                      <PickerItem label={value} value={i} key={i}/>
+                    ))} */}
                 </Picker>
               </View>
 
