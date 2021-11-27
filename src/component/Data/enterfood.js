@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     height: '12.86%',
     backgroundColor: 'white',
 
+<<<<<<< HEAD
     backgroundColor: 'yellow',
 
     marginTop: '1%',
@@ -74,6 +75,15 @@ const styles = StyleSheet.create({
 
     fontStyle: 'normal',
     fontWeight: 'normal',
+=======
+    marginTop:"1%",
+    justifyContent:"center",
+    alignItems:"center",
+    
+    fontFamily: "SpoqaHanSansNeo-Regular",
+    fontStyle: "normal",
+    fontWeight: "normal",
+>>>>>>> 92936ac61acee4dea25793779656277f4895f669
     fontSize: 18,
     lineHeight: 21,
     display: 'flex',
@@ -105,11 +115,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+<<<<<<< HEAD
   enterfood: {
     display: 'flex',
 
     fontStyle: 'normal',
     fontWeight: 'normal',
+=======
+  enterfood:{
+    display:"flex",
+    fontFamily: "SpoqaHanSansNeo-Regular",
+    fontStyle: "normal",
+    fontWeight: "normal",
+>>>>>>> 92936ac61acee4dea25793779656277f4895f669
     fontSize: 14,
     lineHeight: 21,
     alignItems: 'center',
@@ -119,7 +137,14 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 export default function enterfood(props) {
+=======
+
+
+export default function enterfood(props) {
+    
+>>>>>>> 92936ac61acee4dea25793779656277f4895f669
   return (
     <View style={styles.mainView}>
       <View style={styles.top}>

@@ -14,7 +14,13 @@ export default function Input_diary() {
   const handleBlur = () => setisFocused(false);
   const maxlen = 80;
   return (
-    <View>
+    <View
+      style={{
+        backgroundColor: 'green',
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+      }}>
       <TextInput
         width="100%"
         hieght="100%"
@@ -26,9 +32,8 @@ export default function Input_diary() {
         autoCapitalize={'none'}
         editable={true}
         textAlign={'center'}
-        onFocus={handleFocus}
+        // onFocus={handleFocus}
         onBlur={handleBlur}
-        autoCorrect={false}
         style={[styles.input, {borderColor: isFocused ? '#333842' : '#D6D7D9'}]}
       />
       <Text style={styles.cnt}>{myTextInput.length}/80</Text>
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     justifyContent: 'center',
     lineHeight: 20,
-
+    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
     // paddingBottom: 0,
     // paddingTop: 0,
     justifyContent: 'center',
-
+    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,

@@ -43,9 +43,15 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     justifyContent: 'center',
     lineHeight: 20,
+<<<<<<< HEAD
 
     fontStyle: 'normal',
     fontWeight: 'normal',
+=======
+    fontFamily: "SpoqaHanSansNeo-Regular",
+    fontStyle: "normal",
+    fontWeight: "normal",
+>>>>>>> 92936ac61acee4dea25793779656277f4895f669
     fontSize: 14,
     lineHeight: 21,
     display: 'flex',
@@ -67,9 +73,15 @@ const styles = StyleSheet.create({
     // paddingBottom: 0,
     // paddingTop: 0,
     justifyContent: 'center',
+<<<<<<< HEAD
 
     fontStyle: 'normal',
     fontWeight: 'normal',
+=======
+    fontFamily: "SpoqaHanSansNeo-Regular",
+    fontStyle: "normal",
+    fontWeight: "normal",
+>>>>>>> 92936ac61acee4dea25793779656277f4895f669
     fontSize: 14,
     lineHeight: 21,
     display: 'flex',
