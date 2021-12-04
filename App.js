@@ -4,7 +4,7 @@
  *
  * @format
  * @flow strict-local
-**/
+ **/
 
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
@@ -15,16 +15,15 @@ import LoginScreen from './src/component/Login/Login';
 import HaveId from './src/component/Login/HaveId/HaveId';
 import SignUp from './src/component/SignUp/SignUp';
 import Nickname from './src/component/SignUp/Nickname/Nickname';
-// import Calendar from './src/component/Calender/Calender';
+import Calendar from './src/component/Calender/Calender';
 import Sidebar_longin from './src/component/Sidebar/sidebar_login';
 import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
-import enterfood from './src/component/Data/enterfood'
-import details from './src/component/Calender/details'
-import Users from './src/component/test'
+import enterfood from './src/component/Data/enterfood';
+import details from './src/component/Calender/details';
+import Users from './src/component/test';
 const Stack = createStackNavigator();
-
 
 export default function App() {
   return (
@@ -55,11 +54,11 @@ export default function App() {
           component={Nickname}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Calender"
           component={Calendar}
           options={{title: '캘린더'}}
-        /> */}
+        />
         <Stack.Screen
           name="Sidebar"
           component={Sidebar_longin}
