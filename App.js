@@ -57,7 +57,7 @@ export default function App() {
         <Stack.Screen
           name="Calender"
           component={Calendar}
-          options={{title: '캘린더'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Sidebar"
