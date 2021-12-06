@@ -77,7 +77,6 @@ LocaleConfig.defaultLocale = 'ko';
 export default function Calender(props) {
   const today = moment().format('YYYY-MM-DD');
   const [uperDate, setUperDate] = useState(moment().format('YYYY-MM'));
-  const [isModalVisible, setModalVisible] = useState(false);
   const [isDate, setIsDate] = useState('');
   const [isDay, setisDay] = useState('');
   const [isMonth, setIsMonth] = useState('');
@@ -89,6 +88,7 @@ export default function Calender(props) {
   const [enterModal, setenterModal] = useState(true);
   const [selectedMonth, setSelectedMonth] = useState(8);
   const [selectedYear, setSelectedYear] = useState(2);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [ind, setind] = useState(0);
   const [year, setYear] = useState(
     moment()
@@ -108,7 +108,8 @@ export default function Calender(props) {
   const modalizeRef = useRef();
 
   const onOpen = (day, month, dateString) => {
-    modalizeRef.current?.open();
+    // modalizeRef.current?.open();
+    setIsModalVisible(!isModalVisible);
     setisDay(day);
     setIsMonth(month);
     var date = new Date(dateString).getDay();
@@ -239,7 +240,7 @@ export default function Calender(props) {
   });
 
   return (
-    <View style={{}}>
+    <View style={{backgroundColor: 'white'}}>
       <View
         style={{
           backgroundColor: 'white',
@@ -364,6 +365,7 @@ export default function Calender(props) {
       <DayModal
         modalizeRef={modalizeRef}
         isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
         isMonth={isMonth}
         isDate={isDate}
         isDay={isDay}
