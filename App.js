@@ -4,7 +4,7 @@
  *
  * @format
  * @flow strict-local
-**/
+ **/
 
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
@@ -20,11 +20,10 @@ import Sidebar_longin from './src/component/Sidebar/sidebar_login';
 import Sidebar_longined from './src/component/Sidebar/sidebar_logined';
 import Add_diary from './src/component/Calender/add_diary';
 import MtoE from './src/component/Data/MtoE';
-import enterfood from './src/component/Data/enterfood'
-import details from './src/component/Calender/details'
-import Users from './src/component/test'
+import enterfood from './src/component/Data/enterfood';
+import details from './src/component/Calender/details';
+import Users from './src/component/test';
 const Stack = createStackNavigator();
-
 
 export default function App() {
   return (
@@ -58,7 +57,7 @@ export default function App() {
         <Stack.Screen
           name="Calender"
           component={Calendar}
-          options={{title: '캘린더'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Sidebar"
