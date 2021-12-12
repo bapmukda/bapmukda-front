@@ -23,8 +23,24 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
     flex: 1, //화면을 차지 하는 비율, 1/1 다른게 3이면 1/4 : 3/4
-    paddingTop: 80,
     alignItems: 'center', //수평정렬
+  },
+  top: {
+    // position: "absolute"6,
+    backgroundColor: 'white',
+    width: '100%',
+    height: '5.44%',
+    // top: "5.44%",
+    justifyContent: 'center',
+  },
+  diary_Check_box: {
+    position: 'absolute',
+    width: '5.33%',
+    height: '45.45%',
+    right: '4%',
+    top: '27.28%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   mainText: {
     fontSize: 20,
@@ -39,30 +55,21 @@ const styles = StyleSheet.create({
     height: 48,
     justifyContent: 'center',
   },
-  sidetop: {
-    position: 'absolute',
-    width: 479,
-    height: 44,
-    left: 0,
-    top: 0,
-  },
-  sideX: {
-    width: 30,
-    height: 30,
-    marginLeft: '89%',
-    top: '80%',
-  },
   header: {
-    width: '100%',
-    height: 132,
+    backgroundColor:'green',
+    width: "100%",
+    // height: 132,
+    height: "15.5%",
     justifyContent: 'center',
     alignItems: 'center',
   },
   img1: {
     width: 48,
     height: 48,
-    left: -190,
-    top: 10,
+    // left: -190,
+    marginRight: "79%",
+    // top: 10,
+    top: "8%",
   },
   img2: {
     width: 28,
@@ -73,13 +80,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   nickname:{
-    width:63,
-    height:21,
-    left:-115,
+    backgroundColor:'red',
+    // width:63,
+    width:"13%",
+    // height:21,
+    height:"16%",
+    // left:-115,
+    marginRight:"48%",
     top:-20,
+    // marginTop:"3%",
     fontSize:16,
-    fontWeight:"700",
-    fontFamily: "SpoqaHanSansNeo-Regular",
+    // fontWeight:"700",
+    // fontFamily: "SpoqaHanSansNeo-Regular",
     fontStyle: "normal",
     fontWeight: "bold",
     lineHeight: 21,
@@ -97,7 +109,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.02,
     fontSize: 16,
     fontStyle: "normal",
-    fontFamily: "SpoqaHanSansNeo-Regular"
+    // fontFamily: "SpoqaHanSansNeo-Regular"
   },
   listbound: {
     top: 8,
@@ -107,10 +119,12 @@ const styles = StyleSheet.create({
     // alignItems:"flex-start"
   },
   sidebottom: {
-    top: 350,
+    position: 'absolute',
+    bottom: 0,
+    marginBottom: "7%",
     width: '100%',
-    height: 117,
-    left: 5,
+    // height: 117,
+    marginLeft: "3%",
   },
 });
 
@@ -151,14 +165,13 @@ export default function Sidebar_longined(props) {
 
   return (
     <View style={styles.mainView}>
-      <View style={styles.sidetop}>
-        <View style={styles.sideX}>
+      <View style={styles.top}>
+        <View style={[styles.diary_Check_box, {backgroundColor: 'white'}]}>
           <TouchableOpacity
-            style={{backgroundColor: 'white'}}
             onPress={() => {
-              props.navigation.navigate('Home');
+              props.navigation.navigate('Calender');
             }}>
-            <Image source={require('../imgs/close.png')} />
+            <Image source={require('../imgs/close.png')}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -216,7 +229,7 @@ export default function Sidebar_longined(props) {
           <Text style={[styles.listtext, {color: Colr2}]}>식단 목표</Text>
         </TouchableOpacity>
       </View>
-
+      
       <View style={styles.sidebottom}>
         <Image source={require('../imgs/logout.png')} style={styles.img2} />
         <TouchableOpacity
@@ -226,6 +239,7 @@ export default function Sidebar_longined(props) {
           <Text style={styles.listtext}>로그아웃</Text>
         </TouchableOpacity>
       </View>
+
     </View>
   );
 }

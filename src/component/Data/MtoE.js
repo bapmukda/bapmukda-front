@@ -1161,6 +1161,8 @@ export default function MtoE(props) {
 
   return (
     <View style={styles.mainView}>
+
+      {/*상단 View*/}
       <View style={styles.top}>
         {additionalCnt != 0 && addMode == true ? (
           <View style={styles.addition}>
@@ -1184,7 +1186,8 @@ export default function MtoE(props) {
           </TouchableOpacity>
         </View>
       </View>
-
+      
+      {/*아침 점심 저녁 간식 View*/}
       <View style={styles.dining_type}>
         <View style={[styles.dining_box]}>
           <TouchableOpacity
@@ -1226,7 +1229,8 @@ export default function MtoE(props) {
           </TouchableOpacity>
         </View>
       </View>
-
+      
+      {/*날짜 선택 View*/}
       <View style={[styles.date_time]}>
         <TouchableOpacity onPress={() => setShowDate(true)}>
           <Text>
@@ -1412,6 +1416,8 @@ export default function MtoE(props) {
           </Modal>
         </TouchableOpacity>
       </View>
+
+      {/*시간 선택 View*/}
       <TouchableOpacity
         style={[styles.date_time]}
         // activeOpacity={0}
@@ -1616,6 +1622,7 @@ export default function MtoE(props) {
         </View>
       </TouchableHighlight> */}
 
+      {/*음식 선택 및 입력 View*/}
       <View style={[styles.foodselect]}>
         <View style={styles.Foodpicker}>
           <Enterfood></Enterfood>
@@ -1625,6 +1632,8 @@ export default function MtoE(props) {
       {/* <View style={{width:480, height:100}}>
         <Input_food></Input_food>
       </View> */}
+
+      {/*하단 등록하기(Modal) View*/}
       <TouchableOpacity
         style={{
           width: '100%',
@@ -1633,6 +1642,7 @@ export default function MtoE(props) {
           bottom: 0,
         }}
         onPress={() => setShowRegister(true)}>
+        
         <View
           style={{
             backgroundColor: '#E17551',
@@ -1645,6 +1655,7 @@ export default function MtoE(props) {
             <Text style={styles.bottomtext}>등록하기</Text>
           </View>
         </View>
+        
         <Modal
           transparent={true}
           animationType="slide"
@@ -1699,8 +1710,7 @@ export default function MtoE(props) {
                     fontWeight: 'bold',
                   },
                 ]}>
-                {' '}
-                11:01{' '}
+                {' '}11:01{' '}
               </Text>
             </View>
 
@@ -1717,8 +1727,7 @@ export default function MtoE(props) {
                   position: 'absolute',
                   left: '24.46%',
                 }}>
-                {' '}
-                생선구이{' '}
+                {' '}생선구이{' '}
               </Text>
 
               <View style={[styles.registerModalTrashIcon]}>
@@ -1766,6 +1775,7 @@ export default function MtoE(props) {
                 onPress={() => {
                   props.navigation.navigate('Calender');
                 }}>
+                  
                 <View
                   style={{
                     backgroundColor: '#E17551',
