@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
 
     /* sub/12/0/reg */
 
-    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
@@ -101,7 +100,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
-    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 18,
@@ -142,7 +140,6 @@ const styles = StyleSheet.create({
 
     /* sub/12/0/reg */
 
-    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 18,
@@ -165,7 +162,6 @@ const styles = StyleSheet.create({
     // alignContent:"center",
     alignItems: 'center',
 
-    fontFamily: 'SpoqaHanSansNeo-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 18,
@@ -479,8 +475,6 @@ export default function Add_diary(props) {
         
       </View> */}
 
-
-
       <TouchableOpacity
         style={[styles.date_time]}
         // activeOpacity={0}
@@ -522,7 +516,7 @@ export default function Add_diary(props) {
                 visibleItemCount={1}
                 itemStyle={{
                   color: '#D6D7D9',
-                  fontFamily: 'SpoqaHanSansNeo-Regular',
+
                   fontWeight: 'bold',
                   fontSize: 20,
                   lineHeight: 24,
@@ -549,7 +543,7 @@ export default function Add_diary(props) {
                 visibleItemCount={1}
                 itemStyle={{
                   color: '#D6D7D9',
-                  fontFamily: 'SpoqaHanSansNeo-Regular',
+
                   fontWeight: 'bold',
                   fontSize: 20,
                   lineHeight: 24,
@@ -564,7 +558,7 @@ export default function Add_diary(props) {
               <Text
                 style={{
                   color: '#333842',
-                  fontFamily: 'SpoqaHanSansNeo-Regular',
+
                   fontWeight: 'bold',
                   fontSize: 20,
                   lineHeight: 24,
@@ -574,7 +568,7 @@ export default function Add_diary(props) {
                 }}>
                 :
               </Text>
-              
+
               <Picker // 분 선택
                 style={{
                   flex: 1 / 3,
@@ -592,7 +586,7 @@ export default function Add_diary(props) {
                 // isCurved={false}
                 itemStyle={{
                   color: '#D6D7D9',
-                  fontFamily: 'SpoqaHanSansNeo-Regular',
+
                   fontWeight: 'bold',
                   fontSize: 20,
                   lineHeight: 24,
@@ -632,7 +626,7 @@ export default function Add_diary(props) {
                     style={{
                       color: '#E17551',
                       alignSelf: 'center',
-                      fontFamily: 'SpoqaHanSansNeo-Regular',
+
                       fontStyle: 'normal',
                       fontWeight: 'bold',
                       fontSize: 17,
@@ -664,7 +658,7 @@ export default function Add_diary(props) {
                     style={{
                       color: 'white',
                       alignSelf: 'center',
-                      fontFamily: 'SpoqaHanSansNeo-Regular',
+
                       fontStyle: 'normal',
                       fontWeight: 'bold',
                       fontSize: 17,

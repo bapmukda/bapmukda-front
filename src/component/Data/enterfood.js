@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: '#FBFBFB',
     flex: 1, //화면을 차지 하는 비율, 1/1 다른게 3이면 1/4 : 3/4
-    width:'100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
-    height:'100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
+    width: '100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
+    height: '100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
     // paddingTop: 100,
     alignItems: 'center', //수평정렬
   },
@@ -66,16 +66,15 @@ const styles = StyleSheet.create({
   foodselect: {
     width: '100%',
     // height: '12.86%',
-    height:'100%',
+    height: '100%',
     backgroundColor: 'white',
 
     // marginTop:"1%", // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
-    justifyContent:"center",
-    alignItems:"center",
-    
-    fontFamily: "SpoqaHanSansNeo-Regular",
-    fontStyle: "normal",
-    fontWeight: "normal",
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     fontSize: 18,
     lineHeight: 21,
     display: 'flex',
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
     color: '#999BA0',
   },
   Foodpicker: {
-    marginRight:"10%",
+    marginRight: '10%',
     width: '100%',
     height: '100%',
     flexDirection: 'row',
@@ -107,13 +106,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFBFB',
     justifyContent: 'center',
     alignItems: 'center',
-    left:"50%",
+    left: '50%',
   },
-  enterfood:{
-    display:"flex",
-    fontFamily: "SpoqaHanSansNeo-Regular",
-    fontStyle: "normal",
-    fontWeight: "normal",
+  enterfood: {
+    display: 'flex',
+
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     fontSize: 14,
     lineHeight: 21,
     alignItems: 'center',
@@ -123,10 +122,7 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
 export default function Enterfood(props) {
-    
   return (
     <View style={styles.mainView}>
       {/* <View style={styles.top}>

@@ -299,15 +299,6 @@ export default function Calender(props) {
             monthFormat={''}
             scrollEnabled={false}
             theme={{
-              'stylesheet.day.basic': {
-                dayTextAtIndex0: {
-                  color: 'red',
-                },
-                dayTextAtIndex6: {
-                  color: 'blue',
-                },
-              },
-
               todayTextColor: 'white',
             }}
             showScrollIndicator={true}
@@ -329,15 +320,6 @@ export default function Calender(props) {
             monthFormat={''}
             scrollEnabled={false}
             theme={{
-              'stylesheet.day.basic': {
-                dayTextAtIndex0: {
-                  color: 'red',
-                },
-                dayTextAtIndex6: {
-                  color: 'blue',
-                },
-              },
-
               todayTextColor: 'white',
             }}
             showScrollIndicator={true}
