@@ -26,11 +26,12 @@ const styles = StyleSheet.create({
     alignItems: 'center', //수평정렬
   },
   top: {
-    // position: "absolute"6,
+    // position: "absolute",
     backgroundColor: 'white',
     width: '100%',
     height: '5.44%',
-    // top: "5.44%",
+    // marginTop: "5.44%",
+    backgroundColor: 'blue',
     justifyContent: 'center',
   },
   diary_Check_box: {
@@ -41,6 +42,7 @@ const styles = StyleSheet.create({
     top: '27.28%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'red',
   },
   mainText: {
     fontSize: 20,
@@ -166,7 +168,7 @@ export default function Sidebar_longined(props) {
   return (
     <View style={styles.mainView}>
       <View style={styles.top}>
-        <View style={[styles.diary_Check_box, {backgroundColor: 'white'}]}>
+        <View style={[styles.diary_Check_box]}>
           <TouchableOpacity
             onPress={() => {
               props.navigation.navigate('Calender');

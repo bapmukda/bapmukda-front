@@ -52,7 +52,13 @@ export default function Home(props) {
         }}
       />
       <Button
-        title="SB Screen"
+        title="sidebar logined Screen"
+        onPress={() => {
+          props.navigation.navigate('Sidebar_logined');
+        }}
+      />
+      <Button
+        title="sidebar logouted Screen"
         onPress={() => {
           props.navigation.navigate('Sidebar_logined');
         }}

@@ -23,25 +23,30 @@ const styles = StyleSheet.create({
     color: 'red',
     padding: 20,
   },
+  top: {
+    // position: "absolute"6,
+    backgroundColor: 'white',
+    width: '100%',
+    height: '5.44%',
+    // top: "5.44%",
+    justifyContent: 'center',
+  },
+  diary_Check_box: {
+    position: 'absolute',
+    width: '5.33%',
+    height: '45.45%',
+    right: '4%',
+    top: '27.28%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   ButtonDesign: {
     backgroundColor: '#EBEBEC',
     borderRadius: 10,
     width: 160,
     height: 48,
     justifyContent: 'center',
-  },
-  sidetop: {
-    position: 'absolute',
-    width: 479,
-    height: 44,
-    left: 0,
-    top: 0,
-  },
-  sideX: {
-    width: 30,
-    height: 30,
-    marginLeft: '89%',
-    top: '80%',
   },
   header: {
     width: '100%',
@@ -52,8 +57,10 @@ const styles = StyleSheet.create({
   img1: {
     width: 48,
     height: 48,
-    left: -190,
-    top: 10,
+    // left: -190,
+    marginRight: "79%",
+    // top: 10,
+    top: "8%",
   },
   img2: {
     width: 28,
@@ -63,16 +70,21 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#ffffff',
   },
-  nickname: {
-    width: 63,
-    height: 21,
-    left: -115,
-    top: -20,
-    fontSize: 16,
-    fontWeight: '700',
-
-    fontStyle: 'normal',
-    fontWeight: 'bold',
+  nickname:{
+    backgroundColor:'red',
+    // width:63,
+    width:"13%",
+    // height:21,
+    height:"16%",
+    // left:-115,
+    marginRight:"48%",
+    top:-20,
+    // marginTop:"3%",
+    fontSize:16,
+    // fontWeight:"700",
+    // fontFamily: "SpoqaHanSansNeo-Regular",
+    fontStyle: "normal",
+    fontWeight: "bold",
     lineHeight: 21,
     /* identical to box height */
     color: '#333842',
@@ -141,15 +153,17 @@ export default function Sidebar_longin(props) {
 
   return (
     <View style={styles.mainView}>
+      
       <View style={styles.sidetop}>
-        <View style={styles.sideX}>
-          <TouchableOpacity
-            style={{backgroundColor: 'white'}}
-            onPress={() => {
-              props.navigation.navigate('Home');
-            }}>
-            <Image source={require('../imgs/close.png')} />
-          </TouchableOpacity>
+        <View style={styles.top}>
+          <View style={[styles.diary_Check_box, {backgroundColor: 'white'}]}>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('Calender');
+              }}>
+              <Image source={require('../imgs/close.png')}/>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 
