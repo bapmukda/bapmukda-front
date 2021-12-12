@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: '#FBFBFB',
     flex: 1, //화면을 차지 하는 비율, 1/1 다른게 3이면 1/4 : 3/4
+    width:'100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
+    height:'100%', // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
     // paddingTop: 100,
     alignItems: 'center', //수평정렬
   },
@@ -63,10 +65,11 @@ const styles = StyleSheet.create({
   },
   foodselect: {
     width: '100%',
-    height: '12.86%',
+    // height: '12.86%',
+    height:'100%',
     backgroundColor: 'white',
 
-    marginTop:"1%",
+    // marginTop:"1%", // 입력 페이지로 넘어가서 입력받는 로직이면 해당 부분 제거
     justifyContent:"center",
     alignItems:"center",
     
@@ -87,6 +90,7 @@ const styles = StyleSheet.create({
     color: '#999BA0',
   },
   Foodpicker: {
+    marginRight:"10%",
     width: '100%',
     height: '100%',
     flexDirection: 'row',
@@ -94,15 +98,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Foodicon: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 12,
-    borderColor: '#FBFBFB',
+    borderColor: '#EBEBEC',
     borderStyle: 'solid',
-    width: '12.8%',
+    width: '11.2%',
     height: '46.15%',
-    backgroundColor: '#EBEBEC',
+    backgroundColor: '#FBFBFB',
     justifyContent: 'center',
     alignItems: 'center',
+    left:"50%",
   },
   enterfood:{
     display:"flex",
@@ -120,11 +125,11 @@ const styles = StyleSheet.create({
 
 
 
-export default function enterfood(props) {
+export default function Enterfood(props) {
     
   return (
     <View style={styles.mainView}>
-      <View style={styles.top}>
+      {/* <View style={styles.top}>
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate('MtoE');
@@ -144,7 +149,7 @@ export default function enterfood(props) {
             <Image source={require('../imgs/check.png')} />
           </View>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={[styles.foodselect]}>
         <View style={styles.Foodpicker}>
@@ -153,9 +158,10 @@ export default function enterfood(props) {
           </View>
           <View
             style={{
-              width: '70%',
-              height: '46.15%',
-              backgroundColor: 'black',
+              // width: '70%',
+              // height: '46.15%',
+              width: '60%',
+              height: '100%',
               justifyContent: 'center',
             }}>
             <Input_food></Input_food>

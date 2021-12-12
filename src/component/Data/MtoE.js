@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useState, useRef} from 'react';
+import { Platform } from 'react-native';
 import {
   Dimensions,
   View,
@@ -18,8 +19,9 @@ import 'moment/locale/ko';
 import Picker from '@gregfrench/react-native-wheel-picker';
 
 import axios from 'axios';
-import {response} from 'express';
-import {anything} from 'expect';
+
+import Input_food from '../input/Input_food';
+import Enterfood from './enterfood';
 
 var PickerItem = Picker.Item;
 
@@ -33,11 +35,26 @@ const styles = StyleSheet.create({
   },
   top: {
     // position: "absolute"6,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     width: '100%',
     height: '5.44%',
     // top: "5.44%",
     justifyContent: 'center',
+    
+    ...Platform.select({
+      ios: {
+        shadowColor: "rgb(50, 50, 50)",
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
   addition: {
     position: 'absolute',
@@ -93,12 +110,26 @@ const styles = StyleSheet.create({
   dining_type: {
     width: '100%',
     height: '6.92%',
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     marginTop: '1%',
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     // position:"absolute",
+    ...Platform.select({
+      ios: {
+        shadowColor: "rgb(50, 50, 50)",
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
   dining_box: {
     flex: 1,
@@ -106,7 +137,7 @@ const styles = StyleSheet.create({
     height: '71.43%',
 
     fontStyle: 'normal',
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     fontSize: 14,
     lineHeight: 21,
     /* identical to box height */
@@ -117,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   date_time: {
-    backgroundColor: 'purple',
+    backgroundColor: 'white',
     width: '100%',
     height: '8.9%',
     marginTop: '1%',
@@ -131,12 +162,41 @@ const styles = StyleSheet.create({
     /* identical to box height */
 
     letterSpacing: 0.02,
+    ...Platform.select({
+      ios: {
+        shadowColor: "rgb(50, 50, 50)",
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
 
     /* grey04 */
 
     color: '#333842',
   },
   foodselect: {
+    ...Platform.select({
+      ios: {
+        shadowColor: "rgb(50, 50, 50)",
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+
     width: '100%',
     height: '12.86%',
     backgroundColor: 'white',
@@ -170,7 +230,7 @@ const styles = StyleSheet.create({
 
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 21,
     /* identical to box height */
     // marginTop: "3%",
@@ -180,6 +240,7 @@ const styles = StyleSheet.create({
     /* Gray 1 */
 
     color: '#FFFFFF',
+    
   },
 
   container: {
@@ -195,6 +256,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '100%',
     height: '37.08%',
+    
+    // ㅁㅁ
+    // height: '39.08%',
+    
     justifyContent: 'center',
     alignItems: 'center',
     // margin: 'auto',
@@ -202,12 +267,25 @@ const styles = StyleSheet.create({
     position: 'relative',
     // marginLeft: Dimensions.get('window').width / 4 ,
     marginTop: Dimensions.get('window').height / 4,
+
+    // ㅁㅁㅁㅁ
+    // marginTop: (Dimensions.get('window').height / 2) + 100,
+
+
     // boxShadow: "0px 2px 6px rgba(196, 196, 196, 0.2)",
     // borderRadius: 24px 24px 0px 0px;
 
-    shadowColor: 'rgba(196, 196, 196, 0.2)',
-    shadowOffset: {width: 0, height: -2},
-    shadowRadius: 6, // only IOS
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(196, 196, 196, 0.2)',
+        shadowOpacity: 0.5,
+        shadowRadius: 6, // only IOS
+        shadowOffset: {width: 0, height: -2},
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     borderBottomRightRadius: 0,
@@ -232,6 +310,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: '20%',
   },
   Foodicon: {
     borderWidth: 2,
@@ -243,10 +322,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#EBEBEC',
     justifyContent: 'center',
     alignItems: 'center',
+    // alignSelf:'flex-start',
+    // alignItems:'flex-start',
   },
   enterfood: {
     display: 'flex',
-
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
@@ -255,6 +335,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.02,
     color: '#999BA0',
+
+    
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 5,
   },
   registerModalTop: {
     width: '100%',
@@ -304,28 +394,47 @@ const styles = StyleSheet.create({
     left: '3%',
     top: '27.33%',
     flexDirection: 'row',
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
+    marginRight:'2%',
   },
   registerModalFood: {
     width: '87.2%',
     height: '24%',
-    shadowColor: 'rgba(196, 196, 196, 0.2)',
-    shadowOffset: {width: 0, height: 2, top: 1, bottom: 6},
-    shadowRadius: 6,
-    borderRadius: 12,
-    backgroundColor: 'yellow',
+    ...Platform.select({
+      ios: {
+        shadowColor: "rgb(50, 50, 50)",
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 1.5,
+      },
+    }),
+    
+    
+    borderWidth: 1e-5,
+    borderColor: "white",
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    borderBottomRightRadius: 12,
+    borderBottomLeftRadius: 12,
+    // backgroundColor: 'green',
     justifyContent: 'center',
     flexDirection: 'row',
     position: 'absolute',
   },
   registerModalFoodIcon: {
     borderWidth: 1,
-    borderRadius: 18,
-    borderColor: '#FBFBFB',
+    borderRadius: 16,
+    borderColor: '#EBEBEC',
     borderStyle: 'solid',
-    width: '14.67%',
+    width: '13.67%',
     height: '66.68%',
-    backgroundColor: '#EBEBEC',
+    backgroundColor: '#FBFBFB',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -516,10 +625,15 @@ export default function MtoE(props) {
   const [month, setMonth] = useState('');
   const [date_, setDate_] = useState('');
 
-  const [Colr, setColor] = useState('#FFFFFF');
-  const [Colr1, setColor1] = useState('#FFFFFF');
-  const [Colr2, setColor2] = useState('#FFFFFF');
-  const [Colr3, setColor3] = useState('#FFFFFF');
+  const [Colr, setColor] = useState('#333842');
+  const [Colr1, setColor1] = useState('#333842');
+  const [Colr2, setColor2] = useState('#333842');
+  const [Colr3, setColor3] = useState('#333842');
+
+  const [Bold, setBold] = useState('normal');
+  const [Bold1, setBold1] = useState('normal');
+  const [Bold2, setBold2] = useState('normal');
+  const [Bold3, setBold3] = useState('normal');
 
   const [showRegister, setShowRegister] = useState(false);
 
@@ -944,33 +1058,6 @@ export default function MtoE(props) {
       setDisable(false);
     }
   };
-  const comeBack = index => {
-    // selectedDate //이게 이전값
-    console.log('Before' + selectedDate);
-    if (
-      Number(dateList31[index].slice(0, -1)) >
-      Number(
-        moment()
-          .locale('ko')
-          .utcOffset(+9)
-          .format('DD'),
-      )
-    ) {
-      console.log(Number(dateList31[index].slice(0, -1)));
-      console.log(
-        Number(
-          moment()
-            .locale('ko')
-            .utcOffset(+9)
-            .format('DD'),
-        ),
-      );
-      setSelectedDate(selectedDate);
-      console.log('After' + selectedDate);
-    } else {
-      setSelectedDate(index);
-    }
-  };
 
   const confirmDate = () => {
     setShowDate(false);
@@ -982,58 +1069,72 @@ export default function MtoE(props) {
   const [show, setShow] = useState(false);
   const [showDate, setShowDate] = useState(false);
 
-  const _onBigsmile = () => {
-    if (Colr === '#FFFFFF') {
+  const _onMorning = () => {
+    if (Colr === '#333842') {
       setColor('#E17551');
-      setColor1('#FFFFFF');
-      setColor2('#FFFFFF');
-      setColor3('#FFFFFF');
-      setColor4('#FFFFFF');
+      setColor1('#333842');
+      setColor2('#333842');
+      setColor3('#333842');
+
+      setBold('bold');
+      setBold1('normal');
+      setBold2('normal');
+      setBold3('normal');
+
     } else {
-      setColor('#FFFFFF');
+      setColor('#333842');
+      setBold('normal');
     }
   };
 
-  const _onSmile = () => {
-    if (Colr1 === '#FFFFFF') {
-      setColor('#FFFFFF');
+  const _onLunch = () => {
+    if (Colr1 === '#333842') {
+      setColor('#333842');
       setColor1('#E17551');
-      setColor2('#FFFFFF');
-      setColor3('#FFFFFF');
-      setColor4('#FFFFFF');
+      setColor2('#333842');
+      setColor3('#333842');
+
+      setBold('normal');
+      setBold1('bold');
+      setBold2('normal');
+      setBold3('normal');
     } else {
-      setColor1('#FFFFFF');
+      setColor1('#333842');
+      setBold1('normal');
     }
   };
 
-  const _onNormal = () => {
-    if (Colr2 === '#FFFFFF') {
-      setColor('#FFFFFF');
-      setColor1('#FFFFFF');
+  const _onDinner = () => {
+    if (Colr2 === '#333842') {
+      setColor('#333842');
+      setColor1('#333842');
       setColor2('#E17551');
-      setColor3('#FFFFFF');
-      setColor4('#FFFFFF');
+      setColor3('#333842');
+
+      setBold('normal');
+      setBold1('normal');
+      setBold2('bold');
+      setBold3('normal');
+
     } else {
-      setColor2('#FFFFFF');
+      setColor2('#333842');
+      setBold2('normal');
     }
   };
-
-  const overDate = () => {
-    if (
-      Number(year) >
-      Number(
-        moment()
-          .locale('ko')
-          .utcOffset(+9)
-          .format('YYYY'),
-      )
-    ) {
-      console.log('띠리띠띠');
-      setDisable(true);
-      return '#E17551';
+  const _onSnack = () => {
+    if (Colr3 === '#333842') {
+      setColor('#333842');
+      setColor1('#333842');
+      setColor2('#333842');
+      setColor3('#E17551');
+      
+      setBold('normal');
+      setBold1('normal');
+      setBold2('normal');
+      setBold3('bold');
     } else {
-      setDisable(false);
-      return '#EBEBEC';
+      setColor3('#333842');
+      setBold3('normal');
     }
   };
 
@@ -1063,7 +1164,7 @@ export default function MtoE(props) {
       <View style={styles.top}>
         {additionalCnt != 0 && addMode == true ? (
           <View style={styles.addition}>
-            <Text>{additionalCnt}</Text>
+            <Text style={{color:'white',fontWeight:'bold'}}>{additionalCnt}</Text>
           </View>
         ) : (
           <View></View>
@@ -1071,7 +1172,7 @@ export default function MtoE(props) {
 
         <Text style={styles.toptext}>식단등록</Text>
 
-        <View style={[styles.diary_Check_box, {backgroundColor: '#E17551'}]}>
+        <View style={[styles.diary_Check_box, {backgroundColor: 'white'}]}>
           <TouchableOpacity
             onPress={() => {
               props.navigation.navigate('Sidebar_logined');
@@ -1088,36 +1189,40 @@ export default function MtoE(props) {
         <View style={[styles.dining_box]}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Sidebar_logined');
+              _onMorning();
+              //props.navigation.navigate('Sidebar_logined');
             }}>
-            <Text>아침</Text>
+            <Text style={{color:Colr,fontWeight:Bold}}>아침</Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.dining_box]}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Sidebar_logined');
+              _onLunch();
+              // props.navigation.navigate('Sidebar_logined');
             }}>
-            <Text>점심</Text>
+            <Text style={{color:Colr1,fontWeight:Bold1}}>점심</Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.dining_box]}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Sidebar_logined');
+              _onDinner();
+              // props.navigation.navigate('Sidebar_logined');
             }}>
-            <Text>저녁</Text>
+            <Text style={{color:Colr2,fontWeight:Bold2}}>저녁</Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.dining_box]}>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('Sidebar_logined');
+              _onSnack();
+              // props.navigation.navigate('Sidebar_logined');
             }}>
-            <Text>간식</Text>
+            <Text style={{color:Colr3,fontWeight:Bold3}}>간식</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -1137,6 +1242,8 @@ export default function MtoE(props) {
               : year}
             {/* {getCurrentDate()} */}
           </Text>
+
+          {/* 날짜 선택 모달 */}
           <Modal
             transparent={true}
             animationType="slide"
@@ -1198,8 +1305,6 @@ export default function MtoE(props) {
                     fontSize: 20,
                     lineHeight: 24,
                   }}
-                  // selectedItemTextColor="black"
-                  // onValueChange={(index) => setSelectedMonth(index)}>
                   onValueChange={index => changeMonth(index)}>
                   {monthList.map((value, i) => (
                     <PickerItem label={value} value={i} key={i} />
@@ -1212,7 +1317,7 @@ export default function MtoE(props) {
                     width: '20%',
                     height: parentHeight * 0.36,
                     position: 'absolute',
-                    right: 0,
+                    right:48,
                   }} //
                   lineColor="#E17551" //to set top and bottom line color (Without gradients)
                   lineGradientColorFrom="#E17551" //to set top and bottom starting gradient line color
@@ -1221,34 +1326,17 @@ export default function MtoE(props) {
                   itemSpace={35}
                   visibleItemCount={1}
                   enabled={false}
-                  // isCurved={false}
                   itemStyle={{
                     color: '#D6D7D9',
                     fontWeight: 'bold',
                     fontSize: 20,
                     lineHeight: 24,
                   }}
-                  // selectedItemTextColor="black"
-                  // onValueChange={(index) => setSelectedDate(index)}>
                   onValueChange={index => changeDate(index)}>
                   {dateList31.map((value, i) => (
                     <PickerItem label={value} value={i} key={i} />
                   ))}
-                  {/* {
-                       isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2 ? dateList29.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : ( !isleaf && Number( (monthList[selectedMonth]).slice(0, -1) ) == 2) ? dateList28.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : ( () => thirtyone() ), is31 ? dateList31.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      )) : dateList30.map((value, i) => (
-                        <PickerItem label={value} value={i} key={i}/>
-                      ))
-                    } */}
-
-                  {/* {dateList.map((value, i) => (
-                      <PickerItem label={value} value={i} key={i}/>
-                    ))} */}
+                  
                 </Picker>
               </View>
 
@@ -1434,7 +1522,6 @@ export default function MtoE(props) {
                   fontSize: 20,
                   lineHeight: 24,
                 }}
-                // selectedItemTextColor="black"
                 onValueChange={index => setSelectedMinute(index)}>
                 {minuteList.map((value, i) => (
                   <PickerItem label={value} value={i} key={i} />
@@ -1514,7 +1601,7 @@ export default function MtoE(props) {
         </Modal>
       </TouchableOpacity>
 
-      <TouchableHighlight
+      {/* <TouchableHighlight
         style={[styles.foodselect]}
         onPress={() => {
           props.navigation.navigate('EnterFood');
@@ -1524,11 +1611,20 @@ export default function MtoE(props) {
             <Image source={require('../imgs/🍚.png')} />
           </View>
           <View style={{width: '36%', height: '20.19%'}}>
-            <Text style={styles.enterfood}>음식명을 입력해주세요</Text>
+            <Text style={[styles.enterfood]}>음식명을 입력해주세요</Text>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableHighlight> */}
 
+      <View style={[styles.foodselect]}>
+        <View style={styles.Foodpicker}>
+          <Enterfood></Enterfood>
+        </View>
+      </View>
+
+      {/* <View style={{width:480, height:100}}>
+        <Input_food></Input_food>
+      </View> */}
       <TouchableOpacity
         style={{
           width: '100%',
@@ -1555,9 +1651,9 @@ export default function MtoE(props) {
           visible={showRegister}
           supportedOrientations={['portrait']}
           onRequestClose={() => setShowRegister(false)}>
-          <View style={[styles.wrapperVertical, {backgroundColor: 'green'}]}>
+          <View style={[styles.wrapperVertical]}>
             <View style={styles.registerModalTop}>
-              <Text style={styles.registerText}>추가 목록(1)</Text>
+              <Text style={styles.registerText}>추가 목록({additionalCnt+1})</Text>
               <TouchableOpacity
                 onPress={() => setShowRegister(false)}
                 style={styles.registerModalClose}>
@@ -1586,9 +1682,11 @@ export default function MtoE(props) {
                     justifyContent: 'center',
                     alignContent: 'center',
                     alignSelf: 'center',
+                    color:'#4F4F4F',
+                    fontWeight: 'bold',
                   },
                 ]}>
-                {' '}
+                {'   '}
                 아침{' '}
               </Text>
               <Text
@@ -1597,6 +1695,8 @@ export default function MtoE(props) {
                     justifyContent: 'center',
                     alignContent: 'center',
                     alignSelf: 'center',
+                    color:'#828282',
+                    fontWeight: 'bold',
                   },
                 ]}>
                 {' '}
@@ -1654,19 +1754,18 @@ export default function MtoE(props) {
                     style={{
                       color: '#E17551',
                       alignSelf: 'center',
-                      fontStyle: 'normal',
-                      fontWeight: 'bold',
                       fontSize: 17,
                       lineHeight: 21,
-                    }}>
-                    추가등록
-                  </Text>
+                      fontWeight: 'bold',
+                    }}> 추가등록 </Text>
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity
                 style={{width: '48.17%', height: '100%'}}
-                onPress={getDailyMealHistory}>
+                onPress={() => {
+                  props.navigation.navigate('Calender');
+                }}>
                 <View
                   style={{
                     backgroundColor: '#E17551',
@@ -1689,9 +1788,7 @@ export default function MtoE(props) {
                       fontWeight: 'bold',
                       fontSize: 17,
                       lineHeight: 21,
-                    }}>
-                    등록완료
-                  </Text>
+                    }}> 등록완료 </Text>
                 </View>
               </TouchableOpacity>
             </View>

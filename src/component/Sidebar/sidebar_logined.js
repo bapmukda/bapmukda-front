@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Sidebar_longin(props) {
+export default function Sidebar_longined(props) {
   const [Colr, setColor] = useState('#999BA0');
   const [Colr1, setColor1] = useState('#999BA0');
   const [Colr2, setColor2] = useState('#999BA0');

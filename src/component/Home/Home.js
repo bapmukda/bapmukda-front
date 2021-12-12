@@ -20,7 +20,7 @@ const data = [
 
 export default function Home(props) {
   const [Lists, setLists] = useState(data);
-  const deleteItem = index => {
+  const deleteItem = index => { 
     const arr = [...Lists];
     arr.splice(index, 1);
     setLists(arr);
@@ -51,6 +51,15 @@ export default function Home(props) {
           props.navigation.navigate('MtoE');
         }}
       />
+      <Button
+        title="SB Screen"
+        onPress={() => {
+          props.navigation.navigate('Sidebar_logined');
+        }}
+      />
+
+
+
       {/* <View>
         <FlatList
           data={Lists}

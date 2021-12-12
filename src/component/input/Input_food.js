@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Image} from 'react-native';
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 
 export default function Input_food() {
@@ -29,8 +29,8 @@ export default function Input_food() {
         onFocus={handleFocus}
         onBlur={handleBlur}
         style={[styles.input, {borderColor: isFocused ? '#333842' : '#D6D7D9'}]}
-      />
-      <Text style={styles.cnt}>{myTextInput.length}/10</Text>
+      />      
+      {/* <Text style={styles.cnt}>{myTextInput.length}/10</Text> */}
     </View>
   );
 }
@@ -83,9 +83,10 @@ const styles = StyleSheet.create({
   Wrap: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'green',
+    backgroundColor: 'rgba(0,0,0,0)',
     // alignSelf:"center",
     // alignContent:"center",
     justifyContent: 'center',
   },
+
 });
