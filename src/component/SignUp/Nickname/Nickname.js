@@ -18,9 +18,9 @@ export default function Nickname(props) {
   const [isSelected, setSelection] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
   const [refreshToken, setRefreshToken] = useState(null);
-
+  const [myTextInput, setmyTextInput] = useState('');
   const onChangeInput = event => {
-    setMyTextInput(event);
+    setmyTextInput(event);
   };
   return (
     <>
@@ -119,7 +119,7 @@ export default function Nickname(props) {
           LoginName={props.route.params.LoginName}
           PasswordInput={props.route.params.passWordInput}
           myTextInput={myTextInput}
-          setMyTextInput={setMyTextInput}
+          setmyTextInput={setmyTextInput}
           accessToken={accessToken}
           setAccessToken={setAccessToken}
           refreshToken={refreshToken}
