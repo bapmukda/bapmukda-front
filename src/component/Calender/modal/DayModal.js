@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-  Platform
+  Platform,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import GestureRecognizer from 'react-native-swipe-gestures';
@@ -31,14 +31,16 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft: '5%', textAlign: 'center'}}>
+                계란후라이
+              </Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <View
                 style={{flexDirection: 'row', left: '8%', marginBottom: 20}}>
                 <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
               </View>
-              
+
               <TouchableOpacity
                 onPress={() => props.navigation.navigate('MtoE')}>
                 <View style={styles.AddButton}>
@@ -54,7 +56,11 @@ export default function DayModal(props) {
 
               <Text
                 onPress={props.handleCheckModal}
-                style={{marginLeft:"55%", color: '#E17551', fontWeight: 'bold'}}>
+                style={{
+                  marginLeft: '55%',
+                  color: '#E17551',
+                  fontWeight: 'bold',
+                }}>
                 + 30분
               </Text>
             </View>
@@ -65,7 +71,9 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft: '5%', textAlign: 'center'}}>
+                계란후라이
+              </Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -81,7 +89,9 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft: '5%', textAlign: 'center'}}>
+                계란후라이
+              </Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -98,7 +108,9 @@ export default function DayModal(props) {
                 </Text>
               </View>
 
-              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft: '5%', textAlign: 'center'}}>
+                계란후라이
+              </Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -114,7 +126,9 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft: '5%', textAlign: 'center'}}>
+                계란후라이
+              </Text>
             </View>
           </ScrollView>
         </View>
@@ -163,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: "5%",
+    marginLeft: '5%',
   },
   ContainFull: {
     flexDirection: 'row',
@@ -199,7 +213,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   minusFont: {
-    marginLeft:"55%",
+    marginLeft: '55%',
     color: '#738CC1',
     fontWeight: 'bold',
   },
@@ -212,14 +226,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFBFB',
     borderWidth: 1,
     borderColor: '#EBEBEC',
-    
+
     width: 35,
     height: 35,
 
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft : "80%",
+    marginLeft: '80%',
 
     ...Platform.select({
       ios: {
@@ -231,7 +245,5 @@ const styles = StyleSheet.create({
         elevation: 3,
       },
     }),
-
-    
   },
 });

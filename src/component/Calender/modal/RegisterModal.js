@@ -19,11 +19,10 @@ export default function RegisterModal(props) {
       onBackdropPress={props.handleregisterModal}>
       <View
         style={{
-          flex: 0.4,
           backgroundColor: 'white',
-          top: '20%',
+
           justifyContent: 'space-around',
-          height: '50%',
+          height: 250,
           borderRadius: 10,
           shadowColor: 'rgb(196, 196, 196)',
           shadowOffset: {width: 0, height: 1},

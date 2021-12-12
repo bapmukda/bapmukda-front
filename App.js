@@ -62,32 +62,32 @@ export default function App() {
         <Stack.Screen
           name="Sidebar"
           component={Sidebar_longin}
-          options={{title: '사이드바_로그아웃'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Sidebar_logined"
           component={Sidebar_longined}
-          options={{title: '사이드바_로그인'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Add_diary"
           component={Add_diary}
-          options={{title: '기분등록'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="MtoE"
           component={MtoE}
-          options={{title: '데이터'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="EnterFood"
           component={enterfood}
-          options={{title: '음식등록'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="details"
           component={details}
-          options={{title: '상세페이지'}}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
