@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Platform
 } from 'react-native';
 import Modal from 'react-native-modal';
 import GestureRecognizer from 'react-native-swipe-gestures';
@@ -30,7 +31,7 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <View
@@ -53,7 +54,7 @@ export default function DayModal(props) {
 
               <Text
                 onPress={props.handleCheckModal}
-                style={{left: 180, color: '#E17551', fontWeight: 'bold'}}>
+                style={{marginLeft:"55%", color: '#E17551', fontWeight: 'bold'}}>
                 + 30분
               </Text>
             </View>
@@ -64,7 +65,7 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -80,7 +81,7 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -97,7 +98,7 @@ export default function DayModal(props) {
                 </Text>
               </View>
 
-              <Text style={{textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
             </View>
 
             <View style={styles.ContainTextAndDot}>
@@ -113,7 +114,7 @@ export default function DayModal(props) {
                   🍳
                 </Text>
               </View>
-              <Text style={{textAlign: 'center'}}>계란후라이</Text>
+              <Text style={{marginLeft:"5%", textAlign: 'center'}}>계란후라이</Text>
             </View>
           </ScrollView>
         </View>
@@ -128,9 +129,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 35,
-    shadowColor: 'rgb(196, 196, 196)',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 1,
+
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgb(196, 196, 196)',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 1,
+      },
+      android: {
+        elevation: 15,
+      },
+    }),
+
     height: 500,
     width: '100%',
   },
@@ -148,24 +158,32 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 2},
     width: 35,
     height: 35,
-    margin: 20,
+    // margin: 20,
     shadowColor: 'rgb(196, 196, 196)',
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: "5%",
   },
   ContainFull: {
     flexDirection: 'row',
     backgroundColor: '#ffffff',
-    shadowOpacity: 1,
-    shadowOffset: {width: 0, height: 1},
     width: '80%',
     height: 70,
-    shadowColor: 'rgb(196, 196, 196)',
     alignItems: 'center',
     borderRadius: 10,
     marginBottom: 30,
     marginLeft: '10%',
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgb(196, 196, 196)',
+        shadowOpacity: 1,
+        shadowOffset: {width: 0, height: 1},
+      },
+      android: {
+        elevation: 1.5,
+      },
+    }),
   },
   ContainTextAndDot: {
     flexDirection: 'row',
@@ -181,7 +199,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   minusFont: {
-    left: 180,
+    marginLeft:"55%",
     color: '#738CC1',
     fontWeight: 'bold',
   },
@@ -194,15 +212,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFBFB',
     borderWidth: 1,
     borderColor: '#EBEBEC',
-    // shadowOffset: {width: 2, height: 2},
+    
     width: 35,
     height: 35,
-    // marginTop: -10,
-    // shadowColor: 'rgb(196, 196, 196)',
+
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    // left: 260,
     marginLeft : "80%",
+
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgb(196, 196, 196)',
+        shadowOffset: {width: 2, height: 2},
+        // shadowOpacity: 1,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+
+    
   },
 });

@@ -360,13 +360,15 @@ export default function Calender(props) {
         isCheckModal={isCheckModal}
         handleCheckModal={handleCheckModal}
       />
+      
       {/* registerModal */}
       <RegisterModal
         registerModal={registerModal}
         handleregisterModal={handleregisterModal}
         navigation={props.navigation}
       />
-      <Agenda />
+      
+      {/* <Agenda /> */}
     </View>
   );
 }
