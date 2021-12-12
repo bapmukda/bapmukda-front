@@ -37,6 +37,7 @@ export default function DayModal(props) {
                 style={{flexDirection: 'row', left: '8%', marginBottom: 20}}>
                 <Text style={{fontWeight: 'bold', fontSize: 16}}>식단기록</Text>
               </View>
+              
               <TouchableOpacity
                 onPress={() => props.navigation.navigate('MtoE')}>
                 <View style={styles.AddButton}>
@@ -193,14 +194,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFBFB',
     borderWidth: 1,
     borderColor: '#EBEBEC',
-    shadowOffset: {width: 2, height: 2},
+    // shadowOffset: {width: 2, height: 2},
     width: 35,
     height: 35,
-    marginTop: -10,
-    shadowColor: 'rgb(196, 196, 196)',
+    // marginTop: -10,
+    // shadowColor: 'rgb(196, 196, 196)',
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    left: 260,
+    // left: 260,
+    marginLeft : "80%",
   },
 });
