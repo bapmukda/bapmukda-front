@@ -12,7 +12,7 @@ import {
   Image,
 } from 'react-native';
 import Users from '../email_check';
-import {isEamil} from '../check_id_pw'
+import {isEamil} from '../check_id_pw';
 
 export default function LoginScreen(props) {
   const [LoginName, setLoginName] = useState('');
@@ -21,6 +21,18 @@ export default function LoginScreen(props) {
   };
   const [R, setR] = useState(null);
   const [email, setEmail] = useState(null);
+  const validate = text => {
+    console.log(text);
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(text) === false) {
+      console.log('Email is Not Correct');
+      setLoginName(text);
+      return false;
+    } else {
+      setLoginName(text);
+      console.log('Email is Correct');
+    }
+  };
 
   return (
     <>
@@ -47,7 +59,7 @@ export default function LoginScreen(props) {
             type="email"
             placeholder="메일주소 입력"
             value={LoginName}
-            onChangeText={onChangeInput}></TextInput>
+            onChangeText={text => validate(text)}></TextInput>
         ) : (
           <TextInput
             autoCapitalize={'none'}
@@ -56,7 +68,7 @@ export default function LoginScreen(props) {
             type="email"
             placeholder="메일주소 입력"
             value={LoginName}
-            onChangeText={onChangeInput}></TextInput>
+            onChangeText={text => validate(text)}></TextInput>
         )}
 
         {LoginName === '' ? (

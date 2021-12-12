@@ -119,7 +119,7 @@ export default function Calender(props) {
 
   const todayOpen = () => {
     var D = new Date();
-    modalizeRef.current?.open();
+    setIsModalVisible(!isModalVisible);
     setisDay(D.getDate());
     setIsMonth(D.getMonth() + 1);
     var date = D.getDay();
@@ -240,7 +240,7 @@ export default function Calender(props) {
   });
 
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <View
         style={{
           backgroundColor: 'white',
@@ -403,6 +403,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 15,
     flexDirection: 'row',
+    shadowColor: '#000000',
+    shadowOffset: {width: 0.3, height: 0.3},
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
   },
   text: {
     color: '#999BA0',
