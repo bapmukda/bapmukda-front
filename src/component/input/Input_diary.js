@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     justifyContent: 'center',
     lineHeight: 20,
-    fontFamily: 'SpoqaHanSansNeo-Regular',
+
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     // paddingBottom: 0,
     // paddingTop: 0,
     justifyContent: 'center',
-    fontFamily: 'SpoqaHanSansNeo-Regular',
+
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,

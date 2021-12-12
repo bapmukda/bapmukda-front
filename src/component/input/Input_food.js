@@ -29,7 +29,7 @@ export default function Input_food() {
         onFocus={handleFocus}
         onBlur={handleBlur}
         style={[styles.input, {borderColor: isFocused ? '#333842' : '#D6D7D9'}]}
-      />      
+      />
       {/* <Text style={styles.cnt}>{myTextInput.length}/10</Text> */}
     </View>
   );
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     justifyContent: 'center',
     lineHeight: 20,
-    fontFamily: "SpoqaHanSansNeo-Regular",
-    fontStyle: "normal",
-    fontWeight: "normal",
+
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     fontSize: 14,
     lineHeight: 21,
     display: 'flex',
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
     // paddingBottom: 0,
     // paddingTop: 0,
     justifyContent: 'center',
-    fontFamily: "SpoqaHanSansNeo-Regular",
-    fontStyle: "normal",
-    fontWeight: "normal",
+
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     fontSize: 14,
     lineHeight: 21,
     display: 'flex',
@@ -88,5 +88,4 @@ const styles = StyleSheet.create({
     // alignContent:"center",
     justifyContent: 'center',
   },
-
 });
